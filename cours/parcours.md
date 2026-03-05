@@ -29,13 +29,13 @@
 | 04 | Routing | 3 | 1 | ~4 h |
 | 05 | Formulaires | 3 | 2 | ~5 h |
 | 06 | Next.js App Router | 5 | 3 + 1 bonus | ~8 h |
-| 07 | Tests | 4 | 3 | ~6 h |
+| 07 | Tests | 2 | 2 | ~3 h |
 | 08 | Performance & Patterns | 3 | 2 | ~5 h |
 | 09 | Styling | 2 | 1 | ~3 h |
-| 10 | Auth & Sécurité | 2 | 1 | ~3 h |
-| 11 | CI/CD & Déploiement | 2 | 1 | ~3 h |
+| 10 | Auth & Sécurité | 1 | 1 | ~2 h |
+| 11 | CI/CD & Déploiement | 1 | 0 | ~2 h |
 | 12 | Recettes ESN | 2 | 1 | ~3 h |
-| | **Total** | **~45** | **~26** | **~65 h** |
+| | **Total** | **~41** | **~24** | **~60 h** |
 
 ---
 
@@ -118,16 +118,16 @@ Exercices : `exercices/05-formulaire-inscription.md`, `exercices/05-formulaire-m
 
 Exercices : `exercices/06-page-dynamique.md`, `exercices/06-server-action-form.md`, `exercices/06-dashboard-streaming.md`, `exercices/06-bonus-fullstack.md`
 
-### Module 07 — Tests (~6 h)
+### Module 07 — Tests (~3 h)
+
+> *Prérequis Vue* : Vitest (describe/it/expect, mocking) et Playwright E2E sont acquis. On se concentre ici sur les spécificités React.
 
 | Cours | Titre | Fichier |
 |---|---|---|
-| 01 | Vitest : tests unitaires | `07-tests/01-vitest-unitaires.md` |
 | 02 | React Testing Library | `07-tests/02-react-testing-library.md` |
 | 03 | Tests d'intégration et MSW | `07-tests/03-integration-msw.md` |
-| 04 | Playwright : tests E2E | `07-tests/04-playwright-e2e.md` |
 
-Exercices : `exercices/07-tests-composant.md`, `exercices/07-tests-hook.md`, `exercices/07-test-e2e.md`
+Exercices : `exercices/07-tests-composant.md`, `exercices/07-tests-hook.md`
 
 ### Module 08 — Performance & Patterns (~5 h)
 
@@ -148,23 +148,23 @@ Exercices : `exercices/08-optimisation-liste.md`, `exercices/08-compound-compone
 
 Exercice : `exercices/09-design-system.md`
 
-### Module 10 — Auth & Sécurité (~3 h)
+### Module 10 — Auth & Sécurité (~2 h)
+
+> *Prérequis Vue* : JWT, OAuth, XSS, CSP et sécurité front sont acquis. On se concentre ici sur Auth.js v5 (NextAuth) pour Next.js.
 
 | Cours | Titre | Fichier |
 |---|---|---|
 | 01 | Auth avec NextAuth.js / Auth.js | `10-auth-securite/01-nextauth.md` |
-| 02 | Sécurité front (XSS, CSRF, headers) | `10-auth-securite/02-securite-front.md` |
 
 Exercice : `exercices/10-auth-flow.md`
 
-### Module 11 — CI/CD & Déploiement (~3 h)
+### Module 11 — CI/CD & Déploiement (~2 h)
+
+> *Prérequis Vue* : GitHub Actions et les pipelines CI/CD sont acquis. On se concentre ici sur le déploiement Next.js (Vercel, Docker standalone, SSR).
 
 | Cours | Titre | Fichier |
 |---|---|---|
-| 01 | Pipeline CI (GitHub Actions, lint, tests) | `11-cicd-deploiement/01-pipeline-ci.md` |
 | 02 | Déploiement Vercel / Docker | `11-cicd-deploiement/02-deploiement.md` |
-
-Exercice : `exercices/11-pipeline-complete.md`
 
 ### Module 12 — Recettes ESN (~3 h)
 
@@ -211,18 +211,14 @@ Copie ce tableau et coche au fur et à mesure.
 | 06 | 03 — Data fetching | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 06 | 04 — Metadata/SEO | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 06 | 05 — Middleware/API | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 07 | 01 — Vitest | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 07 | 02 — Testing Library | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 07 | 03 — Intégration/MSW | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 07 | 04 — Playwright | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 08 | 01 — Profiling | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 08 | 02 — Code splitting | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 08 | 03 — Patterns avancés | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 09 | 01 — CSS Modules/Tailwind | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 09 | 02 — shadcn/ui | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 10 | 01 — NextAuth | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 10 | 02 — Sécurité front | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 11 | 01 — Pipeline CI | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 11 | 02 — Déploiement | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 12 | 01 — Architecture projet | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 12 | 02 — Checklist prod | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |

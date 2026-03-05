@@ -1,5 +1,7 @@
 # Cours 41 — Déploiement : Vercel, Docker et alternatives
 
+> **Prérequis** : tu connais déjà GitHub Actions et les pipelines CI/CD depuis la formation Vue. Ce cours se concentre sur le **déploiement Next.js** : Vercel, Docker standalone output, et les spécificités SSR.
+
 > **Objectif** : Savoir déployer une application Next.js en production sur Vercel (zero config), en Docker + Nginx (self-hosted), et connaître le mode standalone de Next.js. Gérer les variables d'environnement en production, mettre en place des preview deployments pour les PR, et comparer les plateformes de déploiement (Vercel, Netlify, Firebase, Docker).
 
 ---

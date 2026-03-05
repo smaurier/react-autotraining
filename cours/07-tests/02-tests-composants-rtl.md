@@ -1,5 +1,7 @@
 # Cours 30 — Tests de composants avec React Testing Library
 
+> **Prérequis** : tu as déjà appris les fondamentaux du testing (Vitest, describe/it/expect, mocking) dans la formation Vue. Ce cours se concentre sur les **spécificités React** : React Testing Library, le testing de hooks, et la philosophie "test behavior, not implementation".
+
 > **Objectif** : adopter la philosophie "tester le comportement, pas l'implémentation" de React Testing Library (RTL), maîtriser les queries (`getByRole`, `getByText`, `findBy`), les interactions utilisateur avec `user-event`, et tester des composants asynchrones.
 
 ---
@@ -556,3 +558,4 @@ describe("TodoList", () => {
 ---
 
 > **Prochain cours** : [Tests d'API avec MSW](./03-tests-api-msw.md) — mocker les appels réseau avec Mock Service Worker pour tester les composants qui fetch des données.
+

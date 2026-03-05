@@ -1,5 +1,7 @@
 # Cours 38 — Authentification avec Auth.js (NextAuth v5)
 
+> **Prérequis** : tu connais déjà JWT, OAuth et les principes de sécurité front (XSS, CSP) depuis la formation Vue. Ce cours se concentre sur **Auth.js v5** (NextAuth), la solution standard d'authentification pour Next.js.
+
 > **Objectif** : Implémenter un système d'authentification complet dans une application Next.js 15 avec Auth.js (anciennement NextAuth.js v5). Configurer des providers (credentials, Google, GitHub), gérer les sessions (client et serveur), protéger les routes avec le middleware, et implémenter un pattern RBAC (Role-Based Access Control). Comparer avec les guards Angular et les solutions Vue.
 
 ---
@@ -538,4 +540,4 @@ export default async function AdminPage() {
 | RBAC | Rôle dans le token JWT, vérifié dans middleware + composants |
 | `SessionProvider` | Wrapper obligatoire dans le layout racine |
 
-> **Prochain cours** : [Cours 39 — Sécurité front-end](./02-securite-front.md)
+> **Prochain cours** : [Cours 41 — Déploiement : Vercel, Docker et alternatives](../11-cicd-deploiement/02-deploiement.md)

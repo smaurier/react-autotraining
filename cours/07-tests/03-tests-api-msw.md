@@ -1,5 +1,7 @@
 # Cours 31 — Tests d'API avec MSW (Mock Service Worker)
 
+> **Prérequis** : les concepts de mocking API sont acquis depuis la formation Vue. Ici on se concentre sur MSW (Mock Service Worker), l'outil standard pour mocker les API en React.
+
 > **Objectif** : configurer MSW pour intercepter les appels réseau dans les tests, écrire des handlers réalistes, tester les composants qui fetch des données (succès, erreur, chargement), et comprendre la différence avec le mocking classique.
 
 ---
@@ -573,4 +575,4 @@ describe("ArticleSearch", () => {
 
 ---
 
-> **Prochain cours** : [Tests E2E avec Playwright](./04-e2e-playwright.md) — tester le parcours complet de l'utilisateur dans un vrai navigateur.
+> **Prochain cours** : [Performance React](../08-performance-patterns/01-performance-react.md) — mesurer et optimiser les performances de tes composants React.
