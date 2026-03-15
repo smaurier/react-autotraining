@@ -1,6 +1,6 @@
 # Checklist — Exercice 11 : Routing multi-pages
 
-Coche chaque element une fois valide :
+Coche chaque élément une fois valide :
 
 - [ ] Le router est configure avec `createBrowserRouter`
 - [ ] Le composant `Layout` contient une `<nav>` avec des `<NavLink>`

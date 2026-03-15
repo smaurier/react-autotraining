@@ -2,7 +2,7 @@
 
 ---
 
-## Etape 1 : Context des Tabs
+## Étape 1 : Context des Tabs
 
 ```tsx
 // src/components/Tabs/TabsContext.tsx
@@ -38,7 +38,7 @@ export { TabsContext };
 
 ---
 
-## Etape 2 : Composant Tabs (parent)
+## Étape 2 : Composant Tabs (parent)
 
 ```tsx
 // src/components/Tabs/Tabs.tsx
@@ -95,7 +95,7 @@ export function Tabs({
 
 ---
 
-## Etape 3 : TabList
+## Étape 3 : TabList
 
 ```tsx
 // src/components/Tabs/TabList.tsx
@@ -171,7 +171,7 @@ export function TabList({ children, orientation = "horizontal" }: TabListProps) 
 
 ---
 
-## Etape 4 : Tab
+## Étape 4 : Tab
 
 ```tsx
 // src/components/Tabs/Tab.tsx
@@ -213,7 +213,7 @@ export function Tab({ id, children, disabled = false }: TabProps) {
 
 ---
 
-## Etape 5 : TabPanel
+## Étape 5 : TabPanel
 
 ```tsx
 // src/components/Tabs/TabPanel.tsx
@@ -250,7 +250,7 @@ export function TabPanel({ tabId, children }: TabPanelProps) {
 
 ---
 
-## Etape 6 : Export unifie (Compound Component)
+## Étape 6 : Export unifie (Compound Component)
 
 ```ts
 // src/components/Tabs/index.ts
@@ -273,7 +273,7 @@ export type { } from "./TabsContext";
 
 ---
 
-## Etape 7 : Page de demo
+## Étape 7 : Page de demo
 
 ```tsx
 // src/app/tabs-demo/page.tsx
@@ -356,9 +356,9 @@ export default function TabsDemoPage() {
 
 ## Ce que tu aurais pu oublier
 
-1. **`Object.assign` pour les Compound Components** : c'est le pattern standard pour attacher des sous-composants a un composant parent (`Tabs.List`, `Tabs.Tab`, etc.). En TypeScript, les types sont automatiquement inferes.
+1. **`Object.assign` pour les Compound Components** : c'est le pattern standard pour attacher des sous-composants à un composant parent (`Tabs.List`, `Tabs.Tab`, etc.). En TypeScript, les types sont automatiquement inferes.
 
-2. **Le Context doit avoir une valeur par defaut `undefined`** : cela permet de detecter quand un sous-composant est utilise en dehors du `<Tabs>` parent et de lancer une erreur explicite.
+2. **Le Context doit avoir une valeur par defaut `undefined`** : cela permet de détecter quand un sous-composant est utilise en dehors du `<Tabs>` parent et de lancer une erreur explicite.
 
 3. **`tabIndex={isActive ? 0 : -1}`** sur les onglets : seul l'onglet actif est dans l'ordre de tabulation. Les autres sont accessibles uniquement via les fleches du clavier.
 
@@ -366,8 +366,8 @@ export default function TabsDemoPage() {
 
 5. **Navigation clavier avec bouclage** : quand on est sur le dernier onglet et qu'on appuie sur la fleche droite, on revient au premier (et vice versa).
 
-6. **Mode controle vs non controle** : le composant supporte les deux modes grace a un pattern classique (`controlledValue ?? internalState`).
+6. **Mode controle vs non controle** : le composant supporte les deux modes grâce à un pattern classique (`controlledValue ?? internalState`).
 
-7. **Headless = reutilisable** : en n'imposant aucun style, le composant peut etre utilise avec n'importe quel systeme de design (Tailwind, CSS Modules, etc.).
+7. **Headless = réutilisable** : en n'imposant aucun style, le composant peut etre utilise avec n'importe quel système de design (Tailwind, CSS Modules, etc.).
 
 8. **Chaque instance est independante** : les deux instances de `<Tabs>` sur la page de demo ont chacune leur propre Context. Changer d'onglet dans l'une n'affecte pas l'autre.

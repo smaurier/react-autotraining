@@ -2,7 +2,7 @@
 
 ---
 
-## Etape 1 : Configuration Vitest
+## Étape 1 : Configuration Vitest
 
 ```ts
 // vitest.config.ts
@@ -32,7 +32,7 @@ import "@testing-library/jest-dom/vitest";
 
 ---
 
-## Etape 2 : Types
+## Étape 2 : Types
 
 ```ts
 // src/types/task.ts
@@ -45,7 +45,7 @@ export interface Task {
 
 ---
 
-## Etape 3 : Composant TaskList
+## Étape 3 : Composant TaskList
 
 ```tsx
 // src/components/TaskList.tsx
@@ -176,7 +176,7 @@ export function TaskList({ initialTasks = [] }: TaskListProps) {
 
 ---
 
-## Etape 4 : Tests complets
+## Étape 4 : Tests complets
 
 ```tsx
 // src/components/__tests__/TaskList.test.tsx
@@ -362,18 +362,18 @@ describe("TaskList", () => {
 
 ## Ce que tu aurais pu oublier
 
-1. **`userEvent.setup()` avant chaque test** : il faut appeler `userEvent.setup()` au debut du test, pas globalement. Cela cree une instance avec un etat propre.
+1. **`userEvent.setup()` avant chaque test** : il faut appeler `userEvent.setup()` au debut du test, pas globalement. Cela créé une instance avec un état propre.
 
-2. **`screen.queryByText` pour verifier l'absence** : `getByText` leve une erreur si l'element n'est pas trouve. Utiliser `queryByText` qui retourne `null` si absent.
+2. **`screen.queryByText` pour vérifier l'absence** : `getByText` leve une erreur si l'élément n'est pas trouve. Utiliser `queryByText` qui retourne `null` si absent.
 
 3. **Selecteurs accessibles** : privilegier `getByRole`, `getByLabelText`, `getByText` plutot que `getByTestId`. C'est la philosophie de Testing Library : tester comme un utilisateur.
 
-4. **`aria-label` sur les boutons de suppression** : sans label unique, impossible de distinguer les boutons "Supprimer" de chaque tache. Le pattern `aria-label={`Supprimer "${title}"`}` resout ce probleme.
+4. **`aria-label` sur les boutons de suppression** : sans label unique, impossible de distinguer les boutons "Supprimer" de chaque tache. Le pattern `aria-label={`Supprimer "${title}"`}` resout ce problème.
 
 5. **`toBeInTheDocument()`** vient de `@testing-library/jest-dom` — il faut l'importer dans le setup (`import "@testing-library/jest-dom/vitest"`).
 
 6. **`{Enter}` dans `userEvent.type`** : la syntaxe `{Enter}` simule l'appui sur la touche Entree directement dans la chaine.
 
-7. **Les tests doivent etre independants** : chaque test cree sa propre instance avec `render()`. Pas d'etat partage entre les tests.
+7. **Les tests doivent etre independants** : chaque test créé sa propre instance avec `render()`. Pas d'état partage entre les tests.
 
 8. **`crypto.randomUUID()`** : dans `jsdom`, cette API est disponible. Si elle ne l'est pas dans ton environnement, tu peux utiliser un polyfill ou un compteur simple.

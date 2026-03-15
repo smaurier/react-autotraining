@@ -1,12 +1,12 @@
 # Checklist — Exercice 05 : Chronometre
 
-Coche chaque element une fois valide :
+Coche chaque élément une fois valide :
 
 - [ ] Le fichier `Stopwatch.tsx` existe dans `src/exercises/ex05/`
-- [ ] `useState<number>` gere le temps ecoule en millisecondes
-- [ ] `useState<boolean>` gere l'etat en cours / arrete
+- [ ] `useState<number>` géré le temps ecoule en millisecondes
+- [ ] `useState<boolean>` géré l'état en cours / arrete
 - [ ] `useRef` est utilise pour stocker l'id de l'intervalle (pas `useState`)
-- [ ] Le bouton "Demarrer" lance un `setInterval` toutes les 10ms
+- [ ] Le bouton "Démarrer" lance un `setInterval` toutes les 10ms
 - [ ] Le bouton "Arreter" stoppe l'intervalle avec `clearInterval`
 - [ ] Le bouton "Reset" stoppe l'intervalle et remet le temps a zero
 - [ ] Un `useEffect` avec cleanup nettoie l'intervalle au demontage

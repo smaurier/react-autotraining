@@ -2,7 +2,7 @@
 
 ---
 
-## Etape 1 : Types
+## Étape 1 : Types
 
 ```ts
 // src/types/product.ts
@@ -19,7 +19,7 @@ export type SortOption = "price-asc" | "price-desc" | "name-asc";
 
 ---
 
-## Etape 2 : Generation des donnees
+## Étape 2 : Génération des donnees
 
 ```ts
 // src/data/generate-products.ts
@@ -40,7 +40,7 @@ export function generateProducts(count: number): Product[] {
 
 ---
 
-## Etape 3 : Version NON optimisee
+## Étape 3 : Version NON optimisee
 
 ```tsx
 // src/components/ProductCatalog.tsx
@@ -236,7 +236,7 @@ export function ProductCatalog() {
 
 ---
 
-## Etape 4 : Version OPTIMISEE
+## Étape 4 : Version OPTIMISEE
 
 ```tsx
 // src/components/ProductCatalogOptimized.tsx
@@ -434,7 +434,7 @@ export function ProductCatalogOptimized() {
 
 ---
 
-## Etape 5 : Modal lazy-loaded
+## Étape 5 : Modal lazy-loaded
 
 ```tsx
 // src/components/ProductDetailModal.tsx
@@ -499,7 +499,7 @@ export default function ProductDetailModal({
 
 ---
 
-## Etape 6 : Page de comparaison
+## Étape 6 : Page de comparaison
 
 ```tsx
 // src/app/performance/page.tsx
@@ -550,18 +550,18 @@ export default function PerformancePage() {
 
 ## Ce que tu aurais pu oublier
 
-1. **`useMemo` ne rend pas le code plus rapide** : il evite de recalculer un resultat si les dependances n'ont pas change. Si le calcul est rapide, `useMemo` ajoute de la complexite pour rien.
+1. **`useMemo` ne rend pas le code plus rapide** : il evite de recalculer un résultat si les dépendances n'ont pas change. Si le calcul est rapide, `useMemo` ajoute de la complexite pour rien.
 
-2. **`React.memo` sans `useCallback` est souvent inutile** : si une fonction callback est passee en prop et qu'elle est recree a chaque render, `React.memo` ne peut pas empecher le re-render car la prop a change (nouvelle reference).
+2. **`React.memo` sans `useCallback` est souvent inutile** : si une fonction callback est passee en prop et qu'elle est recree à chaque render, `React.memo` ne peut pas empecher le re-render car la prop a change (nouvelle référence).
 
-3. **Le `<Profiler>` ne fonctionne qu'en mode developpement** : en production, il est desactive par defaut pour ne pas impacter les performances.
+3. **Le `<Profiler>` ne fonctionne qu'en mode développement** : en production, il est désactivé par defaut pour ne pas impacter les performances.
 
-4. **`React.lazy` necessite un `export default`** : le module importe dynamiquement doit avoir un export par defaut.
+4. **`React.lazy` nécessité un `export default`** : le module importe dynamiquement doit avoir un export par defaut.
 
 5. **Mesurer avant d'optimiser** : la regle d'or est "Don't optimize prematurely". Utiliser le Profiler pour identifier les vrais goulots d'etranglement.
 
-6. **Le compilateur React 19 automatise certaines optimisations** : en mode experimental, il peut ajouter automatiquement `useMemo` et `useCallback` la ou c'est necessaire.
+6. **Le compilateur React 19 automatise certaines optimisations** : en mode experimental, il peut ajouter automatiquement `useMemo` et `useCallback` la ou c'est nécessaire.
 
-7. **Les donnees statiques doivent etre en dehors du composant** : `generateProducts(100)` ne doit pas etre appele a chaque render. Le placer au niveau module garantit une seule execution.
+7. **Les donnees statiques doivent etre en dehors du composant** : `generateProducts(100)` ne doit pas etre appele à chaque render. Le placer au niveau module garantit une seule exécution.
 
 8. **Le tri mute le tableau** : `Array.sort()` modifie le tableau en place. Toujours faire une copie avant (`[...array].sort()`).

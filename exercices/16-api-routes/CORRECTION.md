@@ -2,7 +2,7 @@
 
 ---
 
-## Etape 1 : Types TypeScript
+## Étape 1 : Types TypeScript
 
 ```ts
 // src/types/task.ts
@@ -22,7 +22,7 @@ export type UpdateTaskInput = Partial<CreateTaskInput>;
 
 ---
 
-## Etape 2 : Store en memoire
+## Étape 2 : Store en mémoire
 
 ```ts
 // src/lib/task-store.ts
@@ -93,7 +93,7 @@ export function deleteTask(id: string): boolean {
 
 ---
 
-## Etape 3 : Schemas de validation Zod
+## Étape 3 : Schemas de validation Zod
 
 ```ts
 // src/lib/validations/task.ts
@@ -115,7 +115,7 @@ export type UpdateTaskPayload = z.infer<typeof updateTaskSchema>;
 
 ---
 
-## Etape 4 : Route Handlers — Collection
+## Étape 4 : Route Handlers — Collection
 
 ```ts
 // src/app/api/tasks/route.ts
@@ -158,7 +158,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
 ---
 
-## Etape 5 : Route Handlers — Item
+## Étape 5 : Route Handlers — Item
 
 ```ts
 // src/app/api/tasks/[id]/route.ts
@@ -245,7 +245,7 @@ export async function DELETE(
 
 ---
 
-## Etape 6 : Server Action
+## Étape 6 : Server Action
 
 ```ts
 // src/actions/task-actions.ts
@@ -289,7 +289,7 @@ export async function createTaskAction(formData: FormData): Promise<ActionResult
 
 ---
 
-## Etape 7 : Page avec formulaire
+## Étape 7 : Page avec formulaire
 
 ```tsx
 // src/app/tasks/page.tsx
@@ -369,7 +369,7 @@ export default function TasksPage() {
 
 ---
 
-## Etape 8 : Client Components — Formulaire et bouton
+## Étape 8 : Client Components — Formulaire et bouton
 
 ```tsx
 // src/components/TaskForm.tsx
@@ -469,18 +469,18 @@ export function SubmitButton() {
 
 ## Ce que tu aurais pu oublier
 
-1. **`params` est une Promise dans Next.js 15** : les Route Handlers aussi doivent `await params` pour acceder aux parametres dynamiques.
+1. **`params` est une Promise dans Next.js 15** : les Route Handlers aussi doivent `await params` pour acceder aux paramètres dynamiques.
 
-2. **`useFormStatus` doit etre dans un composant enfant du `<form>`** : il ne fonctionne pas dans le meme composant que le `<form>`. C'est pour cela qu'on cree un `SubmitButton` separe.
+2. **`useFormStatus` doit etre dans un composant enfant du `<form>`** : il ne fonctionne pas dans le même composant que le `<form>`. C'est pour cela qu'on créé un `SubmitButton` separe.
 
-3. **`'use server'` vs Route Handlers** : les Server Actions (`'use server'`) sont des fonctions appelees directement depuis le client via RPC. Les Route Handlers (`route.ts`) sont des endpoints HTTP classiques. Les deux ont des usages differents.
+3. **`'use server'` vs Route Handlers** : les Server Actions (`'use server'`) sont des fonctions appelees directement depuis le client via RPC. Les Route Handlers (`route.ts`) sont des endpoints HTTP classiques. Les deux ont des usages différents.
 
-4. **`revalidatePath`** est necessaire apres une mutation pour que la page affiche les donnees a jour (invalide le cache de la route).
+4. **`revalidatePath`** est nécessaire après une mutation pour que la page affiche les donnees a jour (invalide le cache de la route).
 
 5. **Le body doit etre valide avant parsing** : `await request.json()` peut lever une erreur si le body est vide ou mal forme. Toujours entourer d'un try/catch.
 
-6. **`NextResponse.json(data, { status })` vs `Response.json()`** : en Next.js 15, les deux fonctionnent. `NextResponse` offre des methodes supplementaires (cookies, headers).
+6. **`NextResponse.json(data, { status })` vs `Response.json()`** : en Next.js 15, les deux fonctionnent. `NextResponse` offre des méthodes supplementaires (cookies, headers).
 
-7. **Le store en memoire se reinitialise** a chaque redemarrage du serveur. En production, on utiliserait une base de donnees.
+7. **Le store en mémoire se reinitialise** à chaque redemarrage du serveur. En production, on utiliserait une base de donnees.
 
-8. **`formData.get()` retourne `FormDataEntryValue | null`** : il faut valider le type avant de l'utiliser (Zod gere cela automatiquement).
+8. **`formData.get()` retourne `FormDataEntryValue | null`** : il faut valider le type avant de l'utiliser (Zod géré cela automatiquement).

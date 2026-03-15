@@ -8,13 +8,13 @@
 
 ## Objectif
 
-Optimiser les performances d'une page de catalogue de produits en utilisant `useMemo`, `useCallback` et `React.memo`. Tu apprendras quand et pourquoi ces outils sont necessaires, et comment eviter les re-renders inutiles.
+Optimiser les performances d'une page de catalogue de produits en utilisant `useMemo`, `useCallback` et `React.memo`. Tu apprendras quand et pourquoi ces outils sont nécessaires, et comment éviter les re-renders inutiles.
 
 ---
 
 ## Consignes
 
-1. **Creer les types** dans `src/exercises/ex06/types.ts` :
+1. **Créer les types** dans `src/exercises/ex06/types.ts` :
    ```ts
    export interface Product {
      id: string;
@@ -24,30 +24,30 @@ Optimiser les performances d'une page de catalogue de produits en utilisant `use
    }
    ```
 
-2. **Creer les donnees** dans `src/exercises/ex06/data.ts` :
+2. **Créer les donnees** dans `src/exercises/ex06/data.ts` :
    - Un tableau de 20 produits repartis dans 4 categories.
 
-3. **Creer le composant** `src/exercises/ex06/ProductCard.tsx` :
+3. **Créer le composant** `src/exercises/ex06/ProductCard.tsx` :
    - Accepter `product: Product` et `onSelect: (id: string) => void`.
-   - Envelopper le composant avec `React.memo` pour eviter les re-renders inutiles.
+   - Envelopper le composant avec `React.memo` pour éviter les re-renders inutiles.
    - Ajouter un `console.log("Render ProductCard:", product.name)` pour visualiser les re-renders.
 
-4. **Creer le composant** `src/exercises/ex06/ProductFilter.tsx` :
-   - Etat : `searchTerm` (chaine de recherche), `sortBy` (`"name" | "price"`), `selectedCategory` (filtre par categorie).
+4. **Créer le composant** `src/exercises/ex06/ProductFilter.tsx` :
+   - État : `searchTerm` (chaine de recherche), `sortBy` (`"name" | "price"`), `selectedCategory` (filtre par categorie).
    - Utiliser `useMemo` pour calculer la liste filtree ET triee. Le calcul ne doit se refaire que si `products`, `searchTerm`, `sortBy` ou `selectedCategory` changent.
-   - Utiliser `useCallback` pour le handler `handleSelect` passe a chaque `ProductCard`.
-   - Afficher le nombre de resultats.
+   - Utiliser `useCallback` pour le handler `handleSelect` passe à chaque `ProductCard`.
+   - Afficher le nombre de résultats.
 
-5. **Creer le fichier** `src/exercises/ex06/App.tsx`.
+5. **Créer le fichier** `src/exercises/ex06/App.tsx`.
 
-6. **Verifier** dans la console que les `ProductCard` ne se re-rendent pas quand seul le champ de recherche change (grace a `React.memo` + `useCallback`).
+6. **Vérifier** dans la console que les `ProductCard` ne se re-rendent pas quand seul le champ de recherche change (grâce à `React.memo` + `useCallback`).
 
 ---
 
 ## Contraintes TypeScript
 
 - Mode `strict` active.
-- Les generiques de `useMemo` et `useCallback` doivent etre corrects.
+- Les génériques de `useMemo` et `useCallback` doivent etre corrects.
 - Le type du comparateur de tri doit etre type (`(a: Product, b: Product) => number`).
 - Aucun `any` autorise.
 
@@ -81,7 +81,7 @@ src/exercises/ex06/
 | `useMemo` calcule la liste filtree/triee         | oui     |
 | `useCallback` stabilise les handlers             | oui     |
 | `React.memo` empeche les re-renders inutiles     | oui     |
-| Les dependances de `useMemo` et `useCallback` sont correctes | oui |
+| Les dépendances de `useMemo` et `useCallback` sont correctes | oui |
 | Le filtrage et le tri fonctionnent               | oui     |
 | Aucun `any` dans le code                         | oui     |
 

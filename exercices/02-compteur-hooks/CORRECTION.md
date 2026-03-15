@@ -1,8 +1,8 @@
 # Correction — Exercice 02 : Compteur hooks
 
-## Resultat attendu
+## Résultat attendu
 
-Une page affichant un compteur avec sa valeur, son double, un indicateur pair/impair et trois boutons (incrementer, decrementer, reset). Toutes les valeurs derivees se mettent a jour automatiquement a chaque changement.
+Une page affichant un compteur avec sa valeur, son double, un indicateur pair/impair et trois boutons (incrementer, decrementer, reset). Toutes les valeurs derivees se mettent a jour automatiquement à chaque changement.
 
 ---
 
@@ -99,19 +99,19 @@ export default function App() {
 
 ## Ce que tu aurais pu oublier
 
-### 1. Creer un `useState` pour `double` ou `isEven`
+### 1. Créer un `useState` pour `double` ou `isEven`
 
 - ❌ `const [double, setDouble] = useState(0);` avec un `useEffect` pour le synchroniser.
-  C'est de l'etat duplique : `double` depend a 100 % de `count`, pas besoin d'un etat propre.
+  C'est de l'état duplique : `double` depend a 100 % de `count`, pas besoin d'un état propre.
 - ✅ `const double = count * 2;`
-  Valeur derivee calculee a chaque render. Simple, performant, sans risque de desynchronisation.
+  Valeur derivee calculee à chaque render. Simple, performant, sans risque de desynchronisation.
 
 ### 2. Ne pas utiliser la forme fonctionnelle du setter
 
 - ❌ `setCount(count + 1);`
-  Si deux appels se suivent dans le meme cycle, le second ecrase le premier car `count` a la meme valeur.
+  Si deux appels se suivent dans le même cycle, le second ecrase le premier car `count` à la même valeur.
 - ✅ `setCount((prev) => prev + 1);`
-  Chaque appel part de la valeur la plus recente, meme en cas de batching.
+  Chaque appel part de la valeur la plus recente, même en cas de batching.
 
 ### 3. Oublier `type="button"` sur les boutons
 
@@ -125,30 +125,30 @@ export default function App() {
 - ❌ `let double = count * 2;`
   `let` implique que la variable pourrait etre reassignee, ce qui est trompeur.
 - ✅ `const double = count * 2;`
-  `const` signale clairement que cette valeur n'est jamais modifiee apres sa creation.
+  `const` signale clairement que cette valeur n'est jamais modifiee après sa création.
 
 ### 5. Inline handlers trop complexes
 
 - ❌ `<button onClick={() => { setCount((prev) => prev + 1); console.log("incremented"); }}>`
-  Difficile a lire et a tester.
+  Difficile a lire et à tester.
 - ✅ Extraire dans une fonction nommee `increment` pour la lisibilite et la reutilisabilite.
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept              | Description                                                          | Documentation                              |
 | -------------------- | -------------------------------------------------------------------- | ------------------------------------------ |
-| `useState`           | Hook pour gerer un etat local reactif                                | [react.dev](https://react.dev/reference/react/useState) |
-| Valeur derivee       | Variable calculee a partir de l'etat, sans etat supplementaire       | Bonne pratique React |
+| `useState`           | Hook pour gérer un état local réactif                                | [react.dev](https://react.dev/reference/react/useState) |
+| Valeur derivee       | Variable calculee à partir de l'état, sans état supplementaire       | Bonne pratique React |
 | Setter fonctionnel   | `setCount((prev) => prev + 1)` garantit la valeur la plus recente   | [react.dev](https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state) |
-| Handler d'evenement  | Fonction appelee en reponse a une interaction utilisateur             | [react.dev](https://react.dev/learn/responding-to-events) |
-| Re-render            | React re-execute le composant quand l'etat change                    | [react.dev](https://react.dev/learn/render-and-commit) |
+| Handler d'événement  | Fonction appelee en réponse à une interaction utilisateur             | [react.dev](https://react.dev/learn/responding-to-events) |
+| Re-render            | React re-exécuté le composant quand l'état change                    | [react.dev](https://react.dev/learn/render-and-commit) |
 
 ---
 
 ## Pour aller plus loin
 
-- Ajoute un `useEffect` qui log la valeur du compteur dans la console a chaque changement.
-- Ajoute des tests unitaires avec Vitest : verifier que le compteur s'incremente, se decremente et se reset correctement.
+- Ajoute un `useEffect` qui log la valeur du compteur dans la console à chaque changement.
+- Ajoute des tests unitaires avec Vitest : vérifier que le compteur s'incremente, se decremente et se reset correctement.
 - Essaie de passer `min` et `max` en props pour borner le compteur.

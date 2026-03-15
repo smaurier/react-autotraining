@@ -21,7 +21,7 @@ En utilisant le middleware `persist` : `create<T>()(persist((set) => ({...}), { 
 <details>
 <summary>3. Zustand nécessite-t-il un Provider pour fonctionner ?</summary>
 
-Non. Contrairement au Context API, un store Zustand est accessible directement n'importe où dans l'application sans aucun Provider.
+Non. Contrairement au Context API, un store Zustand est accessible directement n'importe ou dans l'application sans aucun Provider.
 </details>
 
 ---

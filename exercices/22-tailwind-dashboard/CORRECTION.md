@@ -2,7 +2,7 @@
 
 ---
 
-## Etape 1 : Types
+## Étape 1 : Types
 
 ```ts
 // src/types/dashboard.ts
@@ -29,7 +29,7 @@ export type Theme = "light" | "dark";
 
 ---
 
-## Etape 2 : Toggle Dark Mode
+## Étape 2 : Toggle Dark Mode
 
 ```tsx
 // src/components/dashboard/DarkModeToggle.tsx
@@ -75,7 +75,7 @@ export function DarkModeToggle() {
 
 ---
 
-## Etape 3 : Sidebar
+## Étape 3 : Sidebar
 
 ```tsx
 // src/components/dashboard/Sidebar.tsx
@@ -182,7 +182,7 @@ export function Sidebar() {
 
 ---
 
-## Etape 4 : Cartes de statistiques
+## Étape 4 : Cartes de statistiques
 
 ```tsx
 // src/components/dashboard/StatsCards.tsx
@@ -237,7 +237,7 @@ export function StatsCards() {
 
 ---
 
-## Etape 5 : Tableau de taches
+## Étape 5 : Tableau de taches
 
 ```tsx
 // src/components/dashboard/TaskTable.tsx
@@ -322,7 +322,7 @@ export function TaskTable() {
 
 ---
 
-## Etape 6 : Layout du dashboard
+## Étape 6 : Layout du dashboard
 
 ```tsx
 // src/app/dashboard/layout.tsx
@@ -379,7 +379,7 @@ export default function DashboardLayout({
 
 ---
 
-## Etape 7 : Page du dashboard
+## Étape 7 : Page du dashboard
 
 ```tsx
 // src/app/dashboard/page.tsx
@@ -420,9 +420,9 @@ export default function DashboardPage() {
 
 1. **`dark:` ne fonctionne que si le mode est configure** : dans `tailwind.config.ts`, il faut `darkMode: "class"` pour que les classes `dark:` s'activent avec la classe `dark` sur `<html>`.
 
-2. **`lg:ml-64`** pour decaler le contenu a droite de la sidebar : la sidebar fait `w-64` (256px), donc le contenu doit etre decale de la meme largeur.
+2. **`lg:ml-64`** pour decaler le contenu a droite de la sidebar : la sidebar fait `w-64` (256px), donc le contenu doit etre decale de la même largeur.
 
-3. **`lg:translate-x-0`** pour que la sidebar soit toujours visible sur desktop : meme si elle est `-translate-x-full` par defaut (cachee mobile), le breakpoint `lg:` l'affiche.
+3. **`lg:translate-x-0`** pour que la sidebar soit toujours visible sur desktop : même si elle est `-translate-x-full` par defaut (cachee mobile), le breakpoint `lg:` l'affiche.
 
 4. **`overflow-x-auto`** sur le tableau : sur mobile, le tableau peut deborder. Le scroll horizontal evite de casser le layout.
 
@@ -430,6 +430,6 @@ export default function DashboardPage() {
 
 6. **`Record<Status, string>`** pour les maps de styles : cela garantit que chaque valeur possible est couverte, et TypeScript signale si on oublie un cas.
 
-7. **`localStorage` n'est pas disponible en SSR** : le `useEffect` est necessaire pour lire le theme car `localStorage` n'existe pas cote serveur. Sans le `useEffect`, on aurait une erreur d'hydratation.
+7. **`localStorage` n'est pas disponible en SSR** : le `useEffect` est nécessaire pour lire le theme car `localStorage` n'existe pas cote serveur. Sans le `useEffect`, on aurait une erreur d'hydratation.
 
-8. **Les breakpoints Tailwind sont mobile-first** : `sm:` s'applique a partir de 640px, `md:` a partir de 768px, `lg:` a partir de 1024px. Ecrire d'abord le style mobile, puis ajouter les variantes.
+8. **Les breakpoints Tailwind sont mobile-first** : `sm:` s'applique à partir de 640px, `md:` à partir de 768px, `lg:` à partir de 1024px. Écrire d'abord le style mobile, puis ajouter les variantes.

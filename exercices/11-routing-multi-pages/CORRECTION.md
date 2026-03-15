@@ -1,8 +1,8 @@
 # Correction — Exercice 11 : Routing multi-pages
 
-## Resultat attendu
+## Résultat attendu
 
-Une application avec une barre de navigation, 5 pages (Accueil, Taches, Detail tache, A propos, 404), des liens actifs dans la nav, un parametre dynamique `:id` pour le detail, une route protegee et le lazy loading sur la page A propos.
+Une application avec une barre de navigation, 5 pages (Accueil, Taches, Detail tache, A propos, 404), des liens actifs dans la nav, un paramètre dynamique `:id` pour le detail, une route protegee et le lazy loading sur la page A propos.
 
 ---
 
@@ -338,12 +338,12 @@ export default function App() {
 ### 2. Ne pas typer `useParams`
 
 - ❌ `const { id } = useParams();` — `id` est de type `string | undefined`.
-  Sans verification, on peut passer `undefined` a une fonction qui attend `string`.
-- ✅ `const { id } = useParams<{ id: string }>();` avec une verification `if (!task)`.
+  Sans vérification, on peut passer `undefined` à une fonction qui attend `string`.
+- ✅ `const { id } = useParams<{ id: string }>();` avec une vérification `if (!task)`.
 
 ### 3. Oublier `<Suspense>` avec `React.lazy`
 
-- ❌ Utiliser `lazy()` sans `<Suspense>` provoque une erreur a l'execution.
+- ❌ Utiliser `lazy()` sans `<Suspense>` provoque une erreur a l'exécution.
 - ✅ Toujours envelopper le composant lazy dans `<Suspense fallback={...}>`.
 
 ### 4. Oublier `replace` sur `<Navigate>`
@@ -354,17 +354,17 @@ export default function App() {
 
 ### 5. Utiliser `<a>` au lieu de `<Link>`
 
-- ❌ `<a href="/tasks">Taches</a>` recharge la page entiere.
+- ❌ `<a href="/tasks">Taches</a>` recharge la page entière.
 - ✅ `<Link to="/tasks">Taches</Link>` fait une navigation cote client, sans rechargement.
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept              | Description                                                          | Documentation                              |
 | -------------------- | -------------------------------------------------------------------- | ------------------------------------------ |
-| `createBrowserRouter` | Creer un router avec la nouvelle API de React Router v7             | [React Router](https://reactrouter.com/) |
-| `useParams`          | Recuperer les parametres dynamiques de l'URL                         | [React Router](https://reactrouter.com/hooks/use-params) |
+| `createBrowserRouter` | Créer un router avec la nouvelle API de React Router v7             | [React Router](https://reactrouter.com/) |
+| `useParams`          | Recuperer les paramètres dynamiques de l'URL                         | [React Router](https://reactrouter.com/hooks/use-params) |
 | `NavLink`            | Lien avec style actif automatique                                    | [React Router](https://reactrouter.com/components/nav-link) |
 | `Outlet`             | Zone de rendu pour les routes imbriquees                             | [React Router](https://reactrouter.com/components/outlet) |
 | `Navigate`           | Composant pour les redirections declaratives                         | [React Router](https://reactrouter.com/components/navigate) |
@@ -374,6 +374,6 @@ export default function App() {
 
 ## Pour aller plus loin
 
-- Ajoute un systeme d'authentification simule avec un bouton login/logout.
+- Ajoute un système d'authentification simule avec un bouton login/logout.
 - Utilise les loaders de React Router v7 pour pre-charger les donnees des taches.
 - Implemente un breadcrumb dynamique avec `useMatches`.

@@ -1,8 +1,8 @@
 # Correction — Exercice 01 : Premier composant
 
-## Resultat attendu
+## Résultat attendu
 
-Une page affichant un titre, un message de bienvenue personnalise et un bouton pour basculer entre le francais et l'anglais. A chaque clic, le message change de langue instantanement.
+Une page affichant un titre, un message de bienvenue personnalise et un bouton pour basculer entre le français et l'anglais. A chaque clic, le message change de langue instantanement.
 
 ---
 
@@ -95,10 +95,10 @@ export default function App() {
 - ✅ `const [language, setLanguage] = useState<Language>("fr");`
   Le type est restreint aux valeurs attendues.
 
-### 2. Muter l'etat au lieu d'utiliser le setter
+### 2. Muter l'état au lieu d'utiliser le setter
 
 - ❌ `language = "en";`
-  React ne detecte pas le changement, le composant ne se re-rend pas.
+  React ne détecté pas le changement, le composant ne se re-rend pas.
 - ✅ `setLanguage("en");`
   React planifie un re-render avec la nouvelle valeur.
 
@@ -125,21 +125,21 @@ export default function App() {
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept         | Description                                                         | Documentation                              |
 | --------------- | ------------------------------------------------------------------- | ------------------------------------------ |
 | JSX             | Syntaxe declarative pour decrire l'UI dans du JavaScript            | [react.dev](https://react.dev/learn/writing-markup-with-jsx) |
-| Props           | Donnees passees d'un composant parent a un composant enfant         | [react.dev](https://react.dev/learn/passing-props-to-a-component) |
-| `useState`      | Hook pour gerer un etat local reactif dans un composant fonction    | [react.dev](https://react.dev/reference/react/useState) |
+| Props           | Donnees passees d'un composant parent à un composant enfant         | [react.dev](https://react.dev/learn/passing-props-to-a-component) |
+| `useState`      | Hook pour gérer un état local réactif dans un composant fonction    | [react.dev](https://react.dev/reference/react/useState) |
 | Type union      | `"fr" \| "en"` restreint les valeurs possibles d'une variable       | [TS Handbook](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) |
-| `Record<K, V>`  | Type utilitaire pour creer un objet dont les cles sont du type `K`  | [TS Handbook](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type) |
-| Valeur derivee  | Valeur calculee a partir de l'etat, sans etat supplementaire        | Bonne pratique React |
+| `Record<K, V>`  | Type utilitaire pour créer un objet dont les clés sont du type `K`  | [TS Handbook](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type) |
+| Valeur derivee  | Valeur calculee à partir de l'état, sans état supplementaire        | Bonne pratique React |
 
 ---
 
 ## Pour aller plus loin
 
-- Essaie d'ajouter un `useEffect` qui affiche dans la console la langue courante a chaque changement.
+- Essaie d'ajouter un `useEffect` qui affiche dans la console la langue courante à chaque changement.
 - Transforme les traductions en un fichier JSON separe pour simuler de l'internationalisation (i18n).
 - Ajoute des tests unitaires avec Vitest et Testing Library.

@@ -1,6 +1,6 @@
 # Correction — Exercice 08 : Context theme
 
-## Resultat attendu
+## Résultat attendu
 
 Une page avec un header contenant un bouton de bascule de theme et plusieurs cartes dont le style (couleurs, fond) change dynamiquement entre le mode clair et le mode sombre. Les composants accedent au theme sans prop drilling grace au contexte.
 
@@ -206,23 +206,23 @@ export default function App() {
 
 ## Ce que tu aurais pu oublier
 
-### 1. Ne pas verifier que le contexte est `null` dans le hook
+### 1. Ne pas vérifier que le contexte est `null` dans le hook
 
 - ❌ `const { theme } = useContext(ThemeContext)!;`
-  L'assertion non-null (`!`) masque le probleme. Si le Provider est absent, crash sans message clair.
-- ✅ Verifier explicitement et lancer une erreur avec un message descriptif.
+  L'assertion non-null (`!`) masque le problème. Si le Provider est absent, crash sans message clair.
+- ✅ Vérifier explicitement et lancer une erreur avec un message descriptif.
 
 ### 2. Passer le theme en prop a travers tous les niveaux (prop drilling)
 
-- ❌ `App -> Header -> Button` avec `theme` passe en prop a chaque niveau.
+- ❌ `App -> Header -> Button` avec `theme` passe en prop à chaque niveau.
   Difficile a maintenir quand l'arbre de composants grandit.
 - ✅ `useTheme()` permet a n'importe quel composant d'acceder au theme directement.
 
-### 3. Creer le contexte avec une valeur par defaut non-null
+### 3. Créer le contexte avec une valeur par defaut non-null
 
 - ❌ `createContext<ThemeContextValue>({ theme: "light", toggleTheme: () => {} });`
   La valeur par defaut masque l'absence de Provider. Le `toggleTheme` par defaut ne fait rien, bug silencieux.
-- ✅ `createContext<ThemeContextValue | null>(null)` force la verification dans le hook.
+- ✅ `createContext<ThemeContextValue | null>(null)` force la vérification dans le hook.
 
 ### 4. Oublier d'envelopper avec le Provider
 
@@ -230,23 +230,23 @@ export default function App() {
   Le contexte retourne `null`, crash ou comportement imprevu.
 - ✅ Toujours placer `<ThemeProvider>` au sommet de l'arbre qui a besoin du theme.
 
-### 5. Recreer l'objet `value` a chaque render
+### 5. Recreer l'objet `value` à chaque render
 
-- ❌ `<ThemeContext.Provider value={{ theme, toggleTheme }}>` cree un nouvel objet a chaque render.
-  Tous les consommateurs se re-rendent meme si `theme` n'a pas change.
-- ✅ Pour les applications critiques en performance, utiliser `useMemo` sur la valeur du Provider. Ici c'est acceptable car le Provider est a la racine.
+- ❌ `<ThemeContext.Provider value={{ theme, toggleTheme }}>` créé un nouvel objet à chaque render.
+  Tous les consommateurs se re-rendent même si `theme` n'a pas change.
+- ✅ Pour les applications critiques en performance, utiliser `useMemo` sur la valeur du Provider. Ici c'est acceptable car le Provider est à la racine.
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept          | Description                                                           | Documentation                              |
 | ---------------- | --------------------------------------------------------------------- | ------------------------------------------ |
-| `createContext`  | Creer un contexte React pour partager des donnees sans prop drilling  | [react.dev](https://react.dev/reference/react/createContext) |
+| `createContext`  | Créer un contexte React pour partager des donnees sans prop drilling  | [react.dev](https://react.dev/reference/react/createContext) |
 | `useContext`     | Consommer la valeur d'un contexte dans un composant                   | [react.dev](https://react.dev/reference/react/useContext) |
 | Provider         | Composant qui fournit la valeur du contexte a ses enfants             | [react.dev](https://react.dev/learn/passing-data-deeply-with-context) |
 | Hook personnalise | `useTheme()` encapsule `useContext` + validation                     | Bonne pratique React |
-| Type guard       | Verifier que la valeur n'est pas `null` avant de l'utiliser           | Pattern TypeScript |
+| Type guard       | Vérifier que la valeur n'est pas `null` avant de l'utiliser           | Pattern TypeScript |
 
 ---
 

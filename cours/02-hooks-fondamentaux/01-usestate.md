@@ -264,7 +264,7 @@ setCount(prev => prev + 1);  // Setter obligatoire, re-render
 
 Créez un composant `ShoppingCart` avec :
 1. Un state `items` (tableau d'objets `{ id, name, price, quantity }`)
-2. Une fonction pour **ajouter** un article (ou incrémenter sa quantité s'il existe déjà)
+2. Une fonction pour **ajouter** un article (où incrémenter sa quantité s'il existe déjà)
 3. Une fonction pour **supprimer** un article
 4. Une fonction pour **modifier la quantité** d'un article
 5. Un affichage du **total** (somme des `price * quantity`)

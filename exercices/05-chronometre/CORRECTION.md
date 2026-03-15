@@ -1,8 +1,8 @@
 # Correction — Exercice 05 : Chronometre
 
-## Resultat attendu
+## Résultat attendu
 
-Un chronometre affichant le temps au format `MM:SS.ms` avec trois boutons : Demarrer, Arreter et Reset. Le chronometre se met a jour toutes les 10 millisecondes et l'intervalle est correctement nettoye au demontage.
+Un chronometre affichant le temps au format `MM:SS.ms` avec trois boutons : Démarrer, Arreter et Reset. Le chronometre se met a jour toutes les 10 millisecondes et l'intervalle est correctement nettoye au demontage.
 
 ---
 
@@ -149,19 +149,19 @@ export default function App() {
 
 ### 2. Oublier le nettoyage dans `useEffect`
 
-- ❌ Pas de cleanup : si le composant est demonte pendant que le chronometre tourne, l'intervalle continue en arriere-plan (fuite memoire).
+- ❌ Pas de cleanup : si le composant est demonte pendant que le chronometre tourne, l'intervalle continue en arriere-plan (fuite mémoire).
 - ✅ `useEffect(() => { return () => { clearInterval(intervalRef.current); }; }, []);`
   Le cleanup est appele au demontage, l'intervalle est stoppe.
 
 ### 3. Lancer plusieurs intervalles
 
-- ❌ Cliquer plusieurs fois sur "Demarrer" lance plusieurs `setInterval` qui s'empilent, accelerant le compteur.
-- ✅ Verifier `if (isRunning) return;` au debut de `start()` ou desactiver le bouton avec `disabled={isRunning}`.
+- ❌ Cliquer plusieurs fois sur "Démarrer" lance plusieurs `setInterval` qui s'empilent, accelerant le compteur.
+- ✅ Vérifier `if (isRunning) return;` au debut de `start()` ou désactiver le bouton avec `disabled={isRunning}`.
 
 ### 4. Typer `useRef` comme `number`
 
 - ❌ `useRef<number>(null)` — dans un environnement Node/navigateur, `setInterval` peut retourner un `NodeJS.Timeout` ou un `number`.
-- ✅ `useRef<ReturnType<typeof setInterval> | null>(null)` fonctionne partout grace a l'inference.
+- ✅ `useRef<ReturnType<typeof setInterval> | null>(null)` fonctionne partout grâce à l'inference.
 
 ### 5. Mauvais calcul du formatage
 
@@ -170,13 +170,13 @@ export default function App() {
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept              | Description                                                            | Documentation                              |
 | -------------------- | ---------------------------------------------------------------------- | ------------------------------------------ |
 | `useRef`             | Stocker une valeur mutable qui persiste entre les renders sans re-render | [react.dev](https://react.dev/reference/react/useRef) |
 | `useEffect` cleanup  | Fonction retournee par `useEffect`, executee au demontage              | [react.dev](https://react.dev/reference/react/useEffect) |
-| `setInterval`        | Executer une fonction a intervalles reguliers                          | [MDN](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) |
+| `setInterval`        | Exécuter une fonction a intervalles reguliers                          | [MDN](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) |
 | `clearInterval`      | Stopper un intervalle lance avec `setInterval`                         | [MDN](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) |
 | `ReturnType<typeof>` | Extraire le type de retour d'une fonction                              | [TS Handbook](https://www.typescriptlang.org/docs/handbook/2/typeof-types.html) |
 | `padStart`           | Completer une chaine avec des caracteres en debut                      | [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart) |
@@ -185,6 +185,6 @@ export default function App() {
 
 ## Pour aller plus loin
 
-- Ajoute un systeme de tours (laps) avec un bouton "Tour" et une liste des temps.
-- Utilise `performance.now()` au lieu de compter les increments pour un chrono plus precis.
+- Ajoute un système de tours (laps) avec un bouton "Tour" et une liste des temps.
+- Utilise `performance.now()` au lieu de compter les increments pour un chrono plus précis.
 - Ajoute une barre de progression circulaire animee avec CSS.

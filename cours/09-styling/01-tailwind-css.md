@@ -28,7 +28,7 @@ Via les fichiers spéciaux `error.tsx` (Error Boundary automatique, doit être u
 
 ## Analogie
 
-Pensez à Tailwind comme un **catalogue de stickers** : au lieu de dessiner chaque illustration à la main (CSS custom), vous collez des stickers prédéfinis (`flex`, `p-4`, `bg-blue-500`) pour composer votre design. C'est rapide, cohérent, et tout le monde dans l'équipe utilise le même catalogue. Comparé au CSS classique où chaque développeur invente ses propres noms de classes, Tailwind impose un **vocabulaire commun** — comme un design system intégré.
+Pensez à Tailwind comme un **catalogue de stickers** : au lieu de dessiner chaque illustration à la main (CSS custom), vous collez des stickers prédéfinis (`flex`, `p-4`, `bg-blue-500`) pour composer votre design. C'est rapide, cohérent, et tout le monde dans l'équipe utilise le même catalogue. Comparé au CSS classique ou chaque développeur invente ses propres noms de classes, Tailwind impose un **vocabulaire commun** — comme un design system intégré.
 
 ---
 
@@ -69,7 +69,7 @@ postcss.config.mjs    ← PostCSS avec Tailwind
 
 > **Tailwind v4 (fevrier 2025)** : Tailwind v4 remplace le fichier `tailwind.config.ts` par une configuration CSS-native avec `@theme`. L'ancien fichier de config reste supporte via `@config './tailwind.config.ts'` pour la migration progressive.
 
-**Avant / Apres :**
+**Avant / Après :**
 
 ```ts
 // ❌ Tailwind v3 — tailwind.config.ts
@@ -356,7 +356,7 @@ function Input({ label, error, ...props }: {
 Créez une page responsive avec :
 - Un header avec titre et bouton "Ajouter"
 - Une grille de cartes de tâches (1 colonne mobile, 2 tablette, 3 desktop)
-- Chaque carte a un titre, une description, un badge de statut et un bouton "Supprimer"
+- Chaque carte à un titre, une description, un badge de statut et un bouton "Supprimer"
 - Support du dark mode
 
 <details>

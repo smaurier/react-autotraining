@@ -1,5 +1,9 @@
 # Cours 01 — Modèle mental : React vs Vue vs Angular
 
+<!-- nav-cours-précédent -->
+> **Cours précédent** : [Angular](../../../09-angular/cours/12-recettes-esn/02-entretien-technique.md). Si tu arrives ici sans avoir fait les cours précédents, consulte le [guide de démarrage](../../../GUIDE-DEMARRAGE.md).
+
+
 > **Module 00 — De Vue/Angular à React**
 > Durée estimée : 45 min
 > Prérequis : avoir terminé les formations Vue 3 et Angular 19+
@@ -25,7 +29,7 @@ React est une **bibliothèque** (pas un framework) centrée sur le rendu d'inter
 - de gestion de formulaires intégrée
 - de solution de state management intégrée
 
-**Tout est du JavaScript (ou TypeScript).** Les conditions sont des `if` ou des ternaires. Les boucles sont des `.map()`. Les composants sont des fonctions. Le style est au choix.
+**Tout est du JavaScript (où TypeScript).** Les conditions sont des `if` ou des ternaires. Les boucles sont des `.map()`. Les composants sont des fonctions. Le style est au choix.
 
 ### Comparaison des philosophies
 
@@ -186,13 +190,13 @@ C'est la stack la plus répandue en ESN à ce jour.
 
 Voici les points qui déroutent le plus les développeurs Vue/Angular arrivant sur React :
 
-1. **Pas de two-way binding intégré** : tu gères `value` + `onChange` manuellement (ou via React Hook Form).
+1. **Pas de two-way binding intégré** : tu gères `value` + `onChange` manuellement (où via React Hook Form).
 2. **Les hooks ont des règles strictes** : toujours au top-level, toujours dans le même ordre.
 3. **Le state est immutable** : jamais de mutation directe, toujours un nouveau objet/tableau.
 4. **Pas de "computed" paresseux** : `useMemo` est un hint, pas une garantie (React peut le recalculer).
 5. **useEffect =/= watchEffect** : les dépendances sont déclarées manuellement.
 6. **Pas de scoped CSS natif** : il faut choisir CSS Modules, Tailwind ou une autre solution.
-7. **La structure de projet est libre** : c'est à toi (ou à Next.js) de l'organiser.
+7. **La structure de projet est libre** : c'est à toi (où à Next.js) de l'organiser.
 
 ---
 

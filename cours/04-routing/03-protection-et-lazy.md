@@ -523,7 +523,7 @@ function App() {
 | `<Navigate>` | Redirection déclarative (avec `replace` pour ne pas polluer l'historique) |
 | Protection par rôle | Même pattern avec vérification du rôle en plus |
 | `location.state` | Passer la page d'origine pour rediriger après login |
-| `React.lazy` | Import dynamique — charge le composant à la demande |
+| `React.lazy` | Import dynamique — charge le composant à la demandé |
 | `Suspense` | Affiche un fallback pendant le chargement du composant lazy |
 | Lazy par route | Chaque page dans un chunk séparé = bundle initial plus léger |
 | vs Angular | Guards = fonctions, React = composants wrapper (plus flexibles) |
@@ -531,3 +531,11 @@ function App() {
 ---
 
 > **Prochain cours** : [Cours 21 — Formulaires : controlled vs uncontrolled](../05-formulaires/01-controlled-vs-uncontrolled.md)
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Exercice** : [11-routing-multi-pages](../../exercices/11-routing-multi-pages/ENONCE)
+:::

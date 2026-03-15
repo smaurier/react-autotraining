@@ -8,15 +8,15 @@
 
 ## Objectif
 
-Approfondir l'utilisation de `useState` en creant un compteur interactif. Tu apprendras a gerer un etat numerique, a calculer des valeurs derivees sans etat supplementaire, et a bien structurer les handlers d'evenements.
+Approfondir l'utilisation de `useState` en creant un compteur interactif. Tu apprendras a gérer un état numérique, a calculer des valeurs derivees sans état supplementaire, et a bien structurer les handlers d'événements.
 
 ---
 
 ## Consignes
 
-1. **Creer le fichier** `src/exercises/ex02/Counter.tsx`.
+1. **Créer le fichier** `src/exercises/ex02/Counter.tsx`.
 
-2. **Implementer l'etat** :
+2. **Implementer l'état** :
    - `count` : `number` — la valeur courante du compteur, initialisee a `0`.
 
 3. **Calculer les valeurs derivees** (sans `useState` supplementaire) :
@@ -33,10 +33,10 @@ Approfondir l'utilisation de `useState` en creant un compteur interactif. Tu app
    - **Decrementer** (`-1`) : diminue `count` de 1.
    - **Reset** : remet `count` a `0`.
 
-6. **Creer le fichier** `src/exercises/ex02/App.tsx` :
+6. **Créer le fichier** `src/exercises/ex02/App.tsx` :
    - Importer et afficher `<Counter />` avec un titre `<h1>`.
 
-7. **Tester manuellement** dans le navigateur : verifier que les trois boutons fonctionnent et que les valeurs derivees se mettent a jour.
+7. **Tester manuellement** dans le navigateur : vérifier que les trois boutons fonctionnent et que les valeurs derivees se mettent a jour.
 
 ---
 
@@ -44,7 +44,7 @@ Approfondir l'utilisation de `useState` en creant un compteur interactif. Tu app
 
 - Mode `strict` active.
 - Le type de `useState` doit etre explicite : `useState<number>(0)`.
-- Les handlers d'evenements doivent etre types implicitement (pas de `any`).
+- Les handlers d'événements doivent etre types implicitement (pas de `any`).
 - Les valeurs derivees doivent etre des `const` (pas de `let`).
 - Aucun `any` autorise.
 
@@ -52,9 +52,9 @@ Approfondir l'utilisation de `useState` en creant un compteur interactif. Tu app
 
 ## Bonus
 
-- [ ] Ajouter un champ `<input type="number">` pour definir le pas (step) d'incrementation/decrementation.
+- [ ] Ajouter un champ `<input type="number">` pour définir le pas (step) d'incrementation/decrementation.
 - [ ] Empecher le compteur de descendre en dessous de `0` (avec un minimum configurable via props).
-- [ ] Afficher l'historique des 5 dernieres valeurs dans une liste `<ul>`.
+- [ ] Afficher l'historique des 5 dernières valeurs dans une liste `<ul>`.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ---
 
-## Etape 1 : Types avec module augmentation
+## Étape 1 : Types avec module augmentation
 
 ```ts
 // src/types/auth.ts
@@ -35,7 +35,7 @@ declare module "next-auth/jwt" {
 
 ---
 
-## Etape 2 : Configuration Auth.js
+## Étape 2 : Configuration Auth.js
 
 ```ts
 // src/auth.ts
@@ -139,7 +139,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
 ---
 
-## Etape 3 : Route Handler
+## Étape 3 : Route Handler
 
 ```ts
 // src/app/api/auth/[...nextauth]/route.ts
@@ -150,7 +150,7 @@ export const { GET, POST } = handlers;
 
 ---
 
-## Etape 4 : Page de login
+## Étape 4 : Page de login
 
 ```tsx
 // src/app/login/page.tsx
@@ -287,7 +287,7 @@ export function LoginForm() {
 
 ---
 
-## Etape 5 : Page d'inscription
+## Étape 5 : Page d'inscription
 
 ```tsx
 // src/app/register/page.tsx
@@ -439,7 +439,7 @@ export function RegisterForm() {
 
 ---
 
-## Etape 6 : Page profil (Server Component + session)
+## Étape 6 : Page profil (Server Component + session)
 
 ```tsx
 // src/app/profile/page.tsx
@@ -508,7 +508,7 @@ export default async function ProfilePage() {
 
 ---
 
-## Etape 7 : Middleware RBAC
+## Étape 7 : Middleware RBAC
 
 ```ts
 // src/middleware.ts
@@ -571,7 +571,7 @@ export const config = {
 
 ---
 
-## Etape 8 : SessionProvider
+## Étape 8 : SessionProvider
 
 ```tsx
 // src/components/providers/SessionProvider.tsx
@@ -593,18 +593,18 @@ export function SessionProvider({ children }: ProvidersProps) {
 
 ## Ce que tu aurais pu oublier
 
-1. **Module augmentation pour les types** : `declare module "next-auth"` est necessaire pour ajouter `role` aux types existants. Sans cela, TypeScript ne reconnait pas `session.user.role`.
+1. **Module augmentation pour les types** : `declare module "next-auth"` est nécessaire pour ajouter `role` aux types existants. Sans cela, TypeScript ne reconnait pas `session.user.role`.
 
 2. **`auth()` est une fonction serveur** : elle ne fonctionne que dans les Server Components, Route Handlers et Server Actions. Cote client, utiliser `useSession()` du `SessionProvider`.
 
-3. **`redirect: false` dans `signIn`** : sans cette option, `signIn` redirige automatiquement et on ne peut pas gerer les erreurs cote client.
+3. **`redirect: false` dans `signIn`** : sans cette option, `signIn` redirige automatiquement et on ne peut pas gérer les erreurs cote client.
 
-4. **Le callback `jwt` s'execute a chaque requete** : le `user` n'est disponible que lors de la premiere connexion. Il faut verifier `if (user)` avant d'ajouter les proprietes.
+4. **Le callback `jwt` s'exécuté à chaque requête** : le `user` n'est disponible que lors de la première connexion. Il faut vérifier `if (user)` avant d'ajouter les propriétés.
 
 5. **Le middleware Auth.js utilise `auth()`** : la fonction `auth` retourne un middleware enrichi avec `req.auth` qui contient la session.
 
-6. **Le `config.matcher` exclut les routes Auth.js** : `api/auth` doit etre exclu du middleware pour eviter les boucles de redirection.
+6. **Le `config.matcher` exclut les routes Auth.js** : `api/auth` doit etre exclu du middleware pour éviter les boucles de redirection.
 
 7. **Les mots de passe doivent etre hashes en production** : cette correction utilise des mots de passe en clair pour simplifier. En production, utiliser `bcrypt` pour hasher et comparer.
 
-8. **`router.refresh()` apres le login** : necessaire pour que les Server Components recuperent la nouvelle session.
+8. **`router.refresh()` après le login** : nécessaire pour que les Server Components recuperent la nouvelle session.

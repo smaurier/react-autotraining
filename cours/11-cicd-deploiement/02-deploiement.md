@@ -327,7 +327,7 @@ jobs:
 
 ### 6. Checklist déploiement production
 
-| Etape | Vérifié |
+| Étape | Vérifié |
 |-------|---------|
 | Variables d'environnement configurées | [ ] |
 | `output: "standalone"` si Docker | [ ] |

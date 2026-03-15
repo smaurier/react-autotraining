@@ -458,3 +458,14 @@ export default SignupForm;
 | Checkbox                | `checked` + `onChange` (pas `value`)                          |
 
 > **Prochain cours** : [Cours 9 — useState](../02-hooks-fondamentaux/01-usestate.md)
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Exercice** : [02-compteur-hooks](../../exercices/02-compteur-hooks/ENONCE)
+2. **Exercice** : [03-liste-de-taches](../../exercices/03-liste-de-taches/ENONCE)
+3. **Exercice** : [04-catalogue-produits](../../exercices/04-catalogue-produits/ENONCE)
+4. **Exercice** : [05-chronometre](../../exercices/05-chronometre/ENONCE)
+:::

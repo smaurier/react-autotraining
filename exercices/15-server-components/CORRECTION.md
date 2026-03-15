@@ -2,7 +2,7 @@
 
 ---
 
-## Etape 1 : Types TypeScript
+## Étape 1 : Types TypeScript
 
 ```ts
 // src/types/product.ts
@@ -25,7 +25,7 @@ export interface CartItem {
 
 ---
 
-## Etape 2 : Donnees statiques
+## Étape 2 : Donnees statiques
 
 ```json
 // src/data/products.json
@@ -89,7 +89,7 @@ export interface CartItem {
 
 ---
 
-## Etape 3 : Server Component — Page produits
+## Étape 3 : Server Component — Page produits
 
 ```tsx
 // src/app/products/page.tsx
@@ -144,7 +144,7 @@ export default async function ProductsPage() {
 
 ---
 
-## Etape 4 : Server Component — ProductCard
+## Étape 4 : Server Component — ProductCard
 
 ```tsx
 // src/components/ProductCard.tsx
@@ -208,7 +208,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
 ---
 
-## Etape 5 : Client Component — AddToCartButton
+## Étape 5 : Client Component — AddToCartButton
 
 ```tsx
 // src/components/AddToCartButton.tsx
@@ -283,7 +283,7 @@ export function AddToCartButton({ product, disabled = false }: AddToCartButtonPr
 
 ---
 
-## Etape 6 : Client Component — CartSummary
+## Étape 6 : Client Component — CartSummary
 
 ```tsx
 // src/components/CartSummary.tsx
@@ -333,7 +333,7 @@ export function CartSummary({ initialCount = 0 }: CartSummaryProps) {
 
 ---
 
-## Etape 7 : Loading
+## Étape 7 : Loading
 
 ```tsx
 // src/app/products/loading.tsx
@@ -386,14 +386,14 @@ export default function ProductsLoading() {
 
 2. **Les props serialisables uniquement** : on ne peut pas passer de fonctions, de `Date` natifs, de `Map`, de `Set` depuis un Server Component vers un Client Component. Seuls les types JSON simples sont autorises.
 
-3. **Un Server Component ne peut pas utiliser de hooks** : `useState`, `useEffect`, `useRef`, etc. sont interdits dans les Server Components. Si tu as besoin d'interactivite, cree un Client Component enfant.
+3. **Un Server Component ne peut pas utiliser de hooks** : `useState`, `useEffect`, `useRef`, etc. sont interdits dans les Server Components. Si tu as besoin d'interactivite, créé un Client Component enfant.
 
 4. **Le fichier `page.tsx` est un Server Component par defaut** : pas besoin de l'indiquer explicitement. C'est le comportement naturel de Next.js App Router.
 
-5. **Imports partages** : le type `Product` est importe des deux cotes (serveur et client). C'est correct car les types TypeScript sont effaces a la compilation — ils ne font pas partie du bundle.
+5. **Imports partages** : le type `Product` est importe des deux cotes (serveur et client). C'est correct car les types TypeScript sont effaces à la compilation — ils ne font pas partie du bundle.
 
 6. **`async` dans un Server Component** : les Server Components peuvent etre `async` (pour fetch, delai, etc.). Les Client Components ne le peuvent pas.
 
-7. **La frontiere est au niveau du fichier** : c'est le fichier entier qui est Client ou Server, pas un bout du composant. C'est pour cela qu'on cree des fichiers separes.
+7. **La frontiere est au niveau du fichier** : c'est le fichier entier qui est Client ou Server, pas un bout du composant. C'est pour cela qu'on créé des fichiers separes.
 
 8. **Ne pas confondre `'use client'` et "rendu cote client"** : un Client Component est toujours pre-rendu sur le serveur (SSR) puis hydrate cote client. `'use client'` signifie "ce composant a besoin de JavaScript cote client".

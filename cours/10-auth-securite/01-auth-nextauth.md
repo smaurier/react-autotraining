@@ -1,6 +1,8 @@
 # Cours 38 — Authentification avec Auth.js (NextAuth v5)
 
 > **Prérequis** : tu connais déjà JWT, OAuth et les principes de sécurité front (XSS, CSP) depuis la formation Vue. Ce cours se concentre sur **Auth.js v5** (NextAuth), la solution standard d'authentification pour Next.js.
+>
+> **Auth cross-cours** : les concepts JWT/OAuth sont couverts dans 03-Vue (module 11), 05-NestJS (modules 08 et 19, cote serveur), 09-Angular (module 11). Ici l'angle est NextAuth/Auth.js spécifique a Next.js.
 
 > **Objectif** : Implémenter un système d'authentification complet dans une application Next.js 15 avec Auth.js (anciennement NextAuth.js v5). Configurer des providers (credentials, Google, GitHub), gérer les sessions (client et serveur), protéger les routes avec le middleware, et implémenter un pattern RBAC (Role-Based Access Control). Comparer avec les guards Angular et les solutions Vue.
 
@@ -23,7 +25,7 @@ shadcn/ui est un générateur de composants qui copie le code source dans votre 
 <details>
 <summary>3. Pourquoi éviter styled-components dans un nouveau projet Next.js ?</summary>
 
-styled-components a un runtime overhead (CSS généré en JS), est incompatible avec les React Server Components, augmente la taille du bundle, et peut causer des problèmes d'hydratation. Préférer Tailwind ou CSS Modules (zero runtime, compatibles RSC).
+styled-components à un runtime overhead (CSS généré en JS), est incompatible avec les React Server Components, augmente la taille du bundle, et peut causer des problèmes d'hydratation. Préférer Tailwind ou CSS Modules (zero runtime, compatibles RSC).
 </details>
 
 ---
@@ -541,3 +543,11 @@ export default async function AdminPage() {
 | `SessionProvider` | Wrapper obligatoire dans le layout racine |
 
 > **Prochain cours** : [Cours 41 — Déploiement : Vercel, Docker et alternatives](../11-cicd-deploiement/02-deploiement.md)
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Exercice** : [23-auth-nextauth](../../exercices/23-auth-nextauth/ENONCE)
+:::

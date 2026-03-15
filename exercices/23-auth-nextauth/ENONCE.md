@@ -1,6 +1,6 @@
 # Exercice 23 — Auth NextAuth
 
-**Module** : 10-Auth & Securite · **Difficulte** : ⭐⭐⭐⭐
+**Module** : 10-Auth & Sécurité · **Difficulte** : ⭐⭐⭐⭐
 **Duree estimee** : 90 minutes
 **Cours** : `cours/10-auth-securite/01-nextauth.md`
 
@@ -8,9 +8,9 @@
 
 ## Objectif
 
-Implementer un flux d'authentification complet avec Auth.js (NextAuth.js v5) dans une application Next.js 15 : provider credentials, pages de login et register, acces a la session dans les Server Components, protection des routes via middleware, et controle d'acces base sur les roles (RBAC).
+Implementer un flux d'authentification complet avec Auth.js (NextAuth.js v5) dans une application Next.js 15 : provider credentials, pages de login et register, acces à la session dans les Server Components, protection des routes via middleware, et controle d'acces base sur les roles (RBAC).
 
-C'est l'exercice le plus complet du parcours — il combine Server Components, Client Components, Server Actions, middleware et gestion d'etat.
+C'est l'exercice le plus complet du parcours — il combine Server Components, Client Components, Server Actions, middleware et gestion d'état.
 
 ---
 
@@ -22,7 +22,7 @@ C'est l'exercice le plus complet du parcours — il combine Server Components, C
    - Callbacks `jwt` et `session` pour ajouter le role au token.
    - Exporter `handlers`, `signIn`, `signOut`, `auth`.
 
-2. **Creer les types** `src/types/auth.ts` :
+2. **Créer les types** `src/types/auth.ts` :
    - Etendre les types de `next-auth` pour inclure `role` dans `Session`, `User`, `JWT`.
    - Type `UserRole` : `"admin" | "user" | "editor"`.
 
@@ -38,17 +38,17 @@ C'est l'exercice le plus complet du parcours — il combine Server Components, C
 5. **Page d'inscription** `src/app/register/page.tsx` :
    - Formulaire email, nom, mot de passe, confirmation.
    - Validation avec Zod.
-   - Server Action pour creer le compte.
+   - Server Action pour créer le compte.
 
 6. **Session dans les Server Components** `src/app/profile/page.tsx` :
-   - Utiliser `auth()` pour recuperer la session cote serveur.
+   - Utiliser `auth()` pour récupérer la session cote serveur.
    - Afficher les informations de l'utilisateur connecte.
    - Rediriger vers `/login` si pas de session.
 
 7. **Middleware de protection** `src/middleware.ts` :
    - Proteger `/dashboard`, `/profile`, `/admin`.
-   - Rediriger `/login` vers `/dashboard` si deja authentifie.
-   - Verifier le role pour `/admin` (admin uniquement).
+   - Rediriger `/login` vers `/dashboard` si déjà authentifie.
+   - Vérifier le role pour `/admin` (admin uniquement).
 
 8. **SessionProvider** `src/components/providers/SessionProvider.tsx` :
    - Wrapper Client Component pour les composants qui ont besoin de `useSession`.
@@ -70,7 +70,7 @@ C'est l'exercice le plus complet du parcours — il combine Server Components, C
 - [ ] Ajouter un provider OAuth (GitHub ou Google).
 - [ ] Implementer le "Remember me" avec duree de session configurable.
 - [ ] Ajouter un CSRF token dans les formulaires.
-- [ ] Creer un composant `<RoleGate>` qui affiche le contenu uniquement si le role correspond.
+- [ ] Créer un composant `<RoleGate>` qui affiche le contenu uniquement si le role correspond.
 
 ---
 
@@ -105,7 +105,7 @@ src/
 | Critere                                          | Attendu |
 | ------------------------------------------------ | ------- |
 | Auth.js est configure avec le provider Credentials | oui   |
-| Le login fonctionne et cree une session          | oui     |
+| Le login fonctionne et créé une session          | oui     |
 | Le register valide les donnees avec Zod          | oui     |
 | La session est accessible dans les Server Components | oui  |
 | Le middleware protege les routes privees         | oui     |

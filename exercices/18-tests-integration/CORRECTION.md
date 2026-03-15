@@ -1,8 +1,8 @@
-# Correction — Exercice 18 : Tests integration MSW
+# Correction — Exercice 18 : Tests intégration MSW
 
 ---
 
-## Etape 1 : Types
+## Étape 1 : Types
 
 ```ts
 // src/types/task.ts
@@ -15,7 +15,7 @@ export interface Task {
 
 ---
 
-## Etape 2 : Composant TaskFetcher
+## Étape 2 : Composant TaskFetcher
 
 ```tsx
 // src/components/TaskFetcher.tsx
@@ -112,7 +112,7 @@ export function TaskFetcher() {
 
 ---
 
-## Etape 3 : Configuration MSW
+## Étape 3 : Configuration MSW
 
 ```ts
 // src/test/mocks/handlers.ts
@@ -161,7 +161,7 @@ afterAll(() => server.close());
 
 ---
 
-## Etape 4 : Tests d'integration
+## Étape 4 : Tests d'intégration
 
 ```tsx
 // src/components/__tests__/TaskFetcher.test.tsx
@@ -310,18 +310,18 @@ describe("TaskFetcher", () => {
 
 ## Ce que tu aurais pu oublier
 
-1. **`server.use()` pour surcharger un handler** : cette methode permet de remplacer temporairement un handler pour un test specifique. `server.resetHandlers()` dans `afterEach` restaure les handlers par defaut.
+1. **`server.use()` pour surcharger un handler** : cette méthode permet de remplacer temporairement un handler pour un test spécifique. `server.resetHandlers()` dans `afterEach` restaure les handlers par defaut.
 
-2. **`onUnhandledRequest: "error"`** : cette option fait echouer le test si une requete non interceptee est effectuee. Cela evite les faux positifs.
+2. **`onUnhandledRequest: "error"`** : cette option fait echouer le test si une requête non interceptee est effectuee. Cela evite les faux positifs.
 
 3. **MSW v2 utilise `http` et `HttpResponse`** : l'ancienne API (`rest.get`) est depreciee. La nouvelle API est `http.get()` et `HttpResponse.json()`.
 
-4. **`waitFor` est necessaire pour les assertions asynchrones** : le fetch est asynchrone, donc le DOM n'est pas mis a jour immediatement. `waitFor` repete l'assertion jusqu'a ce qu'elle passe (ou timeout).
+4. **`waitFor` est nécessaire pour les assertions asynchrones** : le fetch est asynchrone, donc le DOM n'est pas mis a jour immediatement. `waitFor` repete l'assertion jusqu'a ce qu'elle passe (où timeout).
 
-5. **Les handlers sont definis avec des chemins relatifs** : MSW intercepte les requetes par chemin, pas par URL complete. `/api/tasks` matchera `http://localhost/api/tasks`.
+5. **Les handlers sont définis avec des chemins relatifs** : MSW intercepte les requêtes par chemin, pas par URL complete. `/api/tasks` matchera `http://localhost/api/tasks`.
 
-6. **`role="alert"` pour l'accessibilite** : en mettant `role="alert"` sur le conteneur d'erreur, les lecteurs d'ecran annoncent automatiquement le contenu.
+6. **`role="alert"` pour l'accessibilité** : en mettant `role="alert"` sur le conteneur d'erreur, les lecteurs d'ecran annoncent automatiquement le contenu.
 
-7. **Le setup doit etre dans `vitest.config.ts`** : la propriete `setupFiles` doit pointer vers le fichier qui demarre le serveur MSW.
+7. **Le setup doit etre dans `vitest.config.ts`** : la propriété `setupFiles` doit pointer vers le fichier qui demarre le serveur MSW.
 
 8. **Ne pas oublier `void fetchTasks()`** : comme `fetchTasks` retourne une Promise et que `useEffect` attend `void`, il faut explicitement ignorer le retour avec `void`.

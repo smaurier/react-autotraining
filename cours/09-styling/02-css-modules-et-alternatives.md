@@ -426,3 +426,11 @@ function TailwindCard({ variant = "elevated", title, children, className }: Tail
 | `cn()` | Indispensable pour les classes Tailwind conditionnelles |
 
 > **Prochain cours** : [Cours 38 — Authentification avec Auth.js](../10-auth-securite/01-auth-nextauth.md)
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Exercice** : [22-tailwind-dashboard](../../exercices/22-tailwind-dashboard/ENONCE)
+:::

@@ -229,7 +229,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
 | Partage de données | `createContext` + `Provider` | `provide()` / `inject()` | `@Injectable` + DI |
 | Consommation | `useContext(MyCtx)` | `inject('key')` | `inject(MyService)` |
 | Scope | Arbre de composants sous le Provider | Arbre sous le composant qui `provide` | Hiérarchie d'injecteurs |
-| Réactivité automatique | Re-render du sous-arbre | Oui (avec ref/reactive) | Oui (avec Signals) |
+| Réactivité automatique | Re-render du sous-arbre | Oui (avec ref/réactive) | Oui (avec Signals) |
 | Typage strict | Oui (avec generics) | Oui (avec `InjectionKey<T>`) | Oui (natif) |
 
 ```vue

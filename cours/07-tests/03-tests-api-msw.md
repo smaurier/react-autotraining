@@ -1,6 +1,6 @@
 # Cours 31 — Tests d'API avec MSW (Mock Service Worker)
 
-> **Prerequis** : MSW est couvert en detail dans le **[Testing Course](https://github.com/smaurier/testing-course)** (module 08). Ici on se concentre sur l'integration MSW + React (hooks, Server Components, TanStack Query).
+> **Prérequis** : MSW est couvert en detail dans le **[Testing Course](https://github.com/smaurier/testing-course)** (module 08). Ici on se concentre sur l'intégration MSW + React (hooks, Server Components, TanStack Query).
 
 > **Objectif** : configurer MSW pour intercepter les appels réseau dans les tests, écrire des handlers réalistes, tester les composants qui fetch des données (succès, erreur, chargement), et comprendre la différence avec le mocking classique.
 
@@ -576,3 +576,12 @@ describe("ArticleSearch", () => {
 ---
 
 > **Prochain cours** : [Performance React](../08-performance-patterns/01-performance-react.md) — mesurer et optimiser les performances de tes composants React.
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Exercice** : [17-tests-composants](../../exercices/17-tests-composants/ENONCE)
+2. **Exercice** : [18-tests-intégration](../../exercices/18-tests-integration/ENONCE)
+:::

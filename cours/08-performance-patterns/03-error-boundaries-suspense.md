@@ -1,6 +1,6 @@
 # Cours 35 — Error Boundaries et Suspense
 
-> **Objectif** : Maîtriser la gestion des erreurs en React avec les Error Boundaries (la seule exception où l'on utilise une class component), découvrir la bibliothèque `react-error-boundary`, et comprendre `Suspense` pour le chargement de données et le code splitting. Construire une hiérarchie loading → data → error robuste.
+> **Objectif** : Maîtriser la gestion des erreurs en React avec les Error Boundaries (la seule exception ou l'on utilise une class component), découvrir la bibliothèque `react-error-boundary`, et comprendre `Suspense` pour le chargement de données et le code splitting. Construire une hiérarchie loading → data → error robuste.
 
 ---
 

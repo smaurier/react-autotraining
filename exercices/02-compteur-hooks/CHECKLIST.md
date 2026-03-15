@@ -1,6 +1,6 @@
 # Checklist — Exercice 02 : Compteur hooks
 
-Coche chaque element une fois valide :
+Coche chaque élément une fois valide :
 
 - [ ] Le fichier `Counter.tsx` existe dans `src/exercises/ex02/`
 - [ ] `useState<number>(0)` est utilise avec un type explicite

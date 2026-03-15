@@ -8,13 +8,13 @@
 
 ## Objectif
 
-Construire un catalogue de produits compose de plusieurs composants pour maitriser le passage de props, les callbacks parent-enfant et la composition de composants. Tu apprendras a structurer une application en composants reutilisables et bien types.
+Construire un catalogue de produits compose de plusieurs composants pour maîtriser le passage de props, les callbacks parent-enfant et la composition de composants. Tu apprendras a structurer une application en composants réutilisables et bien types.
 
 ---
 
 ## Consignes
 
-1. **Definir les types** dans `src/exercises/ex04/types.ts` :
+1. **Définir les types** dans `src/exercises/ex04/types.ts` :
    ```ts
    export interface Product {
      id: string;
@@ -25,27 +25,27 @@ Construire un catalogue de produits compose de plusieurs composants pour maitris
    }
    ```
 
-2. **Creer les donnees** dans `src/exercises/ex04/data.ts` :
+2. **Créer les donnees** dans `src/exercises/ex04/data.ts` :
    - Un tableau `products` de 5 produits avec des donnees realistes.
 
-3. **Creer le composant** `src/exercises/ex04/ProductCard.tsx` :
+3. **Créer le composant** `src/exercises/ex04/ProductCard.tsx` :
    - Accepter les props : `product: Product` et `onAddToCart: (product: Product) => void`.
    - Afficher le nom, le prix formate (ex : `"12,99 EUR"`), la description.
    - Afficher un badge "En stock" ou "Rupture" selon `inStock`.
    - Un bouton "Ajouter au panier" qui appelle `onAddToCart(product)`.
-   - Le bouton doit etre desactive si le produit n'est pas en stock.
+   - Le bouton doit etre désactivé si le produit n'est pas en stock.
 
-4. **Creer le composant** `src/exercises/ex04/CartSummary.tsx` :
+4. **Créer le composant** `src/exercises/ex04/CartSummary.tsx` :
    - Accepter la prop `itemCount: number`.
    - Afficher le nombre d'articles dans le panier.
 
-5. **Creer le composant** `src/exercises/ex04/ProductList.tsx` :
+5. **Créer le composant** `src/exercises/ex04/ProductList.tsx` :
    - Importer les produits depuis `data.ts`.
-   - Gerer un etat `cartCount` avec `useState<number>`.
-   - Passer le callback `handleAddToCart` a chaque `ProductCard`.
+   - Gérer un état `cartCount` avec `useState<number>`.
+   - Passer le callback `handleAddToCart` à chaque `ProductCard`.
    - Afficher `CartSummary` avec le nombre d'articles.
 
-6. **Creer le fichier** `src/exercises/ex04/App.tsx` avec le composant `ProductList`.
+6. **Créer le fichier** `src/exercises/ex04/App.tsx` avec le composant `ProductList`.
 
 ---
 
@@ -54,7 +54,7 @@ Construire un catalogue de produits compose de plusieurs composants pour maitris
 - Mode `strict` active.
 - Toutes les interfaces dans un fichier `types.ts` separe.
 - Les props de chaque composant doivent etre typees via une interface exportee.
-- Le callback `onAddToCart` doit avoir une signature precise.
+- Le callback `onAddToCart` doit avoir une signature précisé.
 - Aucun `any` autorise.
 
 ---
@@ -64,7 +64,7 @@ Construire un catalogue de produits compose de plusieurs composants pour maitris
 - [ ] Ajouter un vrai panier (tableau de produits) au lieu d'un simple compteur.
 - [ ] Afficher le total du panier en euros.
 - [ ] Ajouter un bouton "Vider le panier".
-- [ ] Gerer les quantites (ne pas dupliquer un produit deja dans le panier).
+- [ ] Gérer les quantites (ne pas dupliquer un produit déjà dans le panier).
 
 ---
 
@@ -88,7 +88,7 @@ src/exercises/ex04/
 | ------------------------------------------------ | ------- |
 | Les produits s'affichent avec nom, prix, description | oui |
 | Le badge stock est correct                       | oui     |
-| Le bouton "Ajouter" est desactive si rupture     | oui     |
+| Le bouton "Ajouter" est désactivé si rupture     | oui     |
 | Le compteur du panier s'incremente au clic       | oui     |
 | Les props sont typees avec des interfaces        | oui     |
 | Le callback est passe du parent a l'enfant       | oui     |

@@ -1,6 +1,6 @@
 # Checklist — Exercice 01 : Premier composant
 
-Coche chaque element une fois valide :
+Coche chaque élément une fois valide :
 
 - [ ] Le fichier `Greeting.tsx` existe dans `src/exercises/ex01/`
 - [ ] L'interface `GreetingProps` est definie et exportee avec `name: string`
@@ -13,4 +13,4 @@ Coche chaque element une fois valide :
 - [ ] Aucun `any` n'est present dans le code
 - [ ] Le code compile sans erreur TypeScript en mode strict
 - [ ] Le composant s'affiche correctement dans le navigateur
-- [ ] Le message change bien a chaque clic sur le bouton de bascule
+- [ ] Le message change bien à chaque clic sur le bouton de bascule

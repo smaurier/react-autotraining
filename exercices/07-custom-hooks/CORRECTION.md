@@ -1,8 +1,8 @@
 # Correction — Exercice 07 : Custom hooks
 
-## Resultat attendu
+## Résultat attendu
 
-Trois hooks personnalises reutilisables et generiques, demontres dans un composant App. Le nom d'utilisateur persiste apres rechargement, le champ de recherche est debounce, et le composant detecte dynamiquement si l'ecran est mobile ou desktop.
+Trois hooks personnalises réutilisables et génériques, demontres dans un composant App. Le nom d'utilisateur persiste après rechargement, le champ de recherche est debounce, et le composant détecté dynamiquement si l'ecran est mobile ou desktop.
 
 ---
 
@@ -224,43 +224,43 @@ export default function App() {
 ### 1. Oublier l'initialisation paresseuse dans `useLocalStorage`
 
 - ❌ `const [value, setValue] = useState<T>(JSON.parse(localStorage.getItem(key)!));`
-  `localStorage.getItem` et `JSON.parse` sont appeles a chaque render.
+  `localStorage.getItem` et `JSON.parse` sont appeles à chaque render.
 - ✅ `useState<T>(() => { ... })` — la fonction d'initialisation n'est appelee qu'au premier render.
 
 ### 2. Ne pas supporter la forme fonctionnelle du setter
 
 - ❌ `setValue(newValue)` uniquement, pas `setValue((prev) => prev + 1)`.
-  Incompatible avec l'API de `useState` que les developpeurs connaissent.
-- ✅ Verifier `value instanceof Function` pour supporter les deux formes.
+  Incompatible avec l'API de `useState` que les développeurs connaissent.
+- ✅ Vérifier `value instanceof Function` pour supporter les deux formes.
 
 ### 3. Oublier le cleanup dans `useDebounce`
 
 - ❌ Pas de `clearTimeout` dans le cleanup de `useEffect`.
   Si la valeur change rapidement, plusieurs timers s'empilent et la valeur "saute".
-- ✅ `return () => clearTimeout(timer);` annule le timer precedent a chaque changement.
+- ✅ `return () => clearTimeout(timer);` annule le timer précédent à chaque changement.
 
 ### 4. Utiliser `addListener` au lieu de `addEventListener`
 
-- ❌ `mediaQueryList.addListener(handler)` — methode deprecee.
-- ✅ `mediaQueryList.addEventListener("change", handler)` — methode moderne et standard.
+- ❌ `mediaQueryList.addListener(handler)` — méthode deprecee.
+- ✅ `mediaQueryList.addEventListener("change", handler)` — méthode moderne et standard.
 
-### 5. Ne pas gerer le SSR dans `useMediaQuery`
+### 5. Ne pas gérer le SSR dans `useMediaQuery`
 
-- ❌ Appeler `window.matchMedia` directement sans verifier l'existence de `window`.
+- ❌ Appeler `window.matchMedia` directement sans vérifier l'existence de `window`.
   Crash en SSR (Next.js).
 - ✅ `if (typeof window !== "undefined")` avant d'acceder a `window`.
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept                 | Description                                                          | Documentation                              |
 | ----------------------- | -------------------------------------------------------------------- | ------------------------------------------ |
-| Custom hooks            | Extraire de la logique reutilisable dans une fonction `use...`       | [react.dev](https://react.dev/learn/reusing-logic-with-custom-hooks) |
-| Generiques TypeScript   | `<T>` permet de creer des hooks qui fonctionnent avec n'importe quel type | [TS Handbook](https://www.typescriptlang.org/docs/handbook/2/generics.html) |
+| Custom hooks            | Extraire de la logique réutilisable dans une fonction `use...`       | [react.dev](https://react.dev/learn/reusing-logic-with-custom-hooks) |
+| Generiques TypeScript   | `<T>` permet de créer des hooks qui fonctionnent avec n'importe quel type | [TS Handbook](https://www.typescriptlang.org/docs/handbook/2/generics.html) |
 | Initialisation paresseuse | `useState(() => ...)` pour un calcul initial couteux               | [react.dev](https://react.dev/reference/react/useState#avoiding-recreating-the-initial-state) |
 | Debounce                | Retarder une action jusqu'a ce que l'utilisateur arrete d'interagir  | Pattern courant en UX |
-| `matchMedia`            | API navigateur pour evaluer des media queries en JavaScript          | [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) |
+| `matchMedia`            | API navigateur pour évaluer des media queries en JavaScript          | [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) |
 | `useEffect` cleanup     | Nettoyer les effets de bord (timers, listeners) au demontage        | [react.dev](https://react.dev/reference/react/useEffect) |
 
 ---
@@ -268,5 +268,5 @@ export default function App() {
 ## Pour aller plus loin
 
 - Ecris des tests avec `renderHook` de `@testing-library/react` et `vi.useFakeTimers` pour `useDebounce`.
-- Ajoute la synchronisation entre onglets pour `useLocalStorage` avec l'evenement `storage`.
-- Cree un hook `useWindowSize` qui combine `useMediaQuery` avec les dimensions exactes de la fenetre.
+- Ajoute la synchronisation entre onglets pour `useLocalStorage` avec l'événement `storage`.
+- Cree un hook `useWindowSize` qui combine `useMediaQuery` avec les dimensions exactes de la fenêtre.

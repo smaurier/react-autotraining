@@ -14,6 +14,6 @@
 - [ ] La page profil utilise `auth()` cote serveur et affiche les infos utilisateur
 - [ ] Le middleware protege les routes `/dashboard`, `/profile`, `/settings`
 - [ ] Le middleware redirige vers `/login` les utilisateurs non authentifies
-- [ ] Le middleware verifie le role `admin` pour les routes `/admin`
+- [ ] Le middleware vérifié le role `admin` pour les routes `/admin`
 - [ ] Le `SessionProvider` encapsule les composants clients qui utilisent `useSession`
 - [ ] Aucun `any` dans le code — types stricts partout

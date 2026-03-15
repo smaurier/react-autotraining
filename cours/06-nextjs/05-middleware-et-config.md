@@ -436,3 +436,14 @@ NEXT_PUBLIC_APP_NAME="TaskFlow"
 ---
 
 > **Prochain cours** : [Tests unitaires avec Vitest](../07-tests/01-tests-unitaires-vitest.md) — tester les fonctions, hooks et composants React avec Vitest.
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Exercice** : [14-nextjs-blog](../../exercices/14-nextjs-blog/ENONCE)
+2. **Exercice** : [15-server-components](../../exercices/15-server-components/ENONCE)
+3. **Exercice** : [16-api-routes](../../exercices/16-api-routes/ENONCE)
+4. **Renforcement** : [16b-middleware-nextjs](../../exercices/16b-middleware-nextjs/ENONCE)
+:::

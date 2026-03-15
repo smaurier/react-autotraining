@@ -36,7 +36,7 @@ Pensez à des **briques LEGO**. L'héritage, c'est comme mouler une pièce spéc
 
 ### 1. Composition over inheritance : le principe fondamental
 
-React ne recommande **jamais** l'héritage de composants. Contrairement à Angular où l'on peut étendre une classe composant, React utilise exclusivement la composition :
+React ne recommande **jamais** l'héritage de composants. Contrairement à Angular ou l'on peut étendre une classe composant, React utilise exclusivement la composition :
 
 ```tsx
 // ❌ Héritage — ne faites JAMAIS ça en React
@@ -56,7 +56,7 @@ function SpecialButton({ children, ...props }: ButtonProps) {
 }
 ```
 
-### 2. Le pattern `children` (equivalent des slots)
+### 2. Le pattern `children` (équivalent des slots)
 
 `children` est une prop spéciale qui contient tout ce qui est entre les balises ouvrante et fermante :
 

@@ -15,7 +15,7 @@
 <details>
 <summary>2. À quoi sert le composant Outlet ?</summary>
 
-`Outlet` est le placeholder où React Router affiche le composant enfant correspondant à la route courante. C'est l'équivalent de `<RouterView>` en Vue et `<router-outlet>` en Angular.
+`Outlet` est le placeholder ou React Router affiche le composant enfant correspondant à la route courante. C'est l'équivalent de `<RouterView>` en Vue et `<router-outlet>` en Angular.
 </details>
 
 <details>

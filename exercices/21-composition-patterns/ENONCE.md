@@ -8,23 +8,23 @@
 
 ## Objectif
 
-Construire un composant `Tabs` (onglets) en utilisant le pattern **Compound Components**. Ce composant est headless (sans styles imposes) et utilise Context internalement pour partager l'etat entre les sous-composants.
+Construire un composant `Tabs` (onglets) en utilisant le pattern **Compound Components**. Ce composant est headless (sans styles imposes) et utilise Context internalement pour partager l'état entre les sous-composants.
 
-Le pattern Compound Components permet de creer des APIs declaratives ou les composants enfants communiquent implicitement avec leur parent, comme `<select>` et `<option>` en HTML natif.
+Le pattern Compound Components permet de créer des APIs declaratives ou les composants enfants communiquent implicitement avec leur parent, comme `<select>` et `<option>` en HTML natif.
 
 ---
 
 ## Consignes
 
-1. **Creer le composant compose** avec les sous-composants suivants :
-   - `<Tabs>` : conteneur principal, gere l'etat de l'onglet actif.
+1. **Créer le composant compose** avec les sous-composants suivants :
+   - `<Tabs>` : conteneur principal, géré l'état de l'onglet actif.
    - `<Tabs.List>` : conteneur de la barre d'onglets (role `tablist`).
    - `<Tabs.Tab>` : un onglet cliquable (role `tab`).
-   - `<Tabs.Panel>` : le contenu associe a un onglet (role `tabpanel`).
+   - `<Tabs.Panel>` : le contenu associe à un onglet (role `tabpanel`).
 
-2. **Utiliser Context** pour partager l'etat :
+2. **Utiliser Context** pour partager l'état :
    - `TabsContext` : contient `activeTab`, `setActiveTab`.
-   - Le contexte est interne — l'utilisateur du composant n'a pas besoin de le connaitre.
+   - Le contexte est interne — l'utilisateur du composant n'a pas besoin de le connaître.
 
 3. **API declarative** — l'utilisation doit ressembler a :
    ```tsx
@@ -40,16 +40,16 @@ Le pattern Compound Components permet de creer des APIs declaratives ou les comp
    </Tabs>
    ```
 
-4. **Headless** : aucun style impose. Les composants rendent des elements HTML simples avec les bons attributs ARIA.
+4. **Headless** : aucun style impose. Les composants rendent des éléments HTML simples avec les bons attributs ARIA.
 
-5. **Accessibilite** :
+5. **Accessibilité** :
    - `role="tablist"`, `role="tab"`, `role="tabpanel"`.
    - `aria-selected` sur l'onglet actif.
    - `aria-controls` lie l'onglet au panel.
    - `aria-labelledby` lie le panel a l'onglet.
    - Navigation clavier : fleches gauche/droite pour changer d'onglet.
 
-6. **Creer une page de demo** `src/app/tabs-demo/page.tsx` avec 2 instances du composant `<Tabs>` utilisant des styles differents.
+6. **Créer une page de demo** `src/app/tabs-demo/page.tsx` avec 2 instances du composant `<Tabs>` utilisant des styles différents.
 
 ---
 
@@ -100,7 +100,7 @@ src/
 | Les roles ARIA sont corrects                     | oui     |
 | La navigation clavier fonctionne                 | oui     |
 | Le composant est headless (pas de styles)        | oui     |
-| 2 instances independantes fonctionnent sur la meme page | oui |
+| 2 instances independantes fonctionnent sur la même page | oui |
 | Le code compile sans erreur TypeScript           | oui     |
 
 ---

@@ -343,7 +343,7 @@ const ProductCard = memo(function ProductCard({ product }: { product: Product })
 });
 ```
 
-**Pourquoi ca marche :** `useMemo` évite de recréer le tableau filtré si la recherche ne change pas (ici elle change à chaque frappe, donc le gain est surtout pour les `ProductCard` non affectés par le filtrage). `React.memo` sur `ProductCard` évite que les cartes dont l'objet `product` n'a pas changé par référence ne re-rendent.
+**Pourquoi ça marche :** `useMemo` évite de recréer le tableau filtré si la recherche ne change pas (ici elle change à chaque frappe, donc le gain est surtout pour les `ProductCard` non affectés par le filtrage). `React.memo` sur `ProductCard` évite que les cartes dont l'objet `product` n'a pas changé par référence ne re-rendent.
 
 </details>
 
@@ -355,9 +355,9 @@ const ProductCard = memo(function ProductCard({ product }: { product: Product })
 |---------|----------------------|
 | Re-rendu par défaut | Parent re-rend → enfants re-rendent (cascade) |
 | `React.memo()` | Empêche le re-rendu si les props n'ont pas changé (comparaison superficielle) |
-| `useMemo` | Mémorise une valeur calculée (equivalent `computed` Vue) |
+| `useMemo` | Mémorise une valeur calculée (équivalent `computed` Vue) |
 | `useCallback` | Mémorise une fonction (utile avec `memo` ou `useEffect`) |
-| `React.lazy` + `Suspense` | Code splitting : charge un composant à la demande |
+| `React.lazy` + `Suspense` | Code splitting : charge un composant à la demandé |
 | Profiler | Diagnostiquer les rendus inutiles dans React DevTools |
 | Règle d'or | Ne pas optimiser prématurément — mesurer d'abord avec le Profiler |
 

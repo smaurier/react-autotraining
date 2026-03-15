@@ -21,7 +21,7 @@ Quand un composant reçoit des props dont les **références** sont stables (gr�
 <details>
 <summary>3. Pourquoi ne faut-il pas tout mémoïser systématiquement ?</summary>
 
-La mémoïsation a un **coût** : mémoire pour stocker la valeur précédente, CPU pour comparer les dépendances. Pour des calculs triviaux, ce coût dépasse le gain. Il faut mesurer avec le React DevTools Profiler avant d'optimiser.
+La mémoïsation à un **coût** : mémoire pour stocker la valeur précédente, CPU pour comparer les dépendances. Pour des calculs triviaux, ce coût dépasse le gain. Il faut mesurer avec le React DevTools Profiler avant d'optimiser.
 </details>
 
 ---
@@ -454,12 +454,12 @@ import { useDebounce, useLocalStorage } from "@/hooks";
 
 ## Pratique
 
-### Exercice : hook `useForm` generique
+### Exercice : hook `useForm` générique
 
 Créez un custom hook `useForm<T>` qui :
 1. Prend un `initialValues: T` et une fonction de validation `validate: (values: T) => Partial<Record<keyof T, string>>`
 2. Retourne : `values`, `errors`, `handleChange(field, value)`, `handleSubmit(callback)`, `reset()`, `isValid`
-3. Les erreurs se recalculent a chaque changement de valeur
+3. Les erreurs se recalculent à chaque changement de valeur
 4. `handleSubmit` n'appelle le callback que si le formulaire est valide
 5. Testez-le avec un formulaire de contact (nom, email, message)
 
@@ -592,3 +592,12 @@ export default ContactPage;
 | vs composables/services    | Import direct, état par instance (pas de singleton natif)     |
 
 > **Prochain cours** : [Cours 14 — Context API et useContext](../03-state-management/01-context-api.md)
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Exercice** : [06-hooks-avances](../../exercices/06-hooks-avances/ENONCE)
+2. **Exercice** : [07-custom-hooks](../../exercices/07-custom-hooks/ENONCE)
+:::

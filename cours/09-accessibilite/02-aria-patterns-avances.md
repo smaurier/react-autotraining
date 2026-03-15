@@ -1,12 +1,12 @@
 # 02 — Patterns ARIA avances en React
 
 > **Premiere regle d'ARIA : ne pas utiliser ARIA si le HTML natif suffit.**
-> Un `<button>` est toujours preferable a un `<div role="button">`.
+> Un `<button>` est toujours preferable à un `<div role="button">`.
 > ARIA comble les lacunes du HTML natif pour les widgets complexes.
 
 ---
 
-## Rappel du cours precedent
+## Rappel du cours précédent
 
 <details>
 <summary>1. Quels sont les 4 principes de WCAG (POUR) ?</summary>
@@ -15,13 +15,13 @@ Perceptible, Operable, Comprehensible (Understandable), Robuste.
 </details>
 
 <details>
-<summary>2. Quel attribut JSX remplace <code>for</code> pour lier un label a un input ?</summary>
+<summary>2. Quel attribut JSX remplace <code>for</code> pour lier un label à un input ?</summary>
 
 `htmlFor` — car `for` est un mot reserve en JavaScript.
 </details>
 
 <details>
-<summary>3. Quelle est la difference entre <code>aria-live="polite"</code> et <code>"assertive"</code> ?</summary>
+<summary>3. Quelle est la différence entre <code>aria-live="polite"</code> et <code>"assertive"</code> ?</summary>
 
 `polite` attend que l'utilisateur soit inactif pour annoncer. `assertive` interrompt immediatement le lecteur d'ecran.
 </details>
@@ -30,15 +30,15 @@ Perceptible, Operable, Comprehensible (Understandable), Robuste.
 
 ## Composant Tabs accessible
 
-Le pattern Tabs suit la specification WAI-ARIA Authoring Practices. Un seul onglet est dans le flux Tab, les fleches naviguent entre les onglets.
+Le pattern Tabs suit la spécification WAI-ARIA Authoring Practices. Un seul onglet est dans le flux Tab, les fleches naviguent entre les onglets.
 
 ### Roles et attributs requis
 
-| Element | Role/Attribut | Description |
+| Élément | Role/Attribut | Description |
 |---------|--------------|-------------|
 | Conteneur onglets | `role="tablist"` | Groupe d'onglets |
 | Onglet | `role="tab"` | Un onglet individuel |
-| Panneau | `role="tabpanel"` | Contenu associe a un onglet |
+| Panneau | `role="tabpanel"` | Contenu associe à un onglet |
 | Onglet actif | `aria-selected="true"` | Indique l'onglet selectionne |
 | Onglet inactif | `tabIndex={-1}` | Retire du flux Tab |
 | Panneau | `aria-labelledby` | Pointe vers l'onglet associe |
@@ -154,7 +154,7 @@ function SettingsPage() {
 Une modale accessible doit :
 1. Pieger le focus a l'interieur
 2. Recevoir le focus a l'ouverture
-3. Restaurer le focus a la fermeture
+3. Restaurer le focus à la fermeture
 4. Se fermer avec Escape
 5. Avoir `role="dialog"`, `aria-modal="true"`, `aria-labelledby`
 
@@ -711,7 +711,7 @@ function OrderPage() {
 
 ## Reduced motion : `prefers-reduced-motion`
 
-Certains utilisateurs desactivent les animations (epilepsie, troubles vestibulaires). Respecter cette preference est un critere WCAG 2.1 AA (2.3.3).
+Certains utilisateurs desactivent les animations (epilepsie, troubles vestibulaires). Respecter cette préférence est un critere WCAG 2.1 AA (2.3.3).
 
 ### En CSS
 
@@ -789,38 +789,38 @@ function AnimatedList({ items }: { items: string[] }) {
 
 | Action | Raccourci |
 |--------|-----------|
-| Demarrer/arreter la lecture | Insert + Fleche bas |
-| Element suivant | Tab |
+| Démarrer/arreter la lecture | Insert + Fleche bas |
+| Élément suivant | Tab |
 | Titre suivant | H |
 | Region suivante | D |
-| Liste des elements | Insert + F7 |
+| Liste des éléments | Insert + F7 |
 | Lire la ligne courante | Insert + L |
 
-### VoiceOver (macOS, integre)
+### VoiceOver (macOS, intégré)
 
 | Action | Raccourci |
 |--------|-----------|
-| Activer/desactiver | Cmd + F5 |
-| Element suivant | VO + Fleche droite |
+| Activer/désactiver | Cmd + F5 |
+| Élément suivant | VO + Fleche droite |
 | Titre suivant | VO + Cmd + H |
-| Rotor (liste des elements) | VO + U |
+| Rotor (liste des éléments) | VO + U |
 | Lire depuis le curseur | VO + A |
 
 > `VO` = Control + Option
 
 ### Workflow de test recommande
 
-1. **Automatise** : jest-axe dans les tests unitaires (couvre ~30% des problemes)
+1. **Automatise** : jest-axe dans les tests unitaires (couvre ~30% des problèmes)
 2. **Semi-automatise** : extension axe DevTools dans le navigateur
-3. **Manuel clavier** : naviguer avec Tab uniquement, verifier le focus visible
+3. **Manuel clavier** : naviguer avec Tab uniquement, vérifier le focus visible
 4. **Lecteur d'ecran** : tester les flux critiques avec NVDA ou VoiceOver
-5. **Utilisateurs reels** : tests avec des personnes en situation de handicap
+5. **Utilisateurs réels** : tests avec des personnes en situation de handicap
 
 ---
 
 ## React Hook Form + validation accessible
 
-React Hook Form s'integre avec les attributs ARIA pour les erreurs de validation.
+React Hook Form s'intégré avec les attributs ARIA pour les erreurs de validation.
 
 ```tsx
 import { useForm, type SubmitHandler } from "react-hook-form";
@@ -921,11 +921,11 @@ function ContactForm() {
 
 ---
 
-## Next.js : considerations specifiques
+## Next.js : considerations spécifiques
 
 ### Annonce de changement de route
 
-Next.js (App Router) ne gere pas nativement l'annonce des changements de route aux lecteurs d'ecran. Il faut ajouter un composant d'annonce.
+Next.js (App Router) ne géré pas nativement l'annonce des changements de route aux lecteurs d'ecran. Il faut ajouter un composant d'annonce.
 
 ```tsx
 "use client";
@@ -1021,10 +1021,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 ## Pratique
 
-### Exercice ARIA.1 — Creer un Accordion accessible
+### Exercice ARIA.1 — Créer un Accordion accessible
 
 Implementez un composant Accordion qui respecte le pattern WAI-ARIA :
-- Chaque section a un bouton de titre avec `aria-expanded`
+- Chaque section à un bouton de titre avec `aria-expanded`
 - Les panneaux ont `role="region"` et `aria-labelledby`
 - Les fleches Haut/Bas naviguent entre les titres
 
@@ -1119,7 +1119,7 @@ function KeyboardAccordion({ items }: { items: AccordionItem[] }) {
 
 ### Exercice ARIA.2 — Focus trap pour modale
 
-Ce composant modale ne piege pas le focus. Identifiez les problemes et corrigez-le :
+Ce composant modale ne piege pas le focus. Identifiez les problèmes et corrigez-le :
 
 ```tsx
 function BrokenModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
@@ -1146,7 +1146,7 @@ function BrokenModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
 3. Pas de `aria-labelledby`
 4. Pas de gestion de Escape
 5. Le focus n'est pas deplace dans la modale
-6. Le focus n'est pas restaure a la fermeture
+6. Le focus n'est pas restaure à la fermeture
 7. Pas de portail (`createPortal`)
 
 ```tsx
@@ -1264,9 +1264,9 @@ function NewsletterForm() {
 
 ---
 
-## Resume
+## Résumé
 
-| Pattern | Points cles |
+| Pattern | Points clés |
 |---------|-------------|
 | Tabs | `role="tablist/tab/tabpanel"`, fleches pour naviguer, un seul `tabIndex={0}` |
 | Modal | Focus trap, `role="dialog"`, `aria-modal`, Escape, `createPortal` |
@@ -1276,3 +1276,11 @@ function NewsletterForm() {
 | Live regions | `aria-live="polite"` pour les confirmations, `"assertive"` pour les erreurs |
 | Reduced motion | `prefers-reduced-motion` en CSS + hook `useReducedMotion` |
 | Next.js | `RouteAnnouncer` client, `<html lang>`, Metadata API, skip link |
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Quiz** : [quiz 09 accessibilité](../../quizzes/quiz-09-accessibilite.html)
+:::

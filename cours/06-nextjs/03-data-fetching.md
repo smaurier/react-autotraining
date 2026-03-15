@@ -21,7 +21,7 @@ Chaque composant marqué `'use client'` (et tous ses enfants importés) est incl
 <details>
 <summary>3. Un Client Component peut-il importer directement un Server Component ?</summary>
 
-Non. Un Client Component ne peut pas `import` un Server Component. Cependant, il peut recevoir un Server Component via la prop `children` (ou toute autre prop de type `ReactNode`).
+Non. Un Client Component ne peut pas `import` un Server Component. Cependant, il peut recevoir un Server Component via la prop `children` (où toute autre prop de type `ReactNode`).
 </details>
 
 ---
@@ -30,7 +30,7 @@ Non. Un Client Component ne peut pas `import` un Server Component. Cependant, il
 
 Pense à un **journal** :
 - **Statique (SSG)** = le journal imprimé du matin. Il est préparé une fois, distribué partout, identique pour tous. Très rapide à "lire" (servir).
-- **Dynamique (SSR)** = un flash info en direct. Chaque demande génère une réponse fraîche. Plus lent, mais toujours à jour.
+- **Dynamique (SSR)** = un flash info en direct. Chaque demandé génère une réponse fraîche. Plus lent, mais toujours à jour.
 - **ISR (Incrémental)** = un journal avec une édition spéciale toutes les heures. On garde le cache, puis on régénère périodiquement.
 - **Streaming** = un journal dont les pages arrivent une par une. Tu peux lire la une pendant que les pages sport se chargent.
 
@@ -160,7 +160,7 @@ Ou au niveau de la page entière :
 export const revalidate = 60; // secondes
 ```
 
-#### Revalidation à la demande (tags)
+#### Revalidation à la demandé (tags)
 
 ```tsx
 // Dans le Server Component : tagger le fetch

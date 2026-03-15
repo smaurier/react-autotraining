@@ -8,32 +8,32 @@
 
 ## Objectif
 
-Creer ton tout premier composant React avec TypeScript strict. Tu vas decouvrir le JSX, le typage des props et l'utilisation du hook `useState` pour gerer un etat local simple.
+Créer ton tout premier composant React avec TypeScript strict. Tu vas découvrir le JSX, le typage des props et l'utilisation du hook `useState` pour gérer un état local simple.
 
-L'exercice te demande de construire un composant `Greeting` qui affiche un message de bienvenue personnalise, avec la possibilite de basculer entre le francais et l'anglais.
+L'exercice te demandé de construire un composant `Greeting` qui affiche un message de bienvenue personnalise, avec la possibilite de basculer entre le français et l'anglais.
 
 ---
 
 ## Consignes
 
-1. **Creer le fichier** `src/exercises/ex01/Greeting.tsx`.
+1. **Créer le fichier** `src/exercises/ex01/Greeting.tsx`.
 
-2. **Definir une interface** `GreetingProps` avec :
+2. **Définir une interface** `GreetingProps` avec :
    - `name` : `string` — le prenom de l'utilisateur.
 
 3. **Implementer le composant** `Greeting` :
    - Utiliser `useState<"fr" | "en">` pour stocker la langue courante (defaut : `"fr"`).
-   - Calculer le message de bienvenue a partir de `name` et de la langue :
+   - Calculer le message de bienvenue à partir de `name` et de la langue :
      - FR : `"Bonjour, {name} ! Bienvenue sur React."`
      - EN : `"Hello, {name}! Welcome to React."`
    - Afficher le message dans un `<p>`.
    - Afficher un bouton qui bascule la langue (`FR -> EN` ou `EN -> FR`).
 
-4. **Creer le fichier** `src/exercises/ex01/App.tsx` :
+4. **Créer le fichier** `src/exercises/ex01/App.tsx` :
    - Importer et utiliser `<Greeting name="Sophie" />`.
    - Ajouter un titre `<h1>` au-dessus du composant.
 
-5. **Verifier** que le composant fonctionne dans le navigateur : le message change bien a chaque clic sur le bouton.
+5. **Vérifier** que le composant fonctionne dans le navigateur : le message change bien à chaque clic sur le bouton.
 
 ---
 
@@ -43,7 +43,7 @@ L'exercice te demande de construire un composant `Greeting` qui affiche un messa
 - L'interface `GreetingProps` doit etre exportee.
 - Le type de `useState` doit etre explicite : `useState<"fr" | "en">`.
 - Aucun `any` autorise.
-- Utiliser `React.FC<GreetingProps>` ou la syntaxe avec typage direct des parametres.
+- Utiliser `React.FC<GreetingProps>` ou la syntaxe avec typage direct des paramètres.
 
 ---
 

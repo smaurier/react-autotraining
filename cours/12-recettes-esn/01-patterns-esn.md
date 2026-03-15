@@ -9,7 +9,7 @@
 <details>
 <summary>1. Quel est l'avantage de Vercel pour Next.js par rapport à un hébergement Docker ?</summary>
 
-Vercel est zero config : chaque push sur `main` déploie en production, chaque PR crée un preview deployment automatique. Le CDN est mondial, le SSL automatique, et les Server Components / Edge Functions sont supportés nativement. Docker offre plus de contrôle mais demande plus de maintenance (Nginx, SSL, monitoring).
+Vercel est zero config : chaque push sur `main` déploie en production, chaque PR crée un preview deployment automatique. Le CDN est mondial, le SSL automatique, et les Server Components / Edge Functions sont supportés nativement. Docker offre plus de contrôle mais demandé plus de maintenance (Nginx, SSL, monitoring).
 </details>
 
 <details>

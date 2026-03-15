@@ -8,15 +8,15 @@
 
 ## Objectif
 
-Ecrire une suite de tests complete pour un composant `TaskList` avec React Testing Library (RTL) et Vitest. Tu vas tester le rendu de la liste, l'ajout, le toggle (cocher/decocher), la suppression et l'etat vide.
+Écrire une suite de tests complete pour un composant `TaskList` avec React Testing Library (RTL) et Vitest. Tu vas tester le rendu de la liste, l'ajout, le toggle (cocher/decocher), la suppression et l'état vide.
 
-L'objectif pedagogique est d'apprendre a ecrire des tests **centres sur l'utilisateur** : on interagit avec les elements comme le ferait un vrai utilisateur (clic, saisie), et on verifie ce qui est visible a l'ecran.
+L'objectif pedagogique est d'apprendre à écrire des tests **centres sur l'utilisateur** : on interagit avec les éléments comme le ferait un vrai utilisateur (clic, saisie), et on vérifié ce qui est visible a l'ecran.
 
 ---
 
 ## Consignes
 
-1. **Creer le composant a tester** `src/components/TaskList.tsx` :
+1. **Créer le composant à tester** `src/components/TaskList.tsx` :
    - Composant Client (`'use client'` si Next.js, ou composant React classique).
    - Gere un state local `tasks: Task[]`.
    - Input + bouton pour ajouter une tache.
@@ -24,14 +24,14 @@ L'objectif pedagogique est d'apprendre a ecrire des tests **centres sur l'utilis
    - Si la liste est vide, afficher "Aucune tache".
    - Compteur de taches restantes (non completees).
 
-2. **Creer le fichier de tests** `src/components/__tests__/TaskList.test.tsx` :
+2. **Créer le fichier de tests** `src/components/__tests__/TaskList.test.tsx` :
    - **Test 1** : Rendu initial — affiche "Aucune tache" quand la liste est vide.
-   - **Test 2** : Ajout d'une tache — saisir un texte, cliquer "Ajouter", verifier qu'elle apparait.
-   - **Test 3** : Ajout de plusieurs taches — verifier le compteur.
-   - **Test 4** : Toggle d'une tache — cliquer la checkbox, verifier le style barre et le compteur.
-   - **Test 5** : Suppression d'une tache — cliquer "Supprimer", verifier qu'elle disparait.
-   - **Test 6** : Ne pas ajouter une tache vide — le bouton est desactive ou rien ne se passe.
-   - **Test 7** : Accessibilite — verifier les roles ARIA (checkbox, list, button).
+   - **Test 2** : Ajout d'une tache — saisir un texte, cliquer "Ajouter", vérifier qu'elle apparait.
+   - **Test 3** : Ajout de plusieurs taches — vérifier le compteur.
+   - **Test 4** : Toggle d'une tache — cliquer la checkbox, vérifier le style barre et le compteur.
+   - **Test 5** : Suppression d'une tache — cliquer "Supprimer", vérifier qu'elle disparait.
+   - **Test 6** : Ne pas ajouter une tache vide — le bouton est désactivé ou rien ne se passe.
+   - **Test 7** : Accessibilité — vérifier les roles ARIA (checkbox, list, button).
 
 3. **Utiliser `@testing-library/user-event`** pour les interactions (pas `fireEvent`).
 
@@ -81,9 +81,9 @@ vitest.config.ts
 | ------------------------------------------------ | ------- |
 | Au moins 7 tests passent au vert                 | oui     |
 | Les tests utilisent `user-event` (pas `fireEvent`) | oui  |
-| Les requetes utilisent des selecteurs accessibles (`getByRole`, `getByText`) | oui |
+| Les requêtes utilisent des selecteurs accessibles (`getByRole`, `getByText`) | oui |
 | Le composant fonctionne correctement             | oui     |
-| Les tests couvrent : rendu, ajout, toggle, suppression, etat vide | oui |
+| Les tests couvrent : rendu, ajout, toggle, suppression, état vide | oui |
 | Aucun `any` dans les tests                       | oui     |
 | Tous les tests compilent sans erreur TS          | oui     |
 

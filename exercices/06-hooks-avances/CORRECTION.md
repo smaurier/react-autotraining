@@ -1,8 +1,8 @@
 # Correction — Exercice 06 : Hooks avances
 
-## Resultat attendu
+## Résultat attendu
 
-Une page de catalogue avec un champ de recherche, un selecteur de categorie, un tri par nom ou prix, et une grille de cartes produit. Seules les cartes dont les props changent se re-rendent grace a `React.memo` et `useCallback`.
+Une page de catalogue avec un champ de recherche, un selecteur de categorie, un tri par nom ou prix, et une grille de cartes produit. Seules les cartes dont les props changent se re-rendent grâce à `React.memo` et `useCallback`.
 
 ---
 
@@ -231,14 +231,14 @@ export default function App() {
 
 ## Ce que tu aurais pu oublier
 
-### 1. Oublier `useCallback` pour le handler passe a un composant `memo`
+### 1. Oublier `useCallback` pour le handler passe à un composant `memo`
 
 - ❌ `<ProductCard onSelect={(id) => console.log(id)} />`
-  Une nouvelle fonction est creee a chaque render, `React.memo` ne sert a rien car la prop `onSelect` change toujours.
+  Une nouvelle fonction est créée à chaque render, `React.memo` ne sert a rien car la prop `onSelect` change toujours.
 - ✅ `const handleSelect = useCallback((id: string) => { ... }, []);`
-  La reference est stable, `React.memo` peut comparer les props correctement.
+  La référence est stable, `React.memo` peut comparer les props correctement.
 
-### 2. Mauvaises dependances dans `useMemo`
+### 2. Mauvaises dépendances dans `useMemo`
 
 - ❌ `useMemo(() => { ... }, [])` — tableau vide : la liste ne se recalcule jamais, le filtre ne fonctionne pas.
 - ✅ `useMemo(() => { ... }, [searchTerm, sortBy, selectedCategory])` — toutes les variables utilisees dans le calcul.
@@ -251,26 +251,26 @@ export default function App() {
 ### 4. Ne pas utiliser `memo` comme HOC
 
 - ❌ `export default function ProductCard(...)` sans `memo()`.
-  Le composant se re-rend a chaque render du parent, meme si ses props n'ont pas change.
+  Le composant se re-rend à chaque render du parent, même si ses props n'ont pas change.
 - ✅ `const ProductCard = memo(function ProductCard(...) { ... });`
 
 ### 5. Utiliser `useMemo`/`useCallback` partout sans besoin
 
 - ❌ Memoriser un calcul trivial comme `const title = useMemo(() => "Hello", [])`.
-  Le cout de la memorisation depasse le cout du calcul.
+  Le cout de la memorisation dépasse le cout du calcul.
 - ✅ Memoriser uniquement les calculs couteux (filtrage/tri sur un grand tableau) et les fonctions passees a des composants `memo`.
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept        | Description                                                              | Documentation                              |
 | -------------- | ------------------------------------------------------------------------ | ------------------------------------------ |
-| `useMemo`      | Memoriser le resultat d'un calcul couteux                                | [react.dev](https://react.dev/reference/react/useMemo) |
-| `useCallback`  | Memoriser une fonction pour stabiliser sa reference                      | [react.dev](https://react.dev/reference/react/useCallback) |
+| `useMemo`      | Memoriser le résultat d'un calcul couteux                                | [react.dev](https://react.dev/reference/react/useMemo) |
+| `useCallback`  | Memoriser une fonction pour stabiliser sa référence                      | [react.dev](https://react.dev/reference/react/useCallback) |
 | `React.memo`   | HOC qui empeche le re-render si les props n'ont pas change               | [react.dev](https://react.dev/reference/react/memo) |
 | Dependances    | Tableau de valeurs dont dependent `useMemo`/`useCallback`                | Concept React fondamental |
-| Immutabilite   | Ne pas muter les tableaux/objets, creer de nouvelles references          | Bonne pratique React |
+| Immutabilite   | Ne pas muter les tableaux/objets, créer de nouvelles références          | Bonne pratique React |
 
 ---
 

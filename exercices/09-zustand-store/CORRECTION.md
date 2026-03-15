@@ -1,8 +1,8 @@
 # Correction — Exercice 09 : Zustand store
 
-## Resultat attendu
+## Résultat attendu
 
-Une application de gestion de taches avec un champ d'ajout, une liste filtrable (Toutes/Actives/Completees), un compteur de taches restantes, et persistance dans le localStorage. L'etat survit au rechargement de la page.
+Une application de gestion de taches avec un champ d'ajout, une liste filtrable (Toutes/Actives/Completees), un compteur de taches restantes, et persistance dans le localStorage. L'état survit au rechargement de la page.
 
 ---
 
@@ -301,23 +301,23 @@ export default function App() {
 ### 1. Souscrire a tout le store sans selecteur
 
 - ❌ `const store = useTaskStore();`
-  Le composant se re-rend a chaque changement dans le store, meme si seul `filter` a change.
+  Le composant se re-rend à chaque changement dans le store, même si seul `filter` a change.
 - ✅ `const addTask = useTaskStore((s) => s.addTask);`
   Le composant ne se re-rend que si `addTask` change (ce qui n'arrive jamais pour une fonction).
 
 ### 2. Oublier le middleware `persist`
 
 - ❌ `create<TaskState>()((set, get) => ({ ... }))`
-  L'etat est perdu au rechargement de la page.
+  L'état est perdu au rechargement de la page.
 - ✅ `create<TaskState>()(persist((set, get) => ({ ... }), { name: "task-store" }))`
-  L'etat est automatiquement sauvegarde et restaure depuis `localStorage`.
+  L'état est automatiquement sauvegarde et restaure depuis `localStorage`.
 
-### 3. Muter l'etat dans les actions
+### 3. Muter l'état dans les actions
 
 - ❌ `state.tasks.push(newTask)` a l'interieur de `set`.
   Zustand utilise l'immutabilite par defaut, la mutation ne declenche pas de re-render.
 - ✅ `set((state) => ({ tasks: [...state.tasks, newTask] }))`
-  Nouveau tableau = nouvelle reference.
+  Nouveau tableau = nouvelle référence.
 
 ### 4. Ne pas typer l'interface du store
 
@@ -327,15 +327,15 @@ export default function App() {
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept             | Description                                                          | Documentation                              |
 | ------------------- | -------------------------------------------------------------------- | ------------------------------------------ |
-| `create`            | Creer un store Zustand avec etat et actions                          | [Zustand docs](https://docs.pmnd.rs/zustand/getting-started/introduction) |
-| Selecteurs          | Fonctions qui extraient une partie du store pour eviter les re-renders | [Zustand docs](https://docs.pmnd.rs/zustand/guides/auto-generating-selectors) |
-| `persist` middleware | Sauvegarder l'etat dans localStorage automatiquement                | [Zustand docs](https://docs.pmnd.rs/zustand/integrations/persisting-store-data) |
-| `set` / `get`       | Fonctions Zustand pour modifier et lire l'etat                      | API Zustand |
-| Immutabilite        | Creer de nouvelles references dans les actions                       | Bonne pratique |
+| `create`            | Créer un store Zustand avec état et actions                          | [Zustand docs](https://docs.pmnd.rs/zustand/getting-started/introduction) |
+| Selecteurs          | Fonctions qui extraient une partie du store pour éviter les re-renders | [Zustand docs](https://docs.pmnd.rs/zustand/guides/auto-generating-selectors) |
+| `persist` middleware | Sauvegarder l'état dans localStorage automatiquement                | [Zustand docs](https://docs.pmnd.rs/zustand/integrations/persisting-store-data) |
+| `set` / `get`       | Fonctions Zustand pour modifier et lire l'état                      | API Zustand |
+| Immutabilite        | Créer de nouvelles références dans les actions                       | Bonne pratique |
 
 ---
 

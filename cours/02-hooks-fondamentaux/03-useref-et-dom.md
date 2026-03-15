@@ -193,7 +193,7 @@ const inputRef = useRef(null); // TS ne sait pas que c'est un HTMLInputElement
 
 ### 5. forwardRef — transmettre une ref à un composant enfant
 
-Par défaut, un composant fonction ne peut **pas** recevoir de `ref`. Il faut utiliser `forwardRef` (ou, depuis React 19, la prop `ref` directement) :
+Par défaut, un composant fonction ne peut **pas** recevoir de `ref`. Il faut utiliser `forwardRef` (où, depuis React 19, la prop `ref` directement) :
 
 ```tsx
 import { forwardRef, useRef } from "react";

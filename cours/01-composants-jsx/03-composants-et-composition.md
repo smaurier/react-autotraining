@@ -28,7 +28,7 @@ On étend `ComponentPropsWithoutRef<"button">`, on destructure les props personn
 
 ## Analogie
 
-Pensez à des **briques LEGO**. Chaque brique a une forme et une taille précises (son interface de props). Vous assemblez des petites briques pour former des structures plus grandes. En React, la composition remplace l'héritage : on **imbrique** des composants plutôt que de créer des hiérarchies de classes. C'est exactement comme en Vue avec les composants SFC ou en Angular avec les composants standalone — sauf que React pousse cette philosophie encore plus loin.
+Pensez à des **briques LEGO**. Chaque brique à une forme et une taille précises (son interface de props). Vous assemblez des petites briques pour former des structures plus grandes. En React, la composition remplace l'héritage : on **imbrique** des composants plutôt que de créer des hiérarchies de classes. C'est exactement comme en Vue avec les composants SFC ou en Angular avec les composants standalone — sauf que React pousse cette philosophie encore plus loin.
 
 ---
 
@@ -272,7 +272,7 @@ Créez une mini-application avec trois composants :
 
 1. **`ContactApp`** : gère la liste de contacts dans son state
 2. **`ContactForm`** : formulaire pour ajouter un contact (nom + email), communique via callback
-3. **`ContactList`** : affiche les contacts, chaque contact a un bouton "Supprimer" qui remonte l'id au parent
+3. **`ContactList`** : affiche les contacts, chaque contact à un bouton "Supprimer" qui remonte l'id au parent
 
 <details>
 <summary>Voir la solution</summary>

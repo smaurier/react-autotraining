@@ -8,15 +8,15 @@
 
 ## Objectif
 
-Construire une liste de taches (todo list) complete pour maitriser la gestion d'un tableau dans l'etat React. Tu apprendras a ajouter, basculer et supprimer des elements, a utiliser `.map()` avec la prop `key`, et a faire du rendu conditionnel.
+Construire une liste de taches (todo list) complete pour maîtriser la gestion d'un tableau dans l'état React. Tu apprendras a ajouter, basculer et supprimer des éléments, à utiliser `.map()` avec la prop `key`, et à faire du rendu conditionnel.
 
 ---
 
 ## Consignes
 
-1. **Creer le fichier** `src/exercises/ex03/TodoList.tsx`.
+1. **Créer le fichier** `src/exercises/ex03/TodoList.tsx`.
 
-2. **Definir les types** :
+2. **Définir les types** :
    ```ts
    interface Todo {
      id: string;
@@ -25,12 +25,12 @@ Construire une liste de taches (todo list) complete pour maitriser la gestion d'
    }
    ```
 
-3. **Implementer l'etat** :
-   - `todos` : `Todo[]` — la liste des taches, initialisee a un tableau vide.
+3. **Implementer l'état** :
+   - `todos` : `Todo[]` — la liste des taches, initialisee à un tableau vide.
    - `inputValue` : `string` — la valeur du champ de saisie.
 
 4. **Implementer les actions** :
-   - **Ajouter** une tache : creer un nouvel objet `Todo` avec un `id` unique (`crypto.randomUUID()`), le texte saisi et `completed: false`. Vider le champ apres ajout. Empecher l'ajout si le texte est vide.
+   - **Ajouter** une tache : créer un nouvel objet `Todo` avec un `id` unique (`crypto.randomUUID()`), le texte saisi et `completed: false`. Vider le champ après ajout. Empecher l'ajout si le texte est vide.
    - **Basculer** le statut d'une tache : inverser `completed` pour la tache cliquee.
    - **Supprimer** une tache : retirer la tache de la liste.
 
@@ -41,7 +41,7 @@ Construire une liste de taches (todo list) complete pour maitriser la gestion d'
    - Un compteur des taches restantes (non completees) en bas.
    - Si la liste est vide, afficher un message "Aucune tache pour le moment".
 
-6. **Creer le fichier** `src/exercises/ex03/App.tsx` avec un titre et le composant `TodoList`.
+6. **Créer le fichier** `src/exercises/ex03/App.tsx` avec un titre et le composant `TodoList`.
 
 ---
 

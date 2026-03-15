@@ -8,15 +8,15 @@
 
 ## Objectif
 
-Construire un chronometre fonctionnel pour maitriser `useRef` (stocker une reference mutable sans re-render), `useEffect` avec sa fonction de nettoyage, et le formatage du temps. Cet exercice met en lumiere la difference fondamentale entre `useRef` et `useState`.
+Construire un chronometre fonctionnel pour maîtriser `useRef` (stocker une référence mutable sans re-render), `useEffect` avec sa fonction de nettoyage, et le formatage du temps. Cet exercice met en lumiere la différence fondamentale entre `useRef` et `useState`.
 
 ---
 
 ## Consignes
 
-1. **Creer le fichier** `src/exercises/ex05/Stopwatch.tsx`.
+1. **Créer le fichier** `src/exercises/ex05/Stopwatch.tsx`.
 
-2. **Implementer les etats** :
+2. **Implementer les états** :
    - `time` : `number` — le temps ecoule en millisecondes.
    - `isRunning` : `boolean` — indique si le chronometre tourne.
 
@@ -25,7 +25,7 @@ Construire un chronometre fonctionnel pour maitriser `useRef` (stocker une refer
    - La ref permet de conserver l'id de l'intervalle entre les renders sans declencher de re-render.
 
 4. **Implementer les actions** :
-   - **Demarrer** : lancer un `setInterval` toutes les 10ms qui incremente `time`.
+   - **Démarrer** : lancer un `setInterval` toutes les 10ms qui incremente `time`.
    - **Arreter** : stopper l'intervalle avec `clearInterval`.
    - **Reset** : stopper l'intervalle et remettre `time` a `0`.
 
@@ -36,7 +36,7 @@ Construire un chronometre fonctionnel pour maitriser `useRef` (stocker une refer
    - Afficher le temps au format `MM:SS.ms` (ex : `01:23.45`).
    - Extraire le formatage dans une fonction utilitaire `formatTime(ms: number): string`.
 
-7. **Creer le fichier** `src/exercises/ex05/App.tsx`.
+7. **Créer le fichier** `src/exercises/ex05/App.tsx`.
 
 ---
 
@@ -44,14 +44,14 @@ Construire un chronometre fonctionnel pour maitriser `useRef` (stocker une refer
 
 - Mode `strict` active.
 - Le type de `useRef` doit etre explicite.
-- La fonction `formatTime` doit etre typee (parametres et retour).
+- La fonction `formatTime` doit etre typee (paramètres et retour).
 - Aucun `any` autorise.
 
 ---
 
 ## Bonus
 
-- [ ] Ajouter un systeme de tours (laps) : un bouton "Tour" enregistre le temps courant dans un tableau.
+- [ ] Ajouter un système de tours (laps) : un bouton "Tour" enregistre le temps courant dans un tableau.
 - [ ] Afficher la liste des tours avec le temps de chaque segment.
 - [ ] Ajouter une animation visuelle quand le chronometre tourne.
 

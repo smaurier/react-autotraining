@@ -421,7 +421,7 @@ export default App;
 |-----------|-----------|
 | `createBrowserRouter` | API moderne pour configurer les routes en objet |
 | `RouterProvider` | Fournit le router à l'application |
-| `Outlet` | Placeholder où s'affiche le composant enfant (comme `router-outlet`) |
+| `Outlet` | Placeholder ou s'affiche le composant enfant (comme `router-outlet`) |
 | `Link` | Lien interne sans rechargement de page |
 | `NavLink` | Lien avec état `isActive` pour le styling |
 | `useNavigate` | Navigation programmatique |

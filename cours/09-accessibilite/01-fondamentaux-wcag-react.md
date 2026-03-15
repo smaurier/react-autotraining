@@ -1,21 +1,21 @@
-# 01 — Fondamentaux WCAG et accessibilite en React
+# 01 — Fondamentaux WCAG et accessibilité en React
 
-> **L'accessibilite web n'est pas optionnelle.**
+> **L'accessibilité web n'est pas optionnelle.**
 > La directive europeenne EAA (2025) et le RGAA imposent la conformite WCAG 2.1 AA.
-> React ne genere pas de HTML accessible par defaut — c'est au developpeur de s'en assurer.
+> React ne généré pas de HTML accessible par defaut — c'est au développeur de s'en assurer.
 
 ---
 
-## Rappel du cours precedent
+## Rappel du cours précédent
 
 <details>
-<summary>1. Quelle est la difference entre <code>className</code> et <code>class</code> en JSX ?</summary>
+<summary>1. Quelle est la différence entre <code>className</code> et <code>class</code> en JSX ?</summary>
 
-`class` est un mot reserve en JavaScript. JSX utilise `className` pour definir les classes CSS sur un element.
+`class` est un mot reserve en JavaScript. JSX utilise `className` pour définir les classes CSS sur un élément.
 </details>
 
 <details>
-<summary>2. Comment React gere-t-il le rendu conditionnel ?</summary>
+<summary>2. Comment React géré-t-il le rendu conditionnel ?</summary>
 
 Via des expressions JavaScript : ternaire (`a ? b : c`), operateur `&&`, ou early return. Pas de directive `v-if` comme en Vue.
 </details>
@@ -23,7 +23,7 @@ Via des expressions JavaScript : ternaire (`a ? b : c`), operateur `&&`, ou earl
 <details>
 <summary>3. Pourquoi les `key` sont-elles importantes dans les listes ?</summary>
 
-React utilise les `key` pour identifier quel element a change, a ete ajoute ou supprime. Sans `key` stable, React recree tous les noeuds DOM a chaque rendu.
+React utilise les `key` pour identifier quel élément a change, a ete ajoute ou supprime. Sans `key` stable, React recree tous les noeuds DOM à chaque rendu.
 </details>
 
 ---
@@ -34,7 +34,7 @@ Tout critere WCAG appartient a l'un de ces 4 principes :
 
 | Principe | Description | Exemple React |
 |----------|-------------|---------------|
-| **Perceptible** | L'information est presentee de maniere perceptible | `alt` sur les images, contrastes suffisants |
+| **Perceptible** | L'information est presentee de manière perceptible | `alt` sur les images, contrastes suffisants |
 | **Operable** | L'interface est utilisable au clavier | `<button>` natifs, `onKeyDown` |
 | **Comprehensible** | Le contenu est comprehensible | Labels lies aux inputs, messages d'erreur clairs |
 | **Robuste** | Compatible avec les technologies d'assistance | HTML semantique, ARIA correct |
@@ -51,9 +51,9 @@ Tout critere WCAG appartient a l'un de ces 4 principes :
 
 ## HTML semantique en JSX
 
-JSX n'est pas du HTML — c'est du JavaScript. Certains attributs ont des noms differents.
+JSX n'est pas du HTML — c'est du JavaScript. Certains attributs ont des noms différents.
 
-### Attributs specifiques a JSX
+### Attributs spécifiques a JSX
 
 | HTML | JSX | Raison |
 |------|-----|--------|
@@ -124,7 +124,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
 
 ## Gestion du focus dans les SPA
 
-En SPA, les changements de page ne declenchent pas de rechargement. Le focus reste sur l'element clique. Les utilisateurs de lecteur d'ecran ne savent pas que la page a change.
+En SPA, les changements de page ne declenchent pas de rechargement. Le focus reste sur l'élément clique. Les utilisateurs de lecteur d'ecran ne savent pas que la page a change.
 
 ### Skip link
 
@@ -171,7 +171,7 @@ function SkipLink() {
 }
 ```
 
-### Focus apres changement de route (React Router)
+### Focus après changement de route (React Router)
 
 ```tsx
 import { useEffect, useRef } from "react";
@@ -247,7 +247,7 @@ function SearchForm() {
 
 ## Regions `aria-live` pour le contenu dynamique
 
-En SPA, le contenu change sans rechargement. Les lecteurs d'ecran ne detectent pas ces changements. `aria-live` resout ce probleme.
+En SPA, le contenu change sans rechargement. Les lecteurs d'ecran ne detectent pas ces changements. `aria-live` resout ce problème.
 
 ### Les 3 valeurs
 
@@ -390,13 +390,13 @@ function UserList() {
 
 | Touche | Comportement |
 |--------|-------------|
-| **Tab** | Element focusable suivant |
-| **Shift+Tab** | Element focusable precedent |
+| **Tab** | Élément focusable suivant |
+| **Shift+Tab** | Élément focusable précédent |
 | **Enter** | Activer un lien ou un bouton |
 | **Space** | Activer un bouton, cocher une case |
 | **Escape** | Fermer modale, dropdown, tooltip |
 | **Fleches** | Naviguer dans un groupe (onglets, menu) |
-| **Home / End** | Premier / dernier element d'un groupe |
+| **Home / End** | Premier / dernier élément d'un groupe |
 
 ### Gestion de `onKeyDown` en React
 
@@ -596,7 +596,7 @@ function SearchModal({ isOpen }: { isOpen: boolean }) {
 }
 ```
 
-### 4. `onClick` sur un element non interactif sans clavier
+### 4. `onClick` sur un élément non interactif sans clavier
 
 ```tsx
 // ❌ La carte est cliquable mais pas focusable, pas de clavier
@@ -740,9 +740,9 @@ function Glossary({ items }: { items: { term: string; definition: string }[] }) 
 
 ---
 
-## Portails et accessibilite
+## Portails et accessibilité
 
-`createPortal` rend un composant dans un noeud DOM different. L'arbre d'accessibilite (accessibility tree) suit l'arbre React, pas le DOM — donc les evenements et le contexte React fonctionnent. Mais attention au focus.
+`createPortal` rend un composant dans un noeud DOM différent. L'arbre d'accessibilité (accessibility tree) suit l'arbre React, pas le DOM — donc les événements et le contexte React fonctionnent. Mais attention au focus.
 
 ```tsx
 import { createPortal } from "react-dom";
@@ -780,7 +780,7 @@ function Tooltip({ content, targetRef, isVisible }: TooltipProps) {
 
 ---
 
-## Tests d'accessibilite
+## Tests d'accessibilité
 
 ### jest-axe : tests automatises
 
@@ -799,9 +799,9 @@ describe("LoginForm", () => {
 });
 ```
 
-### @testing-library/react : requetes par role
+### @testing-library/react : requêtes par role
 
-Testing Library encourage les requetes qui refletent l'experience utilisateur :
+Testing Library encourage les requêtes qui refletent l'experience utilisateur :
 
 ```tsx
 import { render, screen } from "@testing-library/react";
@@ -834,13 +834,13 @@ describe("SearchForm", () => {
 });
 ```
 
-### Priorite des requetes Testing Library
+### Priorite des requêtes Testing Library
 
-| Priorite | Requete | Quand l'utiliser |
+| Priorite | Requête | Quand l'utiliser |
 |----------|---------|-----------------|
-| 1 | `getByRole` | Toujours en premier — reflete l'arbre d'accessibilite |
+| 1 | `getByRole` | Toujours en premier — reflete l'arbre d'accessibilité |
 | 2 | `getByLabelText` | Champs de formulaire |
-| 3 | `getByPlaceholderText` | Si pas de label (a eviter) |
+| 3 | `getByPlaceholderText` | Si pas de label (a éviter) |
 | 4 | `getByText` | Contenu textuel visible |
 | 5 | `getByTestId` | Dernier recours |
 
@@ -848,13 +848,13 @@ describe("SearchForm", () => {
 
 ## Checklist rapide WCAG AA pour React
 
-| Critere | Comment verifier |
+| Critere | Comment vérifier |
 |---------|-----------------|
 | Contrastes >= 4.5:1 | DevTools > Accessibility > Contrast |
 | Tous les inputs ont un label | `htmlFor` + `id`, ou `aria-label` |
 | Navigation clavier complete | Tester avec Tab uniquement |
 | Images informatives ont un alt | Inspecter chaque `<img>` |
-| Focus visible sur tous les interactifs | Tabulation et verification visuelle |
+| Focus visible sur tous les interactifs | Tabulation et vérification visuelle |
 | Langue declaree | `<html lang="fr">` |
 | Structure de titres logique | h1 > h2 > h3, pas de saut |
 | Erreurs de formulaire liees | `aria-describedby` + `aria-invalid` |
@@ -900,7 +900,7 @@ function CloseButton({ onClose }: { onClose: () => void }) {
 
 ### Exercice A11Y.2 — Ajouter une annonce dynamique
 
-Le composant suivant supprime un element, mais le lecteur d'ecran ne sait pas que l'action a reussi :
+Le composant suivant supprime un élément, mais le lecteur d'ecran ne sait pas que l'action a reussi :
 
 ```tsx
 function TodoItem({ todo, onDelete }: { todo: Todo; onDelete: (id: string) => void }) {
@@ -1033,7 +1033,7 @@ function LoginForm() {
 
 ---
 
-## Resume
+## Résumé
 
 | Concept | Ce qu'il faut retenir |
 |---------|-----------------------|
@@ -1041,10 +1041,10 @@ function LoginForm() {
 | `htmlFor` | Remplace `for` en JSX pour lier label et input |
 | `useRef` + `focus()` | Gestion programmatique du focus |
 | `aria-live` | Annonce les changements dynamiques au lecteur d'ecran |
-| Skip link | Premier element focusable, saute la navigation |
+| Skip link | Premier élément focusable, saute la navigation |
 | `<button>` natif | Toujours preferable a `<div onClick>` |
 | Fragments | Evitent les wrapper divs qui cassent la semantique |
 | jest-axe | Tests automatises de violations WCAG |
-| `getByRole` | Requete prioritaire dans Testing Library |
+| `getByRole` | Requête prioritaire dans Testing Library |
 
 > **Prochain cours** : [02 — Patterns ARIA avances en React](./02-aria-patterns-avances.md)

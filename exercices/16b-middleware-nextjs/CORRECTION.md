@@ -2,7 +2,7 @@
 
 ---
 
-## Etape 1 : Middleware principal
+## Étape 1 : Middleware principal
 
 ```ts
 // src/middleware.ts
@@ -80,7 +80,7 @@ export const config = {
 
 ---
 
-## Etape 2 : Page de login
+## Étape 2 : Page de login
 
 ```tsx
 // src/app/login/page.tsx
@@ -189,7 +189,7 @@ export default function LoginPage() {
 
 ---
 
-## Etape 3 : Page dashboard (protegee)
+## Étape 3 : Page dashboard (protegee)
 
 ```tsx
 // src/app/dashboard/page.tsx
@@ -265,7 +265,7 @@ export default function DashboardPage() {
 
 ---
 
-## Etape 4 : Pages protegees supplementaires
+## Étape 4 : Pages protegees supplementaires
 
 ```tsx
 // src/app/profile/page.tsx
@@ -295,18 +295,18 @@ export default function SettingsPage() {
 
 ## Ce que tu aurais pu oublier
 
-1. **Le fichier `middleware.ts` doit etre a la racine du projet** (dans `src/` si tu utilises `src/`). Il ne fonctionne pas s'il est dans un sous-dossier.
+1. **Le fichier `middleware.ts` doit etre à la racine du projet** (dans `src/` si tu utilises `src/`). Il ne fonctionne pas s'il est dans un sous-dossier.
 
-2. **Le middleware s'execute sur le Edge Runtime** : pas d'acces a Node.js APIs completes (pas de `fs`, pas de `Buffer` natif). Seules les Web APIs sont disponibles.
+2. **Le middleware s'exécuté sur le Edge Runtime** : pas d'acces a Node.js APIs completes (pas de `fs`, pas de `Buffer` natif). Seules les Web APIs sont disponibles.
 
-3. **`NextResponse.next()` est obligatoire** pour continuer la requete. Sans lui, la requete est bloquee.
+3. **`NextResponse.next()` est obligatoire** pour continuer la requête. Sans lui, la requête est bloquee.
 
 4. **Le matcher utilise une regex** : les parentheses et backslashes doivent etre echappes correctement.
 
-5. **`router.refresh()`** est necessaire apres avoir modifie les cookies pour que le middleware re-evalue la requete lors de la prochaine navigation.
+5. **`router.refresh()`** est nécessaire après avoir modifie les cookies pour que le middleware re-évalué la requête lors de la prochaine navigation.
 
-6. **Les cookies poses cote client** (`document.cookie`) sont visibles par le middleware car ils sont envoyes avec chaque requete HTTP.
+6. **Les cookies poses cote client** (`document.cookie`) sont visibles par le middleware car ils sont envoyes avec chaque requête HTTP.
 
-7. **Le `callbackUrl`** permet de rediriger l'utilisateur vers la page qu'il voulait visiter apres la connexion. C'est un pattern standard en authentification.
+7. **Le `callbackUrl`** permet de rediriger l'utilisateur vers la page qu'il voulait visiter après la connexion. C'est un pattern standard en authentification.
 
-8. **`SameSite=Lax`** est recommande pour les cookies de session : il empeche l'envoi du cookie lors de requetes cross-site (protection CSRF partielle).
+8. **`SameSite=Lax`** est recommande pour les cookies de session : il empeche l'envoi du cookie lors de requêtes cross-site (protection CSRF partielle).

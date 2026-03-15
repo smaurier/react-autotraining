@@ -8,41 +8,41 @@
 
 ## Objectif
 
-Construire une API REST complete pour gerer des taches (CRUD) avec les Route Handlers de Next.js 15, puis utiliser une Server Action pour soumettre un formulaire cote serveur. Tu vas comprendre la difference entre Route Handlers (endpoints HTTP classiques) et Server Actions (mutations directes depuis le client).
+Construire une API REST complete pour gérer des taches (CRUD) avec les Route Handlers de Next.js 15, puis utiliser une Server Action pour soumettre un formulaire cote serveur. Tu vas comprendre la différence entre Route Handlers (endpoints HTTP classiques) et Server Actions (mutations directes depuis le client).
 
 ---
 
 ## Consignes
 
-1. **Creer les types** `src/types/task.ts` :
+1. **Créer les types** `src/types/task.ts` :
    - Interface `Task` : `id`, `title`, `description`, `completed` (boolean), `priority` (`"low" | "medium" | "high"`), `createdAt` (string).
    - Type `CreateTaskInput` : `Omit<Task, "id" | "createdAt">`.
    - Type `UpdateTaskInput` : `Partial<CreateTaskInput>`.
 
-2. **Creer un store en memoire** `src/lib/task-store.ts` :
-   - Un tableau de taches en memoire (simule une base de donnees).
+2. **Créer un store en mémoire** `src/lib/task-store.ts` :
+   - Un tableau de taches en mémoire (simule une base de donnees).
    - Fonctions exportees : `getTasks()`, `getTaskById(id)`, `createTask(input)`, `updateTask(id, input)`, `deleteTask(id)`.
 
-3. **Creer les Route Handlers** :
+3. **Créer les Route Handlers** :
    - `src/app/api/tasks/route.ts` :
      - `GET` : retourner toutes les taches.
-     - `POST` : creer une tache (valider le body avec Zod).
+     - `POST` : créer une tache (valider le body avec Zod).
    - `src/app/api/tasks/[id]/route.ts` :
      - `GET` : retourner une tache par ID.
      - `PUT` : mettre a jour une tache.
      - `DELETE` : supprimer une tache.
    - Retourner les bons codes HTTP (200, 201, 404, 400).
 
-4. **Creer une Server Action** `src/actions/task-actions.ts` :
+4. **Créer une Server Action** `src/actions/task-actions.ts` :
    - Directive `'use server'` en haut du fichier.
-   - Action `createTaskAction(formData: FormData)` qui cree une tache depuis un formulaire.
+   - Action `createTaskAction(formData: FormData)` qui créé une tache depuis un formulaire.
    - Valider les donnees avec Zod.
-   - Appeler `revalidatePath("/tasks")` apres creation.
+   - Appeler `revalidatePath("/tasks")` après création.
 
-5. **Creer la page avec formulaire** `src/app/tasks/page.tsx` :
+5. **Créer la page avec formulaire** `src/app/tasks/page.tsx` :
    - Afficher la liste des taches (Server Component).
    - Formulaire d'ajout utilisant la Server Action.
-   - Utiliser `useFormStatus` dans un Client Component pour l'etat pending.
+   - Utiliser `useFormStatus` dans un Client Component pour l'état pending.
 
 ---
 
@@ -50,7 +50,7 @@ Construire une API REST complete pour gerer des taches (CRUD) avec les Route Han
 
 - Mode `strict` active.
 - Typer tous les handlers avec `NextRequest` et `NextResponse`.
-- Typer le body des requetes apres validation Zod.
+- Typer le body des requêtes après validation Zod.
 - Typer les params comme `Promise<{ id: string }>` (Next.js 15).
 - Utiliser `z.infer<typeof schema>` pour deduire les types des schemas.
 - Aucun `any` autorise.
@@ -62,7 +62,7 @@ Construire une API REST complete pour gerer des taches (CRUD) avec les Route Han
 - [ ] Ajouter une pagination GET `/api/tasks?page=1&limit=10`.
 - [ ] Ajouter un filtre GET `/api/tasks?priority=high&completed=false`.
 - [ ] Utiliser `useOptimistic` pour une mise a jour optimiste de la liste.
-- [ ] Ajouter un middleware de validation generique pour les Route Handlers.
+- [ ] Ajouter un middleware de validation générique pour les Route Handlers.
 
 ---
 
@@ -96,12 +96,12 @@ src/
 | Critere                                          | Attendu |
 | ------------------------------------------------ | ------- |
 | GET `/api/tasks` retourne la liste des taches     | oui     |
-| POST `/api/tasks` cree une tache (201)            | oui     |
+| POST `/api/tasks` créé une tache (201)            | oui     |
 | PUT `/api/tasks/:id` met a jour une tache         | oui     |
 | DELETE `/api/tasks/:id` supprime une tache        | oui     |
 | Les erreurs retournent les bons codes HTTP        | oui     |
-| La Server Action cree une tache depuis le formulaire | oui  |
-| `useFormStatus` affiche l'etat pending            | oui     |
+| La Server Action créé une tache depuis le formulaire | oui  |
+| `useFormStatus` affiche l'état pending            | oui     |
 | La validation Zod rejette les donnees invalides   | oui     |
 | Aucun `any` dans le code                          | oui     |
 

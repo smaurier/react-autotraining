@@ -8,18 +8,18 @@
 
 ## Objectif
 
-Creer un formulaire d'inscription complet avec React Hook Form et Zod pour la validation. Tu apprendras a utiliser `useForm`, a definir un schema de validation avec Zod, a afficher les erreurs et a gerer la soumission.
+Créer un formulaire d'inscription complet avec React Hook Form et Zod pour la validation. Tu apprendras à utiliser `useForm`, a définir un schema de validation avec Zod, a afficher les erreurs et a gérer la soumission.
 
 ---
 
 ## Consignes
 
-1. **Installer les dependances** :
+1. **Installer les dépendances** :
    ```bash
    npm install react-hook-form zod @hookform/resolvers
    ```
 
-2. **Creer le schema Zod** dans `src/exercises/ex12/schema.ts` :
+2. **Créer le schema Zod** dans `src/exercises/ex12/schema.ts` :
    ```ts
    // Le schema doit valider :
    // - name : string, min 2 caracteres, max 50
@@ -27,21 +27,21 @@ Creer un formulaire d'inscription complet avec React Hook Form et Zod pour la va
    // - password : string, min 8 caracteres, au moins 1 majuscule, 1 chiffre
    // - confirmPassword : string, doit correspondre a password
    ```
-   - Utiliser `.refine()` ou `.superRefine()` pour la verification du mot de passe.
+   - Utiliser `.refine()` ou `.superRefine()` pour la vérification du mot de passe.
    - Exporter le type `RegistrationFormData` infere avec `z.infer<typeof schema>`.
 
-3. **Creer le composant** `src/exercises/ex12/RegistrationForm.tsx` :
+3. **Créer le composant** `src/exercises/ex12/RegistrationForm.tsx` :
    - Utiliser `useForm<RegistrationFormData>` avec le resolver Zod.
-   - Creer un champ pour chaque propriete du schema.
+   - Créer un champ pour chaque propriété du schema.
    - Afficher les erreurs sous chaque champ avec `errors.fieldName?.message`.
    - Desactiver le bouton de soumission pendant le traitement (`isSubmitting`).
    - Au submit, afficher les donnees dans la console (simuler un envoi API).
 
-4. **Creer le composant** `src/exercises/ex12/FormField.tsx` (optionnel mais recommande) :
-   - Composant reutilisable pour un champ de formulaire avec label et message d'erreur.
+4. **Créer le composant** `src/exercises/ex12/FormField.tsx` (optionnel mais recommande) :
+   - Composant réutilisable pour un champ de formulaire avec label et message d'erreur.
    - Accepter les props : `label`, `error`, `children`.
 
-5. **Creer le fichier** `src/exercises/ex12/App.tsx`.
+5. **Créer le fichier** `src/exercises/ex12/App.tsx`.
 
 ---
 
@@ -49,7 +49,7 @@ Creer un formulaire d'inscription complet avec React Hook Form et Zod pour la va
 
 - Mode `strict` active.
 - Le type du formulaire doit etre infere depuis le schema Zod (`z.infer`).
-- `useForm` doit utiliser le generique `RegistrationFormData`.
+- `useForm` doit utiliser le générique `RegistrationFormData`.
 - Les `register` doivent etre types automatiquement par RHF.
 - Aucun `any` autorise.
 
@@ -58,7 +58,7 @@ Creer un formulaire d'inscription complet avec React Hook Form et Zod pour la va
 ## Bonus
 
 - [ ] Ajouter un indicateur de force du mot de passe (faible/moyen/fort).
-- [ ] Afficher un message de succes apres la soumission.
+- [ ] Afficher un message de succes après la soumission.
 - [ ] Ajouter un champ "Conditions d'utilisation" (checkbox obligatoire).
 - [ ] Utiliser `Controller` pour un champ custom (ex : select avec react-select).
 
@@ -84,7 +84,7 @@ src/exercises/ex12/
 | `confirmPassword` doit correspondre a `password` | oui     |
 | Les erreurs s'affichent sous chaque champ        | oui     |
 | Le formulaire ne se soumet pas si invalide       | oui     |
-| Le bouton est desactive pendant la soumission    | oui     |
+| Le bouton est désactivé pendant la soumission    | oui     |
 | Le type est infere depuis le schema Zod          | oui     |
 | Aucun `any` dans le code                         | oui     |
 

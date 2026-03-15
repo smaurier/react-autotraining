@@ -28,7 +28,7 @@ Un fichier `index.ts` à la racine de chaque feature qui ré-exporte les éléme
 
 ## Analogie
 
-Un entretien technique, c'est comme un **oral d'examen** : on ne vous demande pas de réciter le cours par coeur, mais de **démontrer que vous comprenez les concepts** et que vous pouvez les appliquer. Les questions sont des **portes** : la première réponse montre que vous connaissez le sujet, et les questions de suivi vérifient la profondeur de votre compréhension. Le plus important n'est pas de tout savoir, mais de savoir **raisonner à voix haute** et dire "je ne sais pas, mais voici comment je chercherais".
+Un entretien technique, c'est comme un **oral d'examen** : on ne vous demandé pas de réciter le cours par coeur, mais de **démontrer que vous comprenez les concepts** et que vous pouvez les appliquer. Les questions sont des **portes** : la première réponse montre que vous connaissez le sujet, et les questions de suivi vérifient la profondeur de votre compréhension. Le plus important n'est pas de tout savoir, mais de savoir **raisonner à voix haute** et dire "je ne sais pas, mais voici comment je chercherais".
 
 ---
 
@@ -39,7 +39,7 @@ Un entretien technique, c'est comme un **oral d'examen** : on ne vous demande pa
 <details>
 <summary><strong>Q1. Qu'est-ce que JSX et comment fonctionne-t-il ?</strong></summary>
 
-JSX est une extension syntaxique de JavaScript qui permet d'écrire du markup dans le code. Ce n'est **pas** du HTML — c'est transformé par le compilateur en appels `React.createElement()` (ou `_jsx()`). Entre `{}`, on peut mettre toute **expression** JavaScript (ternaire, `.map()`, variable), mais pas de **statement** (`if`, `for`). Les attributs utilisent camelCase (`className` au lieu de `class`, `htmlFor` au lieu de `for`).
+JSX est une extension syntaxique de JavaScript qui permet d'écrire du markup dans le code. Ce n'est **pas** du HTML — c'est transformé par le compilateur en appels `React.createElement()` (où `_jsx()`). Entre `{}`, on peut mettre toute **expression** JavaScript (ternaire, `.map()`, variable), mais pas de **statement** (`if`, `for`). Les attributs utilisent camelCase (`className` au lieu de `class`, `htmlFor` au lieu de `for`).
 </details>
 
 <details>
@@ -196,7 +196,7 @@ Les concurrent features permettent à React de préparer plusieurs versions de l
 <details>
 <summary><strong>Q23. Qu'est-ce que l'hydratation et quels problèmes peut-elle causer ?</strong></summary>
 
-L'hydratation est le processus où React "attache" les event listeners au HTML rendu côté serveur. React compare le HTML du serveur avec ce qu'il rendrait côté client — si les deux ne correspondent pas, c'est un **hydration mismatch** (warning en dev, comportement imprévisible en prod). Causes fréquentes : `Date.now()`, `Math.random()`, `window.innerWidth` dans le rendu initial. Solution : utiliser `useEffect` pour les valeurs qui diffèrent entre serveur et client.
+L'hydratation est le processus ou React "attache" les event listeners au HTML rendu côté serveur. React compare le HTML du serveur avec ce qu'il rendrait côté client — si les deux ne correspondent pas, c'est un **hydration mismatch** (warning en dev, comportement imprévisible en prod). Causes fréquentes : `Date.now()`, `Math.random()`, `window.innerWidth` dans le rendu initial. Solution : utiliser `useEffect` pour les valeurs qui diffèrent entre serveur et client.
 </details>
 
 <details>
@@ -208,7 +208,7 @@ Le streaming SSR permet d'envoyer le HTML au navigateur **progressivement** au l
 <details>
 <summary><strong>Q25. Qu'est-ce que le React Compiler et que change-t-il ?</strong></summary>
 
-Le React Compiler (anciennement React Forget) est un compilateur qui mémorise automatiquement les composants et les valeurs. Il élimine le besoin d'écrire `useMemo`, `useCallback` et `React.memo` manuellement. Le compilateur analyse le code au build time et ajoute la mémorisation où c'est bénéfique. Disponible en expérimental dans React 19, il sera le standard dans les futures versions. Il ne change pas l'API — le code existant continue de fonctionner.
+Le React Compiler (anciennement React Forget) est un compilateur qui mémorise automatiquement les composants et les valeurs. Il élimine le besoin d'écrire `useMemo`, `useCallback` et `React.memo` manuellement. Le compilateur analyse le code au build time et ajoute la mémorisation ou c'est bénéfique. Disponible en expérimental dans React 19, il sera le standard dans les futures versions. Il ne change pas l'API — le code existant continue de fonctionner.
 </details>
 
 <details>
@@ -220,7 +220,7 @@ Le React Compiler (anciennement React Forget) est un compilateur qui mémorise a
 <details>
 <summary><strong>Q27. Qu'est-ce qu'une state machine et quand l'utiliser en React ?</strong></summary>
 
-Une state machine est un modèle qui définit des **états finis** et les **transitions** autorisées entre eux. En React, elle remplace les multiples `useState` booléens (`isLoading`, `isError`, `isSuccess`) par un état unique avec des transitions explicites. Bibliothèque : **XState** (ou `useReducer` pour les cas simples). A utiliser pour : les workflows complexes (panier d'achat, formulaire multi-étapes, processus d'onboarding), les UI avec de nombreux états interdépendants.
+Une state machine est un modèle qui définit des **états finis** et les **transitions** autorisées entre eux. En React, elle remplace les multiples `useState` booléens (`isLoading`, `isError`, `isSuccess`) par un état unique avec des transitions explicites. Bibliothèque : **XState** (où `useReducer` pour les cas simples). A utiliser pour : les workflows complexes (panier d'achat, formulaire multi-étapes, processus d'onboarding), les UI avec de nombreux états interdépendants.
 </details>
 
 <details>
@@ -278,7 +278,7 @@ Processus de décision : (1) **Comprendre les contraintes** : taille d'équipe, 
 
 ### Exercice : simulation d'entretien (30 min)
 
-Mettez un minuteur de 30 minutes. Pour chaque question ci-dessous, répondez **à voix haute** comme en entretien. Notez les questions où vous hésitez — ce sont vos points à retravailler.
+Mettez un minuteur de 30 minutes. Pour chaque question ci-dessous, répondez **à voix haute** comme en entretien. Notez les questions ou vous hésitez — ce sont vos points à retravailler.
 
 **Round 1 — Échauffement (5 min)**
 1. Qu'est-ce qui différencie React d'Angular et Vue ?
@@ -327,3 +327,23 @@ Mettez un minuteur de 30 minutes. Pour chaque question ci-dessous, répondez **�
 ---
 
 > **Félicitations !** Vous avez terminé le parcours complet React 19 + Next.js 15. Retournez au [parcours](../parcours.md) pour vérifier votre tracker de révision et planifier vos révisions J+7 et J+30.
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Exercice** : [25-entretien-react](../../exercices/25-entretien-react/ENONCE)
+2. **Projet fil rouge** : [README](../../projet-fil-rouge/README)
+:::
+
+---
+
+<!-- navigation-inter-cours -->
+
+::: info Cours suivant
+Bravo, tu as termine le cours **React** ! 
+Le prochain cours du curriculum est **Testing**.
+
+[Commencer Testing →](../../../04-testing/modules/00-prerequis-et-introduction.md)
+:::

@@ -1,8 +1,8 @@
 # Correction — Exercice 12 : Formulaire React Hook Form
 
-## Resultat attendu
+## Résultat attendu
 
-Un formulaire d'inscription avec 4 champs (nom, email, mot de passe, confirmation), une validation en temps reel via Zod, des messages d'erreur en francais sous chaque champ, et un bouton de soumission qui se desactive pendant le traitement.
+Un formulaire d'inscription avec 4 champs (nom, email, mot de passe, confirmation), une validation en temps réel via Zod, des messages d'erreur en français sous chaque champ, et un bouton de soumission qui se désactivé pendant le traitement.
 
 ---
 
@@ -253,12 +253,12 @@ export default function App() {
 ### 1. Oublier le resolver Zod dans useForm
 
 - ❌ `useForm<RegistrationFormData>()` sans `resolver`.
-  La validation Zod ne s'applique pas, le formulaire se soumet meme avec des donnees invalides.
+  La validation Zod ne s'applique pas, le formulaire se soumet même avec des donnees invalides.
 - ✅ `useForm<RegistrationFormData>({ resolver: zodResolver(registrationSchema) })`
 
 ### 2. Typer le formulaire manuellement au lieu d'inferer depuis Zod
 
-- ❌ Definir une interface `RegistrationFormData` manuellement en parallele du schema Zod.
+- ❌ Définir une interface `RegistrationFormData` manuellement en parallele du schema Zod.
   Risque de desynchronisation entre le schema et le type.
 - ✅ `type RegistrationFormData = z.infer<typeof registrationSchema>;`
   Le type est toujours synchronise avec le schema.
@@ -267,7 +267,7 @@ export default function App() {
 
 - ❌ `<form onSubmit={handleSubmit(onSubmit)}>` laisse la validation native du navigateur.
   Les messages d'erreur du navigateur se melangent avec ceux de Zod.
-- ✅ `<form onSubmit={handleSubmit(onSubmit)} noValidate>` desactive la validation HTML5.
+- ✅ `<form onSubmit={handleSubmit(onSubmit)} noValidate>` désactivé la validation HTML5.
 
 ### 4. Ne pas utiliser `path` dans `.refine()`
 
@@ -275,7 +275,7 @@ export default function App() {
   L'erreur se retrouve au niveau "root" du formulaire, pas sous le champ `confirmPassword`.
 - ✅ Ajouter `path: ["confirmPassword"]` pour cibler le bon champ.
 
-### 5. Oublier `aria-invalid` pour l'accessibilite
+### 5. Oublier `aria-invalid` pour l'accessibilité
 
 - ❌ Pas d'attribut ARIA sur les champs en erreur.
   Les lecteurs d'ecran ne signalent pas le champ comme invalide.
@@ -283,11 +283,11 @@ export default function App() {
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept            | Description                                                          | Documentation                              |
 | ------------------ | -------------------------------------------------------------------- | ------------------------------------------ |
-| `useForm`          | Hook principal de React Hook Form pour gerer l'etat du formulaire    | [RHF docs](https://react-hook-form.com/docs/useform) |
+| `useForm`          | Hook principal de React Hook Form pour gérer l'état du formulaire    | [RHF docs](https://react-hook-form.com/docs/useform) |
 | `register`         | Lie un champ HTML au formulaire (nom, validation, ref)               | [RHF docs](https://react-hook-form.com/docs/useform/register) |
 | `handleSubmit`     | Wrapper qui valide avant d'appeler le handler de soumission          | [RHF docs](https://react-hook-form.com/docs/useform/handlesubmit) |
 | `zodResolver`      | Connecte un schema Zod a React Hook Form                            | [resolvers](https://github.com/react-hook-form/resolvers) |
@@ -300,5 +300,5 @@ export default function App() {
 ## Pour aller plus loin
 
 - Ajoute un indicateur visuel de force du mot de passe.
-- Utilise `watch("password")` pour afficher en temps reel les criteres de validation.
+- Utilise `watch("password")` pour afficher en temps réel les criteres de validation.
 - Ajoute un champ checkbox "J'accepte les CGU" avec validation Zod.

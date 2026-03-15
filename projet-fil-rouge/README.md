@@ -6,15 +6,15 @@
 
 ## Presentation
 
-**TaskFlow** est une application de gestion de projet complete, combinant une vue Kanban et une vue liste pour organiser les taches par projets. Elle est construite avec Next.js 15 App Router et exploite les dernieres fonctionnalites de React 19 (Server Components, Server Actions, etc.).
+**TaskFlow** est une application de gestion de projet complete, combinant une vue Kanban et une vue liste pour organiser les taches par projets. Elle est construite avec Next.js 15 App Router et exploite les dernières fonctionnalites de React 19 (Server Components, Server Actions, etc.).
 
-L'application est construite **progressivement** au fil des modules de la formation. A chaque module, tu ajoutes une nouvelle brique fonctionnelle ou technique, ce qui te permet de voir un projet realiste evoluer de zero a la production.
+L'application est construite **progressivement** au fil des modules de la formation. A chaque module, tu ajoutes une nouvelle brique fonctionnelle ou technique, ce qui te permet de voir un projet realiste evoluer de zero à la production.
 
 ### Pourquoi un projet fil rouge ?
 
 - **Contextualiser chaque concept** : chaque notion vue en cours est immediatement appliquee dans un projet concret.
-- **Construire un portfolio** : a la fin de la formation, tu as un projet deployable que tu peux montrer en entretien.
-- **Simuler un projet ESN** : architecture, patterns et pratiques identiques a un vrai projet client.
+- **Construire un portfolio** : à la fin de la formation, tu as un projet deployable que tu peux montrer en entretien.
+- **Simuler un projet ESN** : architecture, patterns et pratiques identiques à un vrai projet client.
 
 ---
 
@@ -26,13 +26,13 @@ L'application est construite **progressivement** au fil des modules de la format
 |--------------------------|----------------------------------------------------------|
 | Tableau Kanban            | Drag & drop des taches entre colonnes (Todo, En cours, Done) |
 | Vue liste                 | Liste filtrable et triable de toutes les taches          |
-| CRUD taches               | Creer, lire, modifier, supprimer des taches              |
+| CRUD taches               | Créer, lire, modifier, supprimer des taches              |
 | Dashboard                 | Statistiques du projet (compteurs, graphiques)           |
 | Authentification          | Login/register avec Auth.js, protection des routes       |
 | Dark mode                 | Toggle clair/sombre, persiste en localStorage            |
 | Responsive                | Interface adaptee mobile, tablette, desktop              |
-| Tests complets            | Unitaires (Vitest), integration (MSW), E2E (Playwright) |
-| CI/CD                     | Pipeline GitHub Actions, deploiement Vercel              |
+| Tests complets            | Unitaires (Vitest), intégration (MSW), E2E (Playwright) |
+| CI/CD                     | Pipeline GitHub Actions, déploiement Vercel              |
 
 ---
 
@@ -128,7 +128,7 @@ export const DEFAULT_COLUMNS: Column[] = [
 | Auth            | Auth.js (NextAuth v5)         | 5.x     | Credentials, OAuth, RBAC          |
 | Tests unitaires | Vitest + React Testing Library| latest  | Composants, hooks                 |
 | Tests E2E       | Playwright                    | latest  | Scenarios navigateur              |
-| Mocking         | MSW                           | 2.x     | Interception reseau               |
+| Mocking         | MSW                           | 2.x     | Interception réseau               |
 | CI/CD           | GitHub Actions + Vercel       | —       | Lint, tests, build, deploy        |
 | Package manager | pnpm                          | 9.x     | Rapide, strict                    |
 
@@ -143,13 +143,13 @@ export const DEFAULT_COLUMNS: Column[] = [
 | **02 — Hooks** | State local pour les formulaires, `useEffect` pour les effets, custom hooks `useLocalStorage`, `useDebounce` | Ex 05-07 |
 | **03 — State Management** | Store Zustand pour les taches et l'UI, Context pour le theme | Ex 08-10 |
 | **04 — Routing** | Navigation entre Dashboard, Projets, Taches, Profil | Ex 11 |
-| **05 — Formulaires** | Formulaire de creation/edition de tache avec React Hook Form + Zod | Ex 12-13 |
+| **05 — Formulaires** | Formulaire de création/edition de tache avec React Hook Form + Zod | Ex 12-13 |
 | **06 — Next.js** | App Router, Server Components, Server Actions, API Routes, middleware | Ex 14-16b |
-| **07 — Tests** | Tests unitaires des composants, tests d'integration avec MSW, tests E2E Playwright | Ex 17-19 |
+| **07 — Tests** | Tests unitaires des composants, tests d'intégration avec MSW, tests E2E Playwright | Ex 17-19 |
 | **08 — Performance** | Optimisation de la liste de taches, composant Tabs compound | Ex 20-21 |
 | **09 — Styling** | Dashboard complet Tailwind, dark mode, responsive | Ex 22 |
 | **10 — Auth** | Authentification Auth.js, protection des routes, RBAC | Ex 23 |
-| **11 — CI/CD** | Pipeline GitHub Actions, deploiement Vercel | Ex 24 |
+| **11 — CI/CD** | Pipeline GitHub Actions, déploiement Vercel | Ex 24 |
 | **12 — Recettes ESN** | Audit final, preparation entretien | Ex 25 |
 
 ---
@@ -317,7 +317,7 @@ pnpm dev
 ## Conseils
 
 1. **Ne pas tout coder d'un coup** : suis la progression module par module. Chaque module ajoute une brique.
-2. **Commencer simple** : les premiers modules utilisent des donnees en memoire. La persistance vient plus tard.
-3. **Tester au fur et a mesure** : n'attends pas le module 07 pour ecrire tes premiers tests.
+2. **Commencer simple** : les premiers modules utilisent des donnees en mémoire. La persistance vient plus tard.
+3. **Tester au fur et à mesure** : n'attends pas le module 07 pour écrire tes premiers tests.
 4. **Commiter souvent** : un commit par fonctionnalite ajoutee. Cela t'entrainera a Git.
-5. **Deployer tot** : deploie sur Vercel des le module 06 pour voir ton application en ligne.
+5. **Déployer tot** : deploie sur Vercel des le module 06 pour voir ton application en ligne.

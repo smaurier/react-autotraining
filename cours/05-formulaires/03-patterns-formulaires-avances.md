@@ -28,7 +28,7 @@ En installant `@hookform/resolvers` et en passant `resolver: zodResolver(mySchem
 
 ## Analogie
 
-Imaginez un **dossier administratif complexe** pour une demande de permis de construire. Il y a **plusieurs pages** (wizard multi-étapes), certaines sections permettent d'ajouter des éléments (« ajouter un co-propriétaire » = champs dynamiques), des règles liées entre elles (« si le terrain fait plus de 500m, un architecte est obligatoire » = validation cross-field), une vérification en mairie avant dépôt (validation serveur), et un système de brouillon automatique (auto-save). Ce cours couvre chacun de ces patterns.
+Imaginez un **dossier administratif complexe** pour une demandé de permis de construire. Il y a **plusieurs pages** (wizard multi-étapes), certaines sections permettent d'ajouter des éléments (« ajouter un co-propriétaire » = champs dynamiques), des règles liées entre elles (« si le terrain fait plus de 500m, un architecte est obligatoire » = validation cross-field), une vérification en mairie avant dépôt (validation serveur), et un système de brouillon automatique (auto-save). Ce cours couvre chacun de ces patterns.
 
 ---
 
@@ -586,7 +586,7 @@ function RobustForm() {
 
 Créez un formulaire de création de projet avec les patterns suivants :
 
-1. **Wizard 2 étapes** : Etape 1 (nom du projet, description), Etape 2 (membres de l'équipe)
+1. **Wizard 2 étapes** : Étape 1 (nom du projet, description), Étape 2 (membres de l'équipe)
 2. **Champs dynamiques** pour les membres (nom + rôle) avec `useFieldArray`
 3. **Validation Zod** : nom >= 3 caractères, au moins 1 membre, rôle requis
 4. Affichage d'un **récapitulatif** avant soumission
@@ -748,3 +748,12 @@ function ProjectWizard() {
 ---
 
 > **Prochain cours** : [Cours 24 — Tests unitaires avec Vitest](../06-nextjs/01-intro-nextjs.md)
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Exercice** : [12-formulaire-rhf](../../exercices/12-formulaire-rhf/ENONCE)
+2. **Exercice** : [13-formulaire-multi-étapes](../../exercices/13-formulaire-multi-etapes/ENONCE)
+:::

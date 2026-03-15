@@ -277,7 +277,7 @@ const updateUser = useMutation({
 | Concept | TanStack Query (React) | Angular |
 |---------|------------------------|---------|
 | Fetch | `useQuery({ queryFn })` | `HttpClient.get()` |
-| Cache | Automatique par queryKey | Manuel (ou `resource()` Angular 19+) |
+| Cache | Automatique par queryKey | Manuel (où `resource()` Angular 19+) |
 | Loading state | `isLoading`, `isFetching` | `resource().isLoading()` ou manuel |
 | Erreur | `isError`, `error` | `resource().error()` ou `catchError` |
 | Invalidation | `invalidateQueries()` | Manuel (`resource().reload()`) |
@@ -440,3 +440,13 @@ function TaskManager() {
 ---
 
 > **Prochain cours** : [Cours 18 — React Router : navigation basique](../04-routing/01-react-router-basique.md)
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Exercice** : [08-context-theme](../../exercices/08-context-theme/ENONCE)
+2. **Exercice** : [09-zustand-store](../../exercices/09-zustand-store/ENONCE)
+3. **Exercice** : [10-react-query](../../exercices/10-react-query/ENONCE)
+:::

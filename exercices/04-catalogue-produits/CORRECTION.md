@@ -1,8 +1,8 @@
 # Correction — Exercice 04 : Catalogue produits
 
-## Resultat attendu
+## Résultat attendu
 
-Une page affichant une grille de 5 cartes produit, chacune avec nom, prix, description, badge stock et bouton "Ajouter au panier". En haut, un resume du panier affiche le nombre d'articles ajoutes. Les produits en rupture ont un bouton desactive.
+Une page affichant une grille de 5 cartes produit, chacune avec nom, prix, description, badge stock et bouton "Ajouter au panier". En haut, un résumé du panier affiche le nombre d'articles ajoutes. Les produits en rupture ont un bouton désactivé.
 
 ---
 
@@ -208,44 +208,44 @@ export default function App() {
 ### 1. Ne pas typer le callback `onAddToCart`
 
 - ❌ `onAddToCart: Function` ou `onAddToCart: any`
-  Types trop larges, aucune verification sur les parametres.
+  Types trop larges, aucune vérification sur les paramètres.
 - ✅ `onAddToCart: (product: Product) => void`
-  Signature precise : TypeScript verifie que le callback recoit bien un `Product`.
+  Signature précisé : TypeScript vérifié que le callback recoit bien un `Product`.
 
 ### 2. Oublier `disabled` sur le bouton
 
-- ❌ Le bouton reste cliquable meme quand le produit est en rupture.
+- ❌ Le bouton reste cliquable même quand le produit est en rupture.
   L'utilisateur peut ajouter un produit indisponible.
-- ✅ `<button disabled={!product.inStock}>` desactive le bouton visuellement et fonctionnellement.
+- ✅ `<button disabled={!product.inStock}>` désactivé le bouton visuellement et fonctionnellement.
 
 ### 3. Formater le prix avec une simple concatenation
 
-- ❌ `product.price + " EUR"` affiche `"399.99 EUR"` au lieu du format francais.
+- ❌ `product.price + " EUR"` affiche `"399.99 EUR"` au lieu du format français.
 - ✅ `Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" })` produit `"399,99 EUR"`.
 
-### 4. Mettre l'etat du panier dans ProductCard
+### 4. Mettre l'état du panier dans ProductCard
 
-- ❌ Chaque `ProductCard` gere son propre compteur. Impossible d'avoir un total global.
-- ✅ L'etat est dans le parent (`ProductList`), le total est centralise.
+- ❌ Chaque `ProductCard` géré son propre compteur. Impossible d'avoir un total global.
+- ✅ L'état est dans le parent (`ProductList`), le total est centralise.
 
 ### 5. Ne pas separer les types dans un fichier dedie
 
-- ❌ Definir `Product` dans chaque fichier ou l'inliner dans les props.
+- ❌ Définir `Product` dans chaque fichier ou l'inliner dans les props.
   Duplication et risque de desynchronisation.
 - ✅ Un fichier `types.ts` unique importe partout.
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept             | Description                                                           | Documentation                              |
 | ------------------- | --------------------------------------------------------------------- | ------------------------------------------ |
 | Props               | Donnees passees du parent a l'enfant                                  | [react.dev](https://react.dev/learn/passing-props-to-a-component) |
 | Callback props      | Fonction passee en prop pour communiquer de l'enfant vers le parent   | [react.dev](https://react.dev/learn/responding-to-events) |
 | Composition         | Assembler plusieurs composants pour construire l'UI                   | [react.dev](https://react.dev/learn/thinking-in-react) |
-| Interface TypeScript | Definir la forme des objets et des props                             | [TS Handbook](https://www.typescriptlang.org/docs/handbook/2/objects.html) |
+| Interface TypeScript | Définir la forme des objets et des props                             | [TS Handbook](https://www.typescriptlang.org/docs/handbook/2/objects.html) |
 | `Intl.NumberFormat` | Formatage des nombres selon la locale                                 | [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) |
-| `disabled`          | Attribut HTML pour desactiver un element interactif                   | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) |
+| `disabled`          | Attribut HTML pour désactiver un élément interactif                   | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) |
 
 ---
 
@@ -253,4 +253,4 @@ export default function App() {
 
 - Transforme le compteur en un vrai tableau `CartItem[]` avec quantites.
 - Ajoute un composant `CartDrawer` qui affiche le detail du panier.
-- Implemente un systeme de recherche/filtre sur les produits.
+- Implemente un système de recherche/filtre sur les produits.

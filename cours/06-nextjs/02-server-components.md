@@ -1,6 +1,8 @@
 # Cours 25 — Server Components vs Client Components
 
 > **Objectif** : comprendre la distinction fondamentale entre Server Components et Client Components dans React 19 / Next.js 15, savoir quand utiliser `'use client'`, et maîtriser les patterns de composition serveur/client.
+>
+> **SSR cross-cours** : le SSR/ISR est aussi couvert dans 03-Vue module 04 (SSR/Hydration, Nuxt 3) et 07-HTTP-Caching modules 10-12 (stratégies de cache et CDN). Ici l'angle est Next.js App Router et Server Components.
 
 ---
 

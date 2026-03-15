@@ -7,8 +7,8 @@
 - [ ] La page `products/page.tsx` est un Server Component (pas de `'use client'`)
 - [ ] La page utilise `async/await` pour simuler un chargement de donnees
 - [ ] `ProductCard` est un Server Component qui n'utilise aucun hook React
-- [ ] `AddToCartButton` a la directive `'use client'` en premiere ligne du fichier
-- [ ] `AddToCartButton` utilise `useState` pour gerer la quantite et le feedback visuel
+- [ ] `AddToCartButton` à la directive `'use client'` en première ligne du fichier
+- [ ] `AddToCartButton` utilise `useState` pour gérer la quantite et le feedback visuel
 - [ ] Les props passees de Server a Client sont serialisables (pas de fonctions)
 - [ ] `CartSummary` est un Client Component avec `'use client'`
 - [ ] Le `loading.tsx` affiche un skeleton pendant le chargement

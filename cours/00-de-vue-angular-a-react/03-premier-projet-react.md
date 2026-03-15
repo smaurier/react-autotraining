@@ -268,3 +268,11 @@ Tu y créeras un composant `<Greeting />` avec des props typées et du state loc
 ## Prochaine étape
 
 Module suivant : [01 — Composants & JSX](../01-composants-jsx/)
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Exercice** : [01-premier-composant](../../exercices/01-premier-composant/ENONCE)
+:::

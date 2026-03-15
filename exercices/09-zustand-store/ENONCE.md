@@ -1,6 +1,6 @@
 # Exercice 09 — Zustand store
 
-**Module** : 03-Gestion-etat · **Difficulte** : ⭐⭐⭐
+**Module** : 03-Gestion-état · **Difficulte** : ⭐⭐⭐
 **Duree estimee** : 60 minutes
 **Cours** : `cours/03-gestion-etat/03-gestion-etat.md`
 
@@ -8,13 +8,13 @@
 
 ## Objectif
 
-Creer un store de gestion de taches avec Zustand, une bibliotheque de gestion d'etat legere et performante. Tu apprendras a definir un store type, a creer des actions, a utiliser des selecteurs pour optimiser les re-renders, et a persister l'etat avec un middleware.
+Créer un store de gestion de taches avec Zustand, une bibliotheque de gestion d'état legere et performante. Tu apprendras a définir un store type, a créer des actions, à utiliser des selecteurs pour optimiser les re-renders, et a persister l'état avec un middleware.
 
 ---
 
 ## Consignes
 
-1. **Definir les types** dans `src/exercises/ex09/types.ts` :
+1. **Définir les types** dans `src/exercises/ex09/types.ts` :
    ```ts
    export interface Task {
      id: string;
@@ -26,9 +26,9 @@ Creer un store de gestion de taches avec Zustand, une bibliotheque de gestion d'
    export type FilterStatus = "all" | "active" | "completed";
    ```
 
-2. **Creer le store** dans `src/exercises/ex09/useTaskStore.ts` :
+2. **Créer le store** dans `src/exercises/ex09/useTaskStore.ts` :
    - Utiliser `create` de Zustand avec un typage strict.
-   - **Etat** :
+   - **État** :
      - `tasks: Task[]` — liste des taches.
      - `filter: FilterStatus` — filtre courant.
    - **Actions** :
@@ -39,28 +39,28 @@ Creer un store de gestion de taches avec Zustand, une bibliotheque de gestion d'
    - **Selecteurs** (fonctions derivees) :
      - `getFilteredTasks(): Task[]` — retourner les taches selon le filtre courant.
      - `getRemainingCount(): number` — nombre de taches non completees.
-   - **Middleware** : utiliser `persist` pour sauvegarder l'etat dans `localStorage`.
+   - **Middleware** : utiliser `persist` pour sauvegarder l'état dans `localStorage`.
 
-3. **Creer le composant** `src/exercises/ex09/TaskInput.tsx` :
+3. **Créer le composant** `src/exercises/ex09/TaskInput.tsx` :
    - Champ de saisie + bouton pour ajouter une tache.
-   - Utiliser un selecteur precis : `useTaskStore((s) => s.addTask)`.
+   - Utiliser un selecteur précis : `useTaskStore((s) => s.addTask)`.
 
-4. **Creer le composant** `src/exercises/ex09/TaskList.tsx` :
+4. **Créer le composant** `src/exercises/ex09/TaskList.tsx` :
    - Afficher les taches filtrees.
    - Utiliser les selecteurs du store.
 
-5. **Creer le composant** `src/exercises/ex09/TaskFilters.tsx` :
+5. **Créer le composant** `src/exercises/ex09/TaskFilters.tsx` :
    - Trois boutons pour changer le filtre (Toutes, Actives, Completees).
    - Afficher le compteur de taches restantes.
 
-6. **Creer le fichier** `src/exercises/ex09/App.tsx`.
+6. **Créer le fichier** `src/exercises/ex09/App.tsx`.
 
 ---
 
 ## Contraintes TypeScript
 
 - Mode `strict` active.
-- Le store doit etre entierement type avec une interface `TaskState`.
+- Le store doit etre entièrement type avec une interface `TaskState`.
 - Les selecteurs dans les composants doivent etre des fonctions fleches typees.
 - Aucun `any` autorise.
 
@@ -70,7 +70,7 @@ Creer un store de gestion de taches avec Zustand, une bibliotheque de gestion d'
 
 - [ ] Ajouter une action `clearCompleted()` pour supprimer toutes les taches completees.
 - [ ] Ajouter le middleware `devtools` pour le debug avec les Redux DevTools.
-- [ ] Creer un selecteur `useFilteredTasks()` avec `useShallow` pour eviter les re-renders.
+- [ ] Créer un selecteur `useFilteredTasks()` avec `useShallow` pour éviter les re-renders.
 
 ---
 
@@ -92,11 +92,11 @@ src/exercises/ex09/
 
 | Critere                                          | Attendu |
 | ------------------------------------------------ | ------- |
-| Le store Zustand est cree et type                | oui     |
+| Le store Zustand est créé et type                | oui     |
 | Les actions add/toggle/delete fonctionnent       | oui     |
 | Les filtres Toutes/Actives/Completees marchent   | oui     |
 | Le middleware `persist` sauvegarde dans localStorage | oui  |
-| Les selecteurs sont precis (pas de `useTaskStore()` sans selecteur) | oui |
+| Les selecteurs sont précis (pas de `useTaskStore()` sans selecteur) | oui |
 | Aucun `any` dans le code                         | oui     |
 
 ---

@@ -198,7 +198,7 @@ const ref = useRef<HTMLInputElement>(null);
 <input defaultValue="Alice" ref={ref} />
 ```
 
-**Analogie** : controlled = pantin (React tire les ficelles). Uncontrolled = acteur libre (React lui demande sa valeur quand besoin).
+**Analogie** : controlled = pantin (React tire les ficelles). Uncontrolled = acteur libre (React lui demandé sa valeur quand besoin).
 
 **Vue/Angular -> React** : `v-model`/`[(ngModel)]` fait le two-way binding automatiquement. En React, **tu choisis un mode et tu t'y tiens**.
 
@@ -280,7 +280,7 @@ useEffect(() => {
 }, []);
 ```
 
-**Analogie** : `useEffect` demande "comment te nettoyer ?". Une promesse répond "je te dirai plus tard" -- il ne sait pas quoi en faire.
+**Analogie** : `useEffect` demandé "comment te nettoyer ?". Une promesse répond "je te dirai plus tard" -- il ne sait pas quoi en faire.
 
 **TypeScript** te signale l'erreur. En JS pur, c'est silencieux.
 
@@ -343,4 +343,4 @@ return <ul>{users.map(u => <li key={u.id}>{u.name}</li>)}</ul>;
 | 12 | Hook conditionnel | Toujours au top-level, même ordre |
 | 13 | async useEffect | Fonction async interne |
 | 14 | Prop drilling | Context ou Zustand |
-| 15 | Pas de loading/error | Toujours 3 états (ou TanStack Query) |
+| 15 | Pas de loading/error | Toujours 3 états (où TanStack Query) |

@@ -1,11 +1,11 @@
 # Checklist — Exercice 08 : Context theme
 
-Coche chaque element une fois valide :
+Coche chaque élément une fois valide :
 
-- [ ] Le type `Theme` est defini comme `"light" | "dark"`
+- [ ] Le type `Theme` est défini comme `"light" | "dark"`
 - [ ] L'interface `ThemeContextValue` contient `theme` et `toggleTheme`
-- [ ] Le contexte est cree avec `createContext<ThemeContextValue | null>(null)`
-- [ ] Le `ThemeProvider` gere l'etat `theme` et fournit la valeur via le Provider
+- [ ] Le contexte est créé avec `createContext<ThemeContextValue | null>(null)`
+- [ ] Le `ThemeProvider` géré l'état `theme` et fournit la valeur via le Provider
 - [ ] Le hook `useTheme()` consomme le contexte avec `useContext`
 - [ ] Le hook `useTheme()` lance une erreur si utilise hors du Provider
 - [ ] Le composant `Header` affiche le theme courant et un bouton de bascule

@@ -10,45 +10,45 @@
 
 Construire un blog complet avec Next.js 15 App Router en exploitant les conventions de fichiers : `layout.tsx`, `page.tsx`, `loading.tsx`, `not-found.tsx` et les routes dynamiques `[slug]/page.tsx`. Les donnees proviennent d'un fichier JSON statique.
 
-Tu vas decouvrir comment le systeme de fichiers de Next.js remplace la configuration manuelle du routing, et comment chaque fichier special (`loading`, `not-found`, `error`) joue un role precis dans l'experience utilisateur.
+Tu vas découvrir comment le système de fichiers de Next.js remplace la configuration manuelle du routing, et comment chaque fichier special (`loading`, `not-found`, `error`) joue un role précis dans l'experience utilisateur.
 
 ---
 
 ## Consignes
 
-1. **Creer le fichier de donnees** `src/data/posts.json` contenant au moins 5 articles de blog avec les champs : `slug`, `title`, `excerpt`, `content`, `author`, `date`, `tags`.
+1. **Créer le fichier de donnees** `src/data/posts.json` contenant au moins 5 articles de blog avec les champs : `slug`, `title`, `excerpt`, `content`, `author`, `date`, `tags`.
 
-2. **Creer le layout racine** `src/app/layout.tsx` :
+2. **Créer le layout racine** `src/app/layout.tsx` :
    - Balises `<html lang="fr">` et `<body>`.
    - Un `<header>` avec navigation (`<Link>` vers `/` et `/blog`).
    - Un `<footer>` avec copyright.
    - Metadata Next.js (`title`, `description`).
 
-3. **Creer la page d'accueil** `src/app/page.tsx` :
+3. **Créer la page d'accueil** `src/app/page.tsx` :
    - Titre de bienvenue.
    - Lien vers la liste du blog.
 
-4. **Creer la page liste du blog** `src/app/blog/page.tsx` :
+4. **Créer la page liste du blog** `src/app/blog/page.tsx` :
    - Importer et afficher tous les articles depuis le JSON.
    - Chaque article affiche : titre (lien cliquable), extrait, date, tags.
 
-5. **Creer la page detail** `src/app/blog/[slug]/page.tsx` :
+5. **Créer la page detail** `src/app/blog/[slug]/page.tsx` :
    - Recevoir `params` (Promise dans Next.js 15) et extraire le `slug`.
    - Chercher l'article correspondant dans le JSON.
    - Si l'article n'existe pas, appeler `notFound()`.
    - Afficher : titre, auteur, date, contenu complet, tags.
-   - Generer les metadata dynamiques avec `generateMetadata`.
+   - Générer les metadata dynamiques avec `generateMetadata`.
 
-6. **Creer `src/app/blog/loading.tsx`** : skeleton de chargement.
+6. **Créer `src/app/blog/loading.tsx`** : skeleton de chargement.
 
-7. **Creer `src/app/not-found.tsx`** : page 404 personnalisee avec lien retour.
+7. **Créer `src/app/not-found.tsx`** : page 404 personnalisee avec lien retour.
 
 ---
 
 ## Contraintes TypeScript
 
 - Mode `strict` active dans `tsconfig.json`.
-- Definir une interface `Post` avec tous les champs types.
+- Définir une interface `Post` avec tous les champs types.
 - Typer `params` comme `Promise<{ slug: string }>` (Next.js 15).
 - Typer les props de `generateMetadata`.
 - Aucun `any` autorise.
@@ -59,9 +59,9 @@ Tu vas decouvrir comment le systeme de fichiers de Next.js remplace la configura
 ## Bonus
 
 - [ ] Ajouter `generateStaticParams` pour pre-rendre tous les slugs au build.
-- [ ] Creer un layout imbrique `src/app/blog/layout.tsx` avec une sidebar listant les tags.
-- [ ] Ajouter un composant `<Tag>` reutilisable avec un lien vers `/blog?tag=xxx`.
-- [ ] Implementer une page `src/app/blog/[slug]/not-found.tsx` specifique au blog.
+- [ ] Créer un layout imbrique `src/app/blog/layout.tsx` avec une sidebar listant les tags.
+- [ ] Ajouter un composant `<Tag>` réutilisable avec un lien vers `/blog?tag=xxx`.
+- [ ] Implementer une page `src/app/blog/[slug]/not-found.tsx` spécifique au blog.
 
 ---
 

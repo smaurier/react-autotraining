@@ -9,7 +9,7 @@
 <details>
 <summary>1. Comment protéger une route en React sans guards natifs ?</summary>
 
-Avec un composant wrapper qui vérifie l'authentification : s'il y a un utilisateur connecté, il rend `<Outlet />` ; sinon, il rend `<Navigate to="/login" />` pour rediriger.
+Avec un composant wrapper qui vérifie l'authentification : s'il y à un utilisateur connecté, il rend `<Outlet />` ; sinon, il rend `<Navigate to="/login" />` pour rediriger.
 </details>
 
 <details>
@@ -21,14 +21,14 @@ Avec un composant wrapper qui vérifie l'authentification : s'il y a un utilisat
 <details>
 <summary>3. Quel est l'avantage du lazy loading par route ?</summary>
 
-Il réduit la taille du bundle initial en découpant l'application en chunks par page. Seul le code de la page visitée est téléchargé, les autres pages sont chargées à la demande.
+Il réduit la taille du bundle initial en découpant l'application en chunks par page. Seul le code de la page visitée est téléchargé, les autres pages sont chargées à la demandé.
 </details>
 
 ---
 
 ## Analogie
 
-Imaginez deux types de pupitres dans une salle de classe. Le **pupitre connecté** (controlled) a un écran central : chaque lettre tapée par l'élève est immédiatement transmise au professeur qui la valide et la renvoie à l'écran. Le professeur sait à tout moment ce que contient le pupitre. Le **pupitre autonome** (uncontrolled) est un simple cahier : l'élève écrit librement, et le professeur ne lit le contenu que quand l'élève lève la main (soumission du formulaire).
+Imaginez deux types de pupitres dans une salle de classe. Le **pupitre connecté** (controlled) à un écran central : chaque lettre tapée par l'élève est immédiatement transmise au professeur qui la valide et la renvoie à l'écran. Le professeur sait à tout moment ce que contient le pupitre. Le **pupitre autonome** (uncontrolled) est un simple cahier : l'élève écrit librement, et le professeur ne lit le contenu que quand l'élève lève la main (soumission du formulaire).
 
 ---
 

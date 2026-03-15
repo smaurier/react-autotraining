@@ -38,7 +38,7 @@ Imaginez un **moteur de rendu de mail-merge** : vous écrivez un modèle de lett
 
 ### 1. JSX = expressions JavaScript
 
-JSX est transformé par le compilateur en appels `React.createElement()` (ou en `_jsx()` avec le nouveau transform). Ce n'est **pas** du HTML.
+JSX est transformé par le compilateur en appels `React.createElement()` (où en `_jsx()` avec le nouveau transform). Ce n'est **pas** du HTML.
 
 ```tsx
 // Ce que vous écrivez :

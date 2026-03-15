@@ -8,7 +8,7 @@
 
 ## Objectif
 
-Prendre un composant volontairement lent (100 produits avec filtres et tri) et l'optimiser en utilisant `React.memo`, `useMemo`, `useCallback` et `React.lazy`. Mesurer les performances avant et apres avec le React Profiler.
+Prendre un composant volontairement lent (100 produits avec filtres et tri) et l'optimiser en utilisant `React.memo`, `useMemo`, `useCallback` et `React.lazy`. Mesurer les performances avant et après avec le React Profiler.
 
 L'objectif pedagogique est de comprendre **quand et pourquoi** optimiser, pas d'optimiser par reflexe. Chaque optimisation doit etre justifiee par une mesure.
 
@@ -16,27 +16,27 @@ L'objectif pedagogique est de comprendre **quand et pourquoi** optimiser, pas d'
 
 ## Consignes
 
-1. **Creer le composant "lent"** `src/components/ProductCatalog.tsx` :
-   - 100 produits generes (ou charger depuis un JSON).
+1. **Créer le composant "lent"** `src/components/ProductCatalog.tsx` :
+   - 100 produits generes (où charger depuis un JSON).
    - Champ de recherche qui filtre par nom.
    - Selecteur de tri (prix croissant, prix decroissant, nom A-Z).
    - Selecteur de categorie.
    - Chaque produit affiche une carte avec nom, prix, categorie, image placeholder.
-   - **Volontairement non optimise** : filtrage et tri recalcules a chaque render, chaque carte re-render a chaque keystroke.
+   - **Volontairement non optimise** : filtrage et tri recalcules à chaque render, chaque carte re-render à chaque keystroke.
 
 2. **Mesurer les performances initiales** :
    - Utiliser `<Profiler>` de React pour mesurer le temps de rendu.
    - Noter le nombre de re-renders et la duree dans la console.
    - Identifier les composants qui re-render inutilement.
 
-3. **Optimiser etape par etape** :
-   - **Etape A** : `useMemo` pour le filtrage et le tri des produits.
-   - **Etape B** : `React.memo` sur le composant `ProductCard`.
-   - **Etape C** : `useCallback` pour les handlers passes en props.
-   - **Etape D** : `React.lazy` + `Suspense` pour charger un composant lourd (modal de detail).
+3. **Optimiser étape par étape** :
+   - **Étape A** : `useMemo` pour le filtrage et le tri des produits.
+   - **Étape B** : `React.memo` sur le composant `ProductCard`.
+   - **Étape C** : `useCallback` pour les handlers passes en props.
+   - **Étape D** : `React.lazy` + `Suspense` pour charger un composant lourd (modal de detail).
 
-4. **Mesurer les performances apres optimisation** :
-   - Comparer les metriques avant/apres.
+4. **Mesurer les performances après optimisation** :
+   - Comparer les metriques avant/après.
    - Documenter les gains dans un commentaire en haut du fichier.
 
 ---
@@ -86,9 +86,9 @@ src/
 | Le `<Profiler>` mesure les temps de rendu        | oui     |
 | `useMemo` est utilise pour le filtrage et le tri | oui     |
 | `React.memo` empeche les re-renders inutiles     | oui     |
-| `useCallback` stabilise les references de fonctions | oui  |
-| `React.lazy` charge le modal a la demande        | oui     |
-| Les gains sont documentes (avant/apres)          | oui     |
+| `useCallback` stabilise les références de fonctions | oui  |
+| `React.lazy` charge le modal à la demandé        | oui     |
+| Les gains sont documentes (avant/après)          | oui     |
 | Aucun `any` dans le code                         | oui     |
 
 ---

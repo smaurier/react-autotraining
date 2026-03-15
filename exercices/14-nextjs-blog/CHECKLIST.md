@@ -12,7 +12,7 @@
 - [ ] La page `/blog/[slug]` affiche le detail de l'article correspondant
 - [ ] `params` est type comme `Promise<{ slug: string }>` et `await` correctement (Next.js 15)
 - [ ] `notFound()` est appele quand le slug n'existe pas
-- [ ] `generateMetadata` genere des metadata dynamiques par article
+- [ ] `generateMetadata` généré des metadata dynamiques par article
 - [ ] `loading.tsx` affiche un skeleton de chargement
 - [ ] `not-found.tsx` affiche une page 404 personnalisee avec lien retour
 - [ ] Aucun `any` dans le code — `strict: true` respecte

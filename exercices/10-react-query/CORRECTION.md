@@ -1,8 +1,8 @@
 # Correction — Exercice 10 : React Query CRUD
 
-## Resultat attendu
+## Résultat attendu
 
-Une application de gestion de taches connectee a une API REST (json-server). Les taches se chargent au montage, on peut en creer, en basculer et en supprimer. Le cache se met a jour automatiquement apres chaque mutation. Les etats de chargement et d'erreur sont geres.
+Une application de gestion de taches connectee à une API REST (json-server). Les taches se chargent au montage, on peut en créer, en basculer et en supprimer. Le cache se met a jour automatiquement après chaque mutation. Les états de chargement et d'erreur sont geres.
 
 ---
 
@@ -293,53 +293,53 @@ export default function App() {
 
 ## Ce que tu aurais pu oublier
 
-### 1. Ne pas invalider le cache apres une mutation
+### 1. Ne pas invalider le cache après une mutation
 
-- ❌ Creer/supprimer une tache sans appeler `queryClient.invalidateQueries`.
+- ❌ Créer/supprimer une tache sans appeler `queryClient.invalidateQueries`.
   La liste affichee n'est plus synchronisee avec le serveur.
 - ✅ `onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] })`
-  Force un refetch de la liste apres chaque mutation.
+  Force un refetch de la liste après chaque mutation.
 
-### 2. Creer le `QueryClient` dans le composant
+### 2. Créer le `QueryClient` dans le composant
 
 - ❌ `function App() { const queryClient = new QueryClient(); ... }`
-  Un nouveau client est cree a chaque render, le cache est perdu.
+  Un nouveau client est créé à chaque render, le cache est perdu.
 - ✅ `const queryClient = new QueryClient();` en dehors du composant, une seule instance.
 
-### 3. Oublier de gerer les etats loading/error
+### 3. Oublier de gérer les états loading/error
 
 - ❌ Ne pas afficher d'indicateur de chargement ou de message d'erreur.
   L'utilisateur ne sait pas si les donnees chargent ou si quelque chose a echoue.
-- ✅ Verifier `isLoading` et `isError` avant d'afficher les donnees.
+- ✅ Vérifier `isLoading` et `isError` avant d'afficher les donnees.
 
 ### 4. Mauvais rollback dans la mise a jour optimiste
 
 - ❌ Oublier de sauvegarder `previousTasks` dans `onMutate`.
-  En cas d'erreur, impossible de revenir a l'etat precedent.
+  En cas d'erreur, impossible de revenir a l'état précédent.
 - ✅ Sauvegarder dans le contexte et restaurer dans `onError`.
 
-### 5. Ne pas typer les generiques de `useMutation`
+### 5. Ne pas typer les génériques de `useMutation`
 
-- ❌ `useMutation({ mutationFn: createTask })` sans generiques.
+- ❌ `useMutation({ mutationFn: createTask })` sans génériques.
   TypeScript peut inferer, mais les types de `onMutate` / `onError` / `context` sont imprecis.
-- ✅ Laisser l'inference fonctionner a partir de `mutationFn` bien type.
+- ✅ Laisser l'inference fonctionner à partir de `mutationFn` bien type.
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept                   | Description                                                         | Documentation                              |
 | ------------------------- | ------------------------------------------------------------------- | ------------------------------------------ |
 | `useQuery`                | Hook pour lire des donnees avec cache et refetch automatique        | [TanStack](https://tanstack.com/query/latest/docs/framework/react/reference/useQuery) |
-| `useMutation`             | Hook pour les operations d'ecriture (create, update, delete)        | [TanStack](https://tanstack.com/query/latest/docs/framework/react/reference/useMutation) |
-| `queryClient.invalidateQueries` | Forcer le refetch d'une query apres une mutation             | [TanStack](https://tanstack.com/query/latest/docs/reference/QueryClient#queryclientinvalidatequeries) |
-| Mise a jour optimiste     | Mettre a jour l'UI avant la reponse serveur avec rollback possible  | [TanStack](https://tanstack.com/query/latest/docs/framework/react/guides/optimistic-updates) |
+| `useMutation`             | Hook pour les operations d'écriture (create, update, delete)        | [TanStack](https://tanstack.com/query/latest/docs/framework/react/reference/useMutation) |
+| `queryClient.invalidateQueries` | Forcer le refetch d'une query après une mutation             | [TanStack](https://tanstack.com/query/latest/docs/reference/QueryClient#queryclientinvalidatequeries) |
+| Mise a jour optimiste     | Mettre a jour l'UI avant la réponse serveur avec rollback possible  | [TanStack](https://tanstack.com/query/latest/docs/framework/react/guides/optimistic-updates) |
 | `QueryClientProvider`     | Provider qui fournit le client a l'arbre de composants              | [TanStack](https://tanstack.com/query/latest/docs/framework/react/reference/QueryClientProvider) |
 
 ---
 
 ## Pour aller plus loin
 
-- Ajoute un filtre par statut avec des `queryKey` differentes (`["tasks", { status: "active" }]`).
+- Ajoute un filtre par statut avec des `queryKey` différentes (`["tasks", { status: "active" }]`).
 - Utilise `useSuspenseQuery` avec un composant `<Suspense>` pour le chargement.
-- Ajoute de la pagination avec `keepPreviousData` et des boutons Precedent/Suivant.
+- Ajoute de la pagination avec `keepPreviousData` et des boutons Précédent/Suivant.

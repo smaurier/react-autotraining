@@ -1,6 +1,6 @@
 # Checklist — Exercice 12 : Formulaire React Hook Form
 
-Coche chaque element une fois valide :
+Coche chaque élément une fois valide :
 
 - [ ] Le schema Zod valide `name` (min 2, max 50 caracteres)
 - [ ] Le schema Zod valide `email` (format email)
@@ -10,8 +10,8 @@ Coche chaque element une fois valide :
 - [ ] Le type `RegistrationFormData` est infere avec `z.infer`
 - [ ] `useForm` utilise `zodResolver(registrationSchema)`
 - [ ] Les erreurs s'affichent sous chaque champ avec `errors.field?.message`
-- [ ] Le formulaire a l'attribut `noValidate` pour desactiver la validation native
-- [ ] Le bouton est desactive pendant la soumission (`isSubmitting`)
-- [ ] Les champs ont des attributs `aria-invalid` pour l'accessibilite
+- [ ] Le formulaire a l'attribut `noValidate` pour désactiver la validation native
+- [ ] Le bouton est désactivé pendant la soumission (`isSubmitting`)
+- [ ] Les champs ont des attributs `aria-invalid` pour l'accessibilité
 - [ ] Aucun `any` n'est present dans le code
 - [ ] Le code compile sans erreur TypeScript en mode strict

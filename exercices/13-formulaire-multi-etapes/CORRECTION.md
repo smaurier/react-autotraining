@@ -1,8 +1,8 @@
-# Correction — Exercice 13 : Formulaire multi-etapes
+# Correction — Exercice 13 : Formulaire multi-étapes
 
-## Resultat attendu
+## Résultat attendu
 
-Un formulaire en 3 etapes avec une barre de progression. Etape 1 : informations personnelles. Etape 2 : adresses multiples avec ajout/suppression dynamique. Etape 3 : recapitulatif complet avant soumission. La navigation entre etapes valide l'etape courante et ne perd pas les donnees.
+Un formulaire en 3 étapes avec une barre de progression. Étape 1 : informations personnelles. Étape 2 : adresses multiples avec ajout/suppression dynamique. Étape 3 : récapitulatif complet avant soumission. La navigation entre étapes valide l'étape courante et ne perd pas les donnees.
 
 ---
 
@@ -594,20 +594,20 @@ export default function App() {
 
 ## Ce que tu aurais pu oublier
 
-### 1. Perdre les donnees entre les etapes
+### 1. Perdre les donnees entre les étapes
 
-- ❌ Creer un `useForm` par etape : les donnees de l'etape 1 sont perdues quand on passe a l'etape 2.
-- ✅ Un seul `useForm` global avec `FormProvider` pour partager les donnees entre toutes les etapes.
+- ❌ Créer un `useForm` par étape : les donnees de l'étape 1 sont perdues quand on passe a l'étape 2.
+- ✅ Un seul `useForm` global avec `FormProvider` pour partager les donnees entre toutes les étapes.
 
-### 2. Valider tout le formulaire a chaque etape
+### 2. Valider tout le formulaire à chaque étape
 
-- ❌ Utiliser `handleSubmit` pour passer a l'etape suivante : tous les champs sont valides, y compris ceux des etapes suivantes.
-- ✅ Utiliser `trigger(["field1", "field2"])` pour valider uniquement les champs de l'etape courante.
+- ❌ Utiliser `handleSubmit` pour passer a l'étape suivante : tous les champs sont valides, y compris ceux des étapes suivantes.
+- ✅ Utiliser `trigger(["field1", "field2"])` pour valider uniquement les champs de l'étape courante.
 
 ### 3. Oublier `key={field.id}` dans `useFieldArray`
 
-- ❌ `{fields.map((field, index) => <div key={index}>...)}` — l'index se decale a la suppression.
-- ✅ `{fields.map((field, index) => <div key={field.id}>...)}` — `field.id` est genere par RHF et reste stable.
+- ❌ `{fields.map((field, index) => <div key={index}>...)}` — l'index se decale à la suppression.
+- ✅ `{fields.map((field, index) => <div key={field.id}>...)}` — `field.id` est généré par RHF et reste stable.
 
 ### 4. Ne pas initialiser le tableau d'adresses
 
@@ -616,26 +616,26 @@ export default function App() {
 
 ### 5. Oublier `FormProvider`
 
-- ❌ Les sous-composants utilisent `useFormContext` mais le Provider n'est pas en place. Crash a l'execution.
+- ❌ Les sous-composants utilisent `useFormContext` mais le Provider n'est pas en place. Crash a l'exécution.
 - ✅ Envelopper le formulaire avec `<FormProvider {...methods}>`.
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept            | Description                                                          | Documentation                              |
 | ------------------ | -------------------------------------------------------------------- | ------------------------------------------ |
 | `FormProvider`     | Fournir le contexte de `useForm` aux composants enfants              | [RHF docs](https://react-hook-form.com/docs/formprovider) |
 | `useFormContext`   | Consommer le contexte du formulaire dans un composant enfant         | [RHF docs](https://react-hook-form.com/docs/useformcontext) |
-| `useFieldArray`    | Gerer un tableau dynamique de champs (ajout, suppression, deplacement) | [RHF docs](https://react-hook-form.com/docs/usefieldarray) |
-| `trigger`          | Valider manuellement des champs specifiques                          | [RHF docs](https://react-hook-form.com/docs/useform/trigger) |
+| `useFieldArray`    | Gérer un tableau dynamique de champs (ajout, suppression, déplacement) | [RHF docs](https://react-hook-form.com/docs/usefieldarray) |
+| `trigger`          | Valider manuellement des champs spécifiques                          | [RHF docs](https://react-hook-form.com/docs/useform/trigger) |
 | Schema partiel Zod | `.pick()` pour extraire un sous-ensemble du schema                   | [Zod docs](https://zod.dev/?id=pick) |
-| `z.array().min()`  | Valider qu'un tableau contient au moins N elements                   | [Zod docs](https://zod.dev/?id=arrays) |
+| `z.array().min()`  | Valider qu'un tableau contient au moins N éléments                   | [Zod docs](https://zod.dev/?id=arrays) |
 
 ---
 
 ## Pour aller plus loin
 
 - Persiste les donnees dans `sessionStorage` pour survivre au rechargement.
-- Ajoute des animations de transition entre les etapes avec `framer-motion`.
-- Ajoute un second `useFieldArray` pour gerer des numeros de telephone multiples dans l'etape 1.
+- Ajoute des animations de transition entre les étapes avec `framer-motion`.
+- Ajoute un second `useFieldArray` pour gérer des numéros de telephone multiples dans l'étape 1.

@@ -1,6 +1,6 @@
 # Correction — Exercice 03 : Liste de taches
 
-## Resultat attendu
+## Résultat attendu
 
 Une page avec un champ de saisie, un bouton "Ajouter", une liste de taches interactives (checkbox, texte, bouton supprimer) et un compteur des taches restantes. Le message "Aucune tache pour le moment" s'affiche quand la liste est vide.
 
@@ -157,24 +157,24 @@ export default function App() {
 
 ## Ce que tu aurais pu oublier
 
-### 1. Muter le tableau au lieu de creer un nouveau
+### 1. Muter le tableau au lieu de créer un nouveau
 
 - ❌ `todos.push(newTodo); setTodos(todos);`
-  React ne detecte pas le changement car la reference du tableau n'a pas change.
+  React ne détecté pas le changement car la référence du tableau n'a pas change.
 - ✅ `setTodos((prev) => [...prev, newTodo]);`
-  Nouveau tableau = nouvelle reference = React re-rend le composant.
+  Nouveau tableau = nouvelle référence = React re-rend le composant.
 
 ### 2. Utiliser l'index comme `key`
 
 - ❌ `{todos.map((todo, index) => <li key={index}>...)}`
-  Si on supprime un element au milieu, les index se decalent et React perd le suivi des elements.
+  Si on supprime un élément au milieu, les index se decalent et React perd le suivi des éléments.
 - ✅ `{todos.map((todo) => <li key={todo.id}>...)}`
-  L'id est unique et stable, React sait exactement quel element a change.
+  L'id est unique et stable, React sait exactement quel élément a change.
 
 ### 3. Oublier le `.trim()` avant l'ajout
 
 - ❌ `if (inputValue === "") return;`
-  Un espace seul passe le test et cree une tache "invisible".
+  Un espace seul passe le test et créé une tache "invisible".
 - ✅ `const trimmed = inputValue.trim(); if (trimmed === "") return;`
   Les espaces en debut et fin sont nettoyes.
 
@@ -184,30 +184,30 @@ export default function App() {
   L'utilisateur ne sait pas quoi faire, pas de feedback visuel.
 - ✅ Afficher un message explicite "Aucune tache pour le moment".
 
-### 5. Ne pas vider le champ apres l'ajout
+### 5. Ne pas vider le champ après l'ajout
 
-- ❌ Oublier `setInputValue("")` apres l'ajout.
+- ❌ Oublier `setInputValue("")` après l'ajout.
   L'utilisateur doit effacer manuellement, mauvaise UX.
-- ✅ `setInputValue("")` juste apres `setTodos(...)`.
+- ✅ `setInputValue("")` juste après `setTodos(...)`.
 
 ---
 
-## Concepts cles utilises
+## Concepts clés utilises
 
 | Concept                 | Description                                                         | Documentation                              |
 | ----------------------- | ------------------------------------------------------------------- | ------------------------------------------ |
-| `useState<T[]>`         | Gestion d'un tableau dans l'etat local                              | [react.dev](https://react.dev/reference/react/useState) |
-| Immutabilite            | Creer de nouvelles references au lieu de muter                      | [react.dev](https://react.dev/learn/updating-arrays-in-state) |
-| `.map()` avec `key`     | Transformer un tableau en elements JSX avec identification unique   | [react.dev](https://react.dev/learn/rendering-lists) |
-| `.filter()`             | Creer un nouveau tableau sans l'element cible (suppression)         | [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) |
-| Rendu conditionnel      | Afficher du contenu different selon une condition                    | [react.dev](https://react.dev/learn/conditional-rendering) |
-| `crypto.randomUUID()`   | Generer un identifiant unique cote navigateur                       | [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID) |
-| Valeur derivee          | `remainingCount` calcule depuis `todos` sans etat supplementaire    | Bonne pratique React |
+| `useState<T[]>`         | Gestion d'un tableau dans l'état local                              | [react.dev](https://react.dev/reference/react/useState) |
+| Immutabilite            | Créer de nouvelles références au lieu de muter                      | [react.dev](https://react.dev/learn/updating-arrays-in-state) |
+| `.map()` avec `key`     | Transformer un tableau en éléments JSX avec identification unique   | [react.dev](https://react.dev/learn/rendering-lists) |
+| `.filter()`             | Créer un nouveau tableau sans l'élément cible (suppression)         | [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) |
+| Rendu conditionnel      | Afficher du contenu différent selon une condition                    | [react.dev](https://react.dev/learn/conditional-rendering) |
+| `crypto.randomUUID()`   | Générer un identifiant unique cote navigateur                       | [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID) |
+| Valeur derivee          | `remainingCount` calcule depuis `todos` sans état supplementaire    | Bonne pratique React |
 
 ---
 
 ## Pour aller plus loin
 
-- Ajoute les filtres "Toutes / Actives / Completees" avec un etat `filter`.
+- Ajoute les filtres "Toutes / Actives / Completees" avec un état `filter`.
 - Persiste les taches dans `localStorage` et restaure-les au chargement.
 - Ajoute du drag & drop pour reordonner les taches.

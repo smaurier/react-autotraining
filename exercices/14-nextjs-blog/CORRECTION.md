@@ -2,7 +2,7 @@
 
 ---
 
-## Etape 1 : Types TypeScript
+## Étape 1 : Types TypeScript
 
 ```ts
 // src/types/post.ts
@@ -20,7 +20,7 @@ export interface Post {
 
 ---
 
-## Etape 2 : Donnees statiques
+## Étape 2 : Donnees statiques
 
 ```json
 // src/data/posts.json
@@ -75,7 +75,7 @@ export interface Post {
 
 ---
 
-## Etape 3 : Layout racine
+## Étape 3 : Layout racine
 
 ```tsx
 // src/app/layout.tsx
@@ -125,7 +125,7 @@ export default function RootLayout({
 
 ---
 
-## Etape 4 : Page d'accueil
+## Étape 4 : Page d'accueil
 
 ```tsx
 // src/app/page.tsx
@@ -160,7 +160,7 @@ export default function HomePage() {
 
 ---
 
-## Etape 5 : Page liste du blog
+## Étape 5 : Page liste du blog
 
 ```tsx
 // src/app/blog/page.tsx
@@ -224,7 +224,7 @@ export default function BlogPage() {
 
 ---
 
-## Etape 6 : Page detail avec route dynamique
+## Étape 6 : Page detail avec route dynamique
 
 ```tsx
 // src/app/blog/[slug]/page.tsx
@@ -317,7 +317,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
 ---
 
-## Etape 7 : Loading et Not Found
+## Étape 7 : Loading et Not Found
 
 ```tsx
 // src/app/blog/loading.tsx
@@ -411,15 +411,15 @@ export default function NotFound() {
 
 1. **`params` est une Promise dans Next.js 15** : il faut `await params` avant d'acceder a `slug`. C'est un changement majeur par rapport a Next.js 14.
 
-2. **`notFound()` ne retourne pas** : apres l'appel a `notFound()`, l'execution continue. TypeScript ne sait pas que c'est un `never`. Mettre le `notFound()` dans un bloc `if` suivi d'un `return` implicite.
+2. **`notFound()` ne retourne pas** : après l'appel a `notFound()`, l'exécution continue. TypeScript ne sait pas que c'est un `never`. Mettre le `notFound()` dans un bloc `if` suivi d'un `return` implicite.
 
-3. **`generateMetadata` doit aussi await `params`** : meme contrainte que le composant page.
+3. **`generateMetadata` doit aussi await `params`** : même contrainte que le composant page.
 
-4. **Le layout racine doit contenir `<html>` et `<body>`** : c'est obligatoire, sinon Next.js genere une erreur.
+4. **Le layout racine doit contenir `<html>` et `<body>`** : c'est obligatoire, sinon Next.js généré une erreur.
 
 5. **Les imports JSON necessitent `resolveJsonModule: true`** dans `tsconfig.json` (active par defaut avec `create-next-app`).
 
-6. **`generateStaticParams`** est optionnel mais recommande pour le pre-rendu statique. Sans lui, les pages dynamiques sont rendues a la demande.
+6. **`generateStaticParams`** est optionnel mais recommande pour le pre-rendu statique. Sans lui, les pages dynamiques sont rendues à la demandé.
 
 7. **`metadata.title.template`** permet d'avoir un format coherent pour les titres de page (ex: "Mon Article | Mon Blog React").
 

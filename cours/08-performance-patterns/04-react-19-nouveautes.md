@@ -223,7 +223,7 @@ function TodoList({ todos, addTodoAction }: {
 }
 ```
 
-> **Rollback automatique** : `useOptimistic` n'a pas de mécanisme de rollback explicite. L'état optimiste n'existe que pendant la durée de la transition (ou de l'action du formulaire). Quand le parent re-rend avec les nouvelles données serveur, l'état optimiste est remplacé.
+> **Rollback automatique** : `useOptimistic` n'a pas de mécanisme de rollback explicite. L'état optimiste n'existe que pendant la durée de la transition (où de l'action du formulaire). Quand le parent re-rend avec les nouvelles données serveur, l'état optimiste est remplacé.
 
 #### Intégration avec Server Actions (Next.js)
 
@@ -360,7 +360,7 @@ function ExpensiveList({ items, onSelect }: {
 }
 ```
 
-Le compilateur produit un code equivalent au premier, sans intervention manuelle.
+Le compilateur produit un code équivalent au premier, sans intervention manuelle.
 
 #### Comment l'activer
 
@@ -598,7 +598,7 @@ React 19 permet d'utiliser le Context directement comme provider :
 | `useFormStatus` | Pending state pour un bouton enfant du `<form>` |
 | `ref` as prop | Plus besoin de `forwardRef` |
 | Metadata | `<title>`, `<meta>` rendus dans n'importe quel composant |
-| Resource preloading | `preload()`, `preconnect()`, `prefetchDNS()` depuis n'importe où |
+| Resource preloading | `preload()`, `preconnect()`, `prefetchDNS()` depuis n'importe ou |
 
 ---
 
@@ -677,7 +677,7 @@ Crée un composant `CommentSection` qui :
 1. Affiche une liste de commentaires
 2. Permet d'ajouter un commentaire via un formulaire
 3. Utilise `useOptimistic` pour afficher le commentaire immédiatement (avec une opacité réduite)
-4. Appelle une Server Action (ou une API) pour persister
+4. Appelle une Server Action (où une API) pour persister
 
 <details>
 <summary>Voir la solution</summary>
@@ -817,3 +817,13 @@ export function UserDirectory() {
 ---
 
 > **Prochain cours** : [Cours 37 — Tailwind CSS](../09-styling/01-tailwind-css.md)
+
+---
+
+<!-- parcours-recommande -->
+
+::: tip Parcours recommandé
+1. **Exercice** : [20-performance-audit](../../exercices/20-performance-audit/ENONCE)
+2. **Exercice** : [21-composition-patterns](../../exercices/21-composition-patterns/ENONCE)
+3. **Quiz** : [quiz 10 react19](../../quizzes/quiz-10-react19.html)
+:::
