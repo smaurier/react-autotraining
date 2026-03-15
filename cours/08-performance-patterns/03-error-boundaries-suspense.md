@@ -212,7 +212,7 @@ function UserProfile() {
 
 ```tsx
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router";
 
 // Chaque page est chargée à la demande
 const Home = lazy(() => import("./pages/Home"));

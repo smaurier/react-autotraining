@@ -175,7 +175,7 @@ function SkipLink() {
 
 ```tsx
 import { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 
 function useRouteAnnounce(): void {
   const location = useLocation();

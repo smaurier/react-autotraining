@@ -58,16 +58,37 @@ npx create-next-app@latest mon-app
 Fichiers générés :
 
 ```
-tailwind.config.ts    ← Configuration (thème, plugins)
+app/globals.css       ← Import Tailwind
 postcss.config.mjs    ← PostCSS avec Tailwind
-app/globals.css       ← Imports Tailwind
 ```
 
 ```css
 /* app/globals.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+```
+
+> **Tailwind v4 (fevrier 2025)** : Tailwind v4 remplace le fichier `tailwind.config.ts` par une configuration CSS-native avec `@theme`. L'ancien fichier de config reste supporte via `@config './tailwind.config.ts'` pour la migration progressive.
+
+**Avant / Apres :**
+
+```ts
+// ❌ Tailwind v3 — tailwind.config.ts
+export default {
+  theme: {
+    extend: {
+      colors: { brand: "#6366f1" },
+    },
+  },
+} satisfies Config;
+```
+
+```css
+/* ✅ Tailwind v4 — dans globals.css */
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #6366f1;
+}
 ```
 
 ### 3. Classes essentielles
@@ -167,12 +188,14 @@ Les breakpoints sont des préfixes qui s'appliquent **à partir de** cette taill
 ### 5. Dark mode
 
 ```tsx
-// tailwind.config.ts
+// tailwind.config.ts (v3)
 export default {
   darkMode: "class", // Active le dark mode par classe
   // ...
 } satisfies Config;
 ```
+
+> **Tailwind v4** : le dark mode par classe est active par defaut (`@custom-variant dark (&:where(.dark, .dark *))` dans le CSS). Plus besoin de `tailwind.config.ts` pour cela. Si vous migrez progressivement, ajoutez `@config './tailwind.config.ts'` dans votre CSS.
 
 ```tsx
 // Composant avec dark mode

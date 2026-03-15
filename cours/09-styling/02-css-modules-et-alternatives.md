@@ -21,7 +21,9 @@ Les classes sans préfixe s'appliquent à toutes les tailles d'écran (mobile d'
 <details>
 <summary>3. Comment activer le dark mode avec Tailwind ?</summary>
 
-Configurer `darkMode: "class"` dans `tailwind.config.ts`, puis utiliser le préfixe `dark:` sur les classes. Le dark mode s'active en ajoutant la classe `dark` sur l'élément `<html>`.
+Configurer `darkMode: "class"` dans `tailwind.config.ts` (v3), puis utiliser le préfixe `dark:` sur les classes. Le dark mode s'active en ajoutant la classe `dark` sur l'élément `<html>`.
+
+> **Tailwind v4 (fevrier 2025)** : Tailwind v4 remplace le fichier `tailwind.config.ts` par une configuration CSS-native avec `@theme`. Le dark mode par classe est active par defaut. L'ancien fichier de config reste supporte via `@config './tailwind.config.ts'` pour la migration progressive.
 </details>
 
 ---

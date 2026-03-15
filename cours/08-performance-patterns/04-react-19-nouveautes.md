@@ -565,6 +565,26 @@ prefetchDNS("https://analytics.example.com");
 
 ---
 
+### 7. Context sans `.Provider`
+
+React 19 permet d'utiliser le Context directement comme provider :
+
+```tsx
+// ❌ React 18
+<ThemeContext.Provider value={theme}>
+  {children}
+</ThemeContext.Provider>
+
+// ✅ React 19
+<ThemeContext value={theme}>
+  {children}
+</ThemeContext>
+```
+
+`.Provider` reste supporte (pas de breaking change) mais la nouvelle syntaxe est plus concise. Combinez avec `use(ThemeContext)` pour lire la valeur.
+
+---
+
 ## Résumé
 
 | Fonctionnalité | Ce qu'il faut retenir |
