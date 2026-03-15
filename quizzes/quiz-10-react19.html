@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz 10 — Nouveautes React 19</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; color: #e0e0e0; min-height: 100vh; padding: 2rem 1rem; }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { text-align: center; margin-bottom: 0.5rem; font-size: 1.8rem; color: #ffffff; }
+    .subtitle { text-align: center; color: #8892b0; margin-bottom: 2rem; font-size: 1rem; }
+    .progress-bar-container { background: #0d1117; border-radius: 10px; height: 14px; margin-bottom: 2rem; overflow: hidden; }
+    .progress-bar { background: linear-gradient(90deg, #0d6efd, #4dabf7); height: 100%; width: 0%; border-radius: 10px; transition: width 0.4s ease; }
+    .progress-text { text-align: center; color: #8892b0; margin-bottom: 1rem; font-size: 0.9rem; }
+    .card { background: #16213e; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .question-label { font-size: 0.85rem; color: #4dabf7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .question-text { font-size: 1.15rem; margin-bottom: 1.2rem; line-height: 1.5; color: #ffffff; }
+    pre { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; margin-bottom: 1.2rem; overflow-x: auto; font-size: 0.95rem; }
+    code { font-family: 'Consolas', 'Fira Code', 'Courier New', monospace; color: #c9d1d9; }
+    .options { list-style: none; }
+    .options li { margin-bottom: 0.5rem; }
+    .options label { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1rem; background: #0d1117; border: 2px solid #30363d; border-radius: 8px; cursor: pointer; transition: border-color 0.2s, background 0.2s; font-size: 1rem; }
+    .options label:hover { border-color: #4dabf7; background: #1c2a4a; }
+    .options input[type="radio"] { accent-color: #0d6efd; width: 18px; height: 18px; flex-shrink: 0; }
+    .btn { display: inline-block; padding: 0.7rem 2rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.1s; }
+    .btn-primary { background: #0d6efd; color: #fff; }
+    .btn-primary:hover { background: #3b82f6; }
+    .btn-primary:disabled { background: #374151; cursor: not-allowed; }
+    .btn-restart { background: #238636; color: #fff; margin-top: 1rem; padding: 0.7rem 2rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+    .btn-restart:hover { background: #2ea043; }
+    .feedback { margin-top: 1rem; padding: 1rem 1.2rem; border-radius: 8px; font-size: 0.95rem; line-height: 1.5; display: none; }
+    .feedback.correct { background: #0f5132; border: 1px solid #198754; color: #d1fae5; display: block; }
+    .feedback.wrong { background: #842029; border: 1px solid #dc3545; color: #fdd; display: block; }
+    .score-card { text-align: center; padding: 3rem 2rem; }
+    .score-card .score { font-size: 3rem; font-weight: 700; color: #4dabf7; margin-bottom: 0.5rem; }
+    .score-card .score-label { font-size: 1.2rem; color: #8892b0; margin-bottom: 1.5rem; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz 10 — Nouveautes React 19</h1>
+    <p class="subtitle">use(), useOptimistic, React Compiler, Form Actions, ref as prop</p>
+    <div class="progress-bar-container"><div class="progress-bar" id="progressBar"></div></div>
+    <p class="progress-text" id="progressText">Question 1 / 5</p>
+    <div id="quizContainer"></div>
+    <div id="scoreContainer" class="card score-card hidden"></div>
+  </div>
+  <script>
+    const questions = [
+      {
+        label: "Question 1",
+        text: "Quel est le role du nouveau hook use() introduit dans React 19, et en quoi differe-t-il de useEffect pour la lecture de donnees asynchrones ?",
+        code: "import { use, Suspense } from 'react';\n\nfunction UserProfile({ userPromise }) {\n  const user = use(userPromise);\n  return &lt;h1&gt;{user.name}&lt;/h1&gt;;\n}\n\n// Utilisation\n&lt;Suspense fallback={&lt;Loading /&gt;}&gt;\n  &lt;UserProfile userPromise={fetchUser(id)} /&gt;\n&lt;/Suspense&gt;",
+        options: [
+          "use() est un alias de useEffect qui simplifie la syntaxe des effets de bord",
+          "use() permet de lire une Promise ou un Context directement pendant le rendu, en suspendant le composant jusqu'a la resolution",
+          "use() remplace useState et useReducer pour gerer tout type d'etat local",
+          "use() est reserve aux Server Components et ne fonctionne pas cote client"
+        ],
+        answer: 1,
+        explanation: "use() est un nouveau hook qui peut lire des Promises et des Contexts directement pendant le rendu. Quand il recoit une Promise non resolue, il suspend le composant (comme throw promise le faisait manuellement). Contrairement a useEffect, il n'attend pas que le composant soit monte pour declencher le fetch — le chargement est integre au flux de rendu via Suspense. Il peut aussi etre appele conditionnellement, ce qui est interdit pour les autres hooks."
+      },
+      {
+        label: "Question 2",
+        text: "Comment fonctionne useOptimistic dans React 19 et quel probleme resout-il ?",
+        code: "function TodoList({ todos, addTodoAction }) {\n  const [optimisticTodos, addOptimistic] = useOptimistic(\n    todos,\n    (state, newTodo) =&gt; [...state, { ...newTodo, pending: true }]\n  );\n\n  async function formAction(formData) {\n    const title = formData.get('title');\n    addOptimistic({ id: crypto.randomUUID(), title });\n    await addTodoAction(title);\n  }\n\n  return (\n    &lt;form action={formAction}&gt;\n      &lt;input name=\"title\" /&gt;\n      &lt;button type=\"submit\"&gt;Ajouter&lt;/button&gt;\n      {optimisticTodos.map(t =&gt; (\n        &lt;div key={t.id} style={{ opacity: t.pending ? 0.5 : 1 }}&gt;{t.title}&lt;/div&gt;\n      ))}\n    &lt;/form&gt;\n  );\n}",
+        options: [
+          "useOptimistic met en cache les resultats des requetes pour eviter les appels reseau redondants",
+          "useOptimistic affiche immediatement un etat temporaire optimiste pendant qu'une action asynchrone est en cours, puis revient a l'etat reel une fois l'action terminee",
+          "useOptimistic est un remplacant de useReducer qui optimise automatiquement les re-rendus",
+          "useOptimistic empeche le composant de se re-rendre tant que la requete n'est pas terminee"
+        ],
+        answer: 1,
+        explanation: "useOptimistic permet de montrer immediatement a l'utilisateur le resultat attendu d'une action (par exemple, un todo ajoute a la liste) sans attendre la reponse du serveur. L'etat optimiste est temporaire : une fois l'action async resolue, React revient automatiquement a l'etat reel (la prop todos mise a jour). Si l'action echoue, l'etat optimiste est annule et l'affichage revient a l'etat precedent."
+      },
+      {
+        label: "Question 3",
+        text: "Que fait le React Compiler (anciennement React Forget) et quel impact a-t-il sur le code existant ?",
+        code: "// Avant React Compiler — memoisation manuelle\nconst MemoChild = React.memo(({ data }) =&gt; {\n  return &lt;div&gt;{data.label}&lt;/div&gt;;\n});\n\nfunction Parent({ items }) {\n  const sorted = useMemo(() =&gt; items.sort(), [items]);\n  const handleClick = useCallback(() =&gt; { /* ... */ }, []);\n  return &lt;MemoChild data={sorted} onClick={handleClick} /&gt;;\n}\n\n// Apres React Compiler — le compilateur gere la memoisation\nfunction Parent({ items }) {\n  const sorted = items.sort();\n  const handleClick = () =&gt; { /* ... */ };\n  return &lt;Child data={sorted} onClick={handleClick} /&gt;;\n}",
+        options: [
+          "React Compiler convertit le JSX en Web Components natifs pour de meilleures performances",
+          "React Compiler analyse le code a la compilation et ajoute automatiquement la memoisation (useMemo, useCallback, memo) la ou elle est necessaire",
+          "React Compiler remplace Babel et TypeScript comme transpileur unique pour React",
+          "React Compiler oblige a reecrire tous les composants en classes pour pouvoir les optimiser"
+        ],
+        answer: 1,
+        explanation: "Le React Compiler est un compilateur build-time qui comprend la semantique de JavaScript et les regles de React. Il analyse statiquement le code et insere automatiquement les instructions de memoisation equivalentes a useMemo, useCallback et React.memo. Le code existant n'a pas besoin d'etre modifie : on peut progressivement supprimer la memoisation manuelle. Le compilateur respecte les Rules of React pour garantir un comportement identique."
+      },
+      {
+        label: "Question 4",
+        text: "Comment fonctionnent les Form Actions dans React 19 et quel avantage apportent-elles par rapport a la gestion classique avec onSubmit ?",
+        code: "// React 19 — Form Action\nfunction ContactForm() {\n  async function submitAction(formData) {\n    'use server';\n    const email = formData.get('email');\n    const message = formData.get('message');\n    await db.messages.create({ email, message });\n  }\n\n  return (\n    &lt;form action={submitAction}&gt;\n      &lt;input name=\"email\" type=\"email\" required /&gt;\n      &lt;textarea name=\"message\" /&gt;\n      &lt;button type=\"submit\"&gt;Envoyer&lt;/button&gt;\n    &lt;/form&gt;\n  );\n}",
+        options: [
+          "Les Form Actions sont identiques a onSubmit mais avec un nom different pour la compatibilite avec les Server Components",
+          "La prop action accepte une fonction async qui recoit directement le FormData, gere automatiquement l'etat pending via useFormStatus, et fonctionne sans JavaScript cote client grace a l'amelioration progressive",
+          "Les Form Actions desactivent la validation HTML native du formulaire pour la remplacer par une validation React",
+          "Les Form Actions ne fonctionnent qu'avec Next.js et ne sont pas utilisables dans une application React pure"
+        ],
+        answer: 1,
+        explanation: "Les Form Actions unifient la gestion des formulaires : la prop action du &lt;form&gt; accepte directement une fonction (sync ou async) qui recoit le FormData. React gere automatiquement les transitions et l'etat pending (accessible via useFormStatus). Avec 'use server', l'action peut s'executer cote serveur. L'amelioration progressive (progressive enhancement) garantit que le formulaire fonctionne meme si JavaScript n'est pas encore charge — le navigateur envoie le formulaire de maniere native."
+      },
+      {
+        label: "Question 5",
+        text: "En React 19, comment fonctionne le passage de ref en tant que prop et pourquoi est-ce une amelioration par rapport a forwardRef ?",
+        code: "// Avant React 19 — forwardRef obligatoire\nconst Input = forwardRef(function Input(props, ref) {\n  return &lt;input ref={ref} {...props} /&gt;;\n});\n\n// React 19 — ref est une prop comme les autres\nfunction Input({ ref, ...props }) {\n  return &lt;input ref={ref} {...props} /&gt;;\n}",
+        options: [
+          "C'est un changement purement cosmetique, forwardRef est toujours utilise en interne par React",
+          "ref est desormais une prop standard que les composants fonction recoivent directement, eliminant le wrapper forwardRef et simplifiant le code et le typage TypeScript",
+          "Le passage de ref en prop ne fonctionne que pour les composants classe, pas les composants fonction",
+          "Cette syntaxe oblige a toujours definir une ref, meme quand le composant parent n'en passe pas"
+        ],
+        answer: 1,
+        explanation: "En React 19, ref est traite comme une prop normale pour les composants fonction. Il n'est plus necessaire d'envelopper le composant avec forwardRef, ce qui simplifie la declaration, ameliore la lisibilite et facilite le typage TypeScript (plus besoin de Ref generics dans forwardRef<Type, Props>). forwardRef reste supporte pour la retro-compatibilite mais est desormais deprecie. C'est un changement tres attendu qui supprime l'un des points de friction les plus courants dans React."
+      }
+    ];
+
+    let currentQuestion = 0, score = 0, answered = false;
+
+    function renderQuestion() {
+      const q = questions[currentQuestion];
+      const total = questions.length;
+      document.getElementById('progressBar').style.width = ((currentQuestion / total) * 100) + '%';
+      document.getElementById('progressText').textContent = `Question ${currentQuestion + 1} / ${total}`;
+      let html = `<div class="card">
+        <p class="question-label">${q.label}</p>
+        <p class="question-text">${q.text}</p>`;
+      if (q.code) {
+        html += `<pre><code>${q.code}</code></pre>`;
+      }
+      html += `<ul class="options">`;
+      q.options.forEach((opt, i) => {
+        html += `<li><label><input type="radio" name="q" value="${i}"> ${opt}</label></li>`;
+      });
+      html += `</ul>
+        <button class="btn btn-primary" id="validateBtn" onclick="validate()" disabled>Valider</button>
+        <div class="feedback" id="feedback"></div>
+      </div>`;
+      document.getElementById('quizContainer').innerHTML = html;
+      document.querySelectorAll('input[name="q"]').forEach(r => {
+        r.addEventListener('change', () => {
+          document.getElementById('validateBtn').disabled = false;
+        });
+      });
+      answered = false;
+    }
+
+    function validate() {
+      if (answered) {
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+          renderQuestion();
+        } else {
+          showScore();
+        }
+        return;
+      }
+      answered = true;
+      const selected = document.querySelector('input[name="q"]:checked');
+      if (!selected) return;
+      const val = parseInt(selected.value);
+      const q = questions[currentQuestion];
+      const fb = document.getElementById('feedback');
+      const btn = document.getElementById('validateBtn');
+      document.querySelectorAll('input[name="q"]').forEach(r => r.disabled = true);
+      if (val === q.answer) {
+        score++;
+        fb.className = 'feedback correct';
+        fb.innerHTML = `<strong>Correct !</strong> ${q.explanation}`;
+      } else {
+        fb.className = 'feedback wrong';
+        fb.innerHTML = `<strong>Incorrect.</strong> ${q.explanation}`;
+      }
+      btn.textContent = currentQuestion < questions.length - 1 ? 'Suivant' : 'Voir le score';
+    }
+
+    function showScore() {
+      document.getElementById('quizContainer').classList.add('hidden');
+      document.getElementById('progressBar').style.width = '100%';
+      document.getElementById('progressText').textContent = `Termine !`;
+      const sc = document.getElementById('scoreContainer');
+      sc.classList.remove('hidden');
+      const pct = Math.round((score / questions.length) * 100);
+      let msg = pct === 100 ? 'Parfait !' : pct >= 60 ? 'Bien joue !' : 'Continuez a reviser !';
+      sc.innerHTML = `<div class="score">${score} / ${questions.length}</div>
+        <div class="score-label">${msg} (${pct}%)</div>
+        <button class="btn-restart" onclick="restart()">Recommencer</button>`;
+    }
+
+    function restart() {
+      currentQuestion = 0; score = 0; answered = false;
+      document.getElementById('scoreContainer').classList.add('hidden');
+      document.getElementById('quizContainer').classList.remove('hidden');
+      renderQuestion();
+    }
+
+    renderQuestion();
+  </script>
+</body>
+</html>
