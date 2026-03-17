@@ -4,24 +4,18 @@
 
 ---
 
-## Rappel du cours précédent
-
 <details>
-<summary>1. Quelle est la différence fondamentale entre état client et état serveur ?</summary>
+<summary>Rappel du cours précédent</summary>
 
-L'état client (thème, sidebar, formulaire) est contrôlé entièrement par le frontend. L'état serveur (utilisateurs, produits, commandes) vit sur le backend et peut devenir obsolète. TanStack Query gère l'état serveur, Zustand/Context gèrent l'état client.
-</details>
+1. **Quelle est la différence fondamentale entre état client et état serveur ?**
+   L'état client (thème, sidebar, formulaire) est contrôlé entièrement par le frontend. L'état serveur (utilisateurs, produits, commandes) vit sur le backend et peut devenir obsolète. TanStack Query gère l'état serveur, Zustand/Context gèrent l'état client.
 
-<details>
-<summary>2. À quoi sert le queryKey dans TanStack Query ?</summary>
+2. **À quoi sert le `queryKey` dans TanStack Query ?**
+   Le `queryKey` est un tableau qui sert d'identifiant unique pour le cache. TanStack Query l'utilise pour stocker, retrouver et invalider les données. Exemple : `['users', 42]` identifie l'utilisateur avec l'id 42.
 
-Le `queryKey` est un tableau qui sert d'identifiant unique pour le cache. TanStack Query l'utilise pour stocker, retrouver et invalider les données. Exemple : `['users', 42]` identifie l'utilisateur avec l'id 42.
-</details>
+3. **Comment invalider le cache après une mutation ?**
+   En appelant `queryClient.invalidateQueries({ queryKey: ['users'] })` dans le callback `onSuccess` de `useMutation`. Cela force TanStack Query à refetcher les données concernées.
 
-<details>
-<summary>3. Comment invalider le cache après une mutation ?</summary>
-
-En appelant `queryClient.invalidateQueries({ queryKey: ['users'] })` dans le callback `onSuccess` de `useMutation`. Cela force TanStack Query à refetcher les données concernées.
 </details>
 
 ---

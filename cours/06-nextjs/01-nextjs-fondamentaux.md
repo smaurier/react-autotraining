@@ -4,24 +4,18 @@
 
 ---
 
-## Rappel du cours précédent
-
 <details>
-<summary>1. Quelle est la différence entre un formulaire "controlled" et "uncontrolled" en React ?</summary>
+<summary>Rappel du cours précédent</summary>
 
-Un formulaire **controlled** lie chaque champ à un state React (`value` + `onChange`). Un formulaire **uncontrolled** utilise `useRef` ou `FormData` pour lire les valeurs au moment de la soumission, sans synchronisation continue avec le state.
-</details>
+1. **Quelle est la différence entre un formulaire "controlled" et "uncontrolled" en React ?**
+   Un formulaire controlled lie chaque champ à un state React (`value` + `onChange`). Un formulaire uncontrolled utilise `useRef` ou `FormData` pour lire les valeurs au moment de la soumission, sans synchronisation continue avec le state.
 
-<details>
-<summary>2. Comment React Hook Form améliore-t-il les performances des formulaires ?</summary>
+2. **Comment React Hook Form améliore-t-il les performances des formulaires ?**
+   React Hook Form utilise des refs internes (mode uncontrolled) pour éviter les re-renders à chaque frappe. Seul le champ modifié est mis à jour, contrairement à un formulaire entièrement controlled qui re-render tout le composant.
 
-React Hook Form utilise des refs internes (mode uncontrolled) pour éviter les re-renders à chaque frappe. Seul le champ modifié est mis à jour, contrairement à un formulaire entièrement controlled qui re-render tout le composant.
-</details>
+3. **Quel est le rôle de Zod dans la validation de formulaires ?**
+   Zod est une bibliothèque de validation de schémas TypeScript-first. Couplé à `@hookform/resolvers/zod`, il permet de définir un schéma de validation déclaratif, avec inférence automatique des types TypeScript (`z.infer<typeof schema>`).
 
-<details>
-<summary>3. Quel est le rôle de Zod dans la validation de formulaires ?</summary>
-
-Zod est une bibliothèque de validation de schémas TypeScript-first. Couplé à `@hookform/resolvers/zod`, il permet de définir un schéma de validation déclaratif, avec inférence automatique des types TypeScript (`z.infer<typeof schema>`).
 </details>
 
 ---

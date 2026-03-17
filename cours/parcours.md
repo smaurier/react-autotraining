@@ -53,6 +53,11 @@
 
 Exercice : `exercices/00-premier-composant.md`
 
+Quizzes :
+- `quizzes/quiz-00-01-react-mental-model.html`
+- `quizzes/quiz-00-02-equivalences-triple.html`
+- `quizzes/quiz-00-03-premier-projet-react.html`
+
 ### Module 01 — Composants & JSX (~8 h)
 
 | Cours | Titre | Fichier |
@@ -64,6 +69,13 @@ Exercice : `exercices/00-premier-composant.md`
 | 05 | Composition vs héritage | `01-composants-jsx/05-composition-vs-heritage.md` |
 
 Exercices : `exercices/01-card-component.md`, `exercices/01-liste-filtrable.md`, `exercices/01-composant-generique.md`, `exercices/01-layout-compose.md`
+
+Quizzes :
+- `quizzes/quiz-01-01-jsx-en-profondeur.html`
+- `quizzes/quiz-01-02-props-et-children.html`
+- `quizzes/quiz-01-03-composants-et-composition.html`
+- `quizzes/quiz-01-04-rendu-conditionnel-et-listes.html`
+- `quizzes/quiz-01-05-evenements-et-formulaires.html`
 
 ### Module 02 — Hooks fondamentaux (~8 h)
 
@@ -77,6 +89,13 @@ Exercices : `exercices/01-card-component.md`, `exercices/01-liste-filtrable.md`,
 
 Exercices : `exercices/02-compteur-avance.md`, `exercices/02-hook-fetch.md`, `exercices/02-hook-localstorage.md`
 
+Quizzes :
+- `quizzes/quiz-02-01-usestate.html`
+- `quizzes/quiz-02-02-useeffect.html`
+- `quizzes/quiz-02-03-useref-et-dom.html`
+- `quizzes/quiz-02-04-usecallback-usememo.html`
+- `quizzes/quiz-02-05-custom-hooks.html`
+
 ### Module 03 — State Management (~6 h)
 
 | Cours | Titre | Fichier |
@@ -88,6 +107,12 @@ Exercices : `exercices/02-compteur-avance.md`, `exercices/02-hook-fetch.md`, `ex
 
 Exercices : `exercices/03-todo-reducer.md`, `exercices/03-theme-context.md`, `exercices/03-store-zustand.md`
 
+Quizzes :
+- `quizzes/quiz-03-01-context-api.html`
+- `quizzes/quiz-03-02-zustand.html`
+- `quizzes/quiz-03-03-redux-toolkit.html`
+- `quizzes/quiz-03-04-tanstack-query.html`
+
 ### Module 04 — Routing (~4 h)
 
 | Cours | Titre | Fichier |
@@ -98,6 +123,11 @@ Exercices : `exercices/03-todo-reducer.md`, `exercices/03-theme-context.md`, `ex
 
 Exercice : `exercices/04-routing-app.md`
 
+Quizzes :
+- `quizzes/quiz-04-01-react-router-basique.html`
+- `quizzes/quiz-04-02-parametres-et-loaders.html`
+- `quizzes/quiz-04-03-protection-et-lazy.html`
+
 ### Module 05 — Formulaires (~5 h)
 
 | Cours | Titre | Fichier |
@@ -107,6 +137,11 @@ Exercice : `exercices/04-routing-app.md`
 | 03 | Formulaires complexes (multi-step, arrays) | `05-formulaires/03-formulaires-complexes.md` |
 
 Exercices : `exercices/05-formulaire-inscription.md`, `exercices/05-formulaire-multi-etapes.md`
+
+Quizzes :
+- `quizzes/quiz-05-01-controlled-vs-uncontrolled.html`
+- `quizzes/quiz-05-02-react-hook-form.html`
+- `quizzes/quiz-05-03-patterns-formulaires-avances.html`
 
 ### Module 06 — Next.js App Router (~8 h)
 
@@ -120,6 +155,13 @@ Exercices : `exercices/05-formulaire-inscription.md`, `exercices/05-formulaire-m
 
 Exercices : `exercices/06-page-dynamique.md`, `exercices/06-server-action-form.md`, `exercices/06-dashboard-streaming.md`, `exercices/06-bonus-fullstack.md`
 
+Quizzes :
+- `quizzes/quiz-06-01-nextjs-fondamentaux.html`
+- `quizzes/quiz-06-02-server-components.html`
+- `quizzes/quiz-06-03-data-fetching.html`
+- `quizzes/quiz-06-04-api-routes-server-actions.html`
+- `quizzes/quiz-06-05-middleware-et-config.html`
+
 ### Module 07 — Tests (~3 h)
 
 > *Prérequis Vue* : Vitest (describe/it/expect, mocking) et Playwright E2E sont acquis. On se concentre ici sur les spécificités React.
@@ -131,6 +173,10 @@ Exercices : `exercices/06-page-dynamique.md`, `exercices/06-server-action-form.m
 
 Exercices : `exercices/07-tests-composant.md`, `exercices/07-tests-hook.md`
 
+Quizzes :
+- `quizzes/quiz-07-02-tests-composants-rtl.html`
+- `quizzes/quiz-07-03-tests-api-msw.html`
+
 ### Module 08 — Performance & Patterns (~5 h)
 
 | Cours | Titre | Fichier |
@@ -141,6 +187,11 @@ Exercices : `exercices/07-tests-composant.md`, `exercices/07-tests-hook.md`
 
 Exercices : `exercices/08-optimisation-liste.md`, `exercices/08-compound-component.md`
 
+Quizzes :
+- `quizzes/quiz-08-01-performance-react.html`
+- `quizzes/quiz-08-02-patterns-composition.html`
+- `quizzes/quiz-08-03-error-boundaries-suspense.html`
+
 ### Module 09 — Styling (~3 h)
 
 | Cours | Titre | Fichier |
@@ -149,6 +200,13 @@ Exercices : `exercices/08-optimisation-liste.md`, `exercices/08-compound-compone
 | 02 | Bibliothèques de composants (shadcn/ui) | `09-styling/02-shadcn-ui.md` |
 
 Exercice : `exercices/09-design-system.md`
+
+Quizzes :
+- `quizzes/quiz-09-accessibilite.html`
+- `quizzes/quiz-09-01-fondamentaux-wcag-react.html`
+- `quizzes/quiz-09-02-aria-patterns-avances.html`
+- `quizzes/quiz-09-styling-01-tailwind-css.html`
+- `quizzes/quiz-09-styling-02-css-modules.html`
 
 ### Module 10 — Auth & Sécurité (~2 h)
 
@@ -160,6 +218,10 @@ Exercice : `exercices/09-design-system.md`
 
 Exercice : `exercices/10-auth-flow.md`
 
+Quizzes :
+- `quizzes/quiz-10-01-auth-nextauth.html`
+- `quizzes/quiz-10-react19.html`
+
 ### Module 11 — CI/CD & Déploiement (~2 h)
 
 > *Prérequis Vue* : GitHub Actions et les pipelines CI/CD sont acquis. On se concentre ici sur le déploiement Next.js (Vercel, Docker standalone, SSR).
@@ -167,6 +229,9 @@ Exercice : `exercices/10-auth-flow.md`
 | Cours | Titre | Fichier |
 |---|---|---|
 | 02 | Déploiement Vercel / Docker | `11-cicd-deploiement/02-deploiement.md` |
+
+Quizzes :
+- `quizzes/quiz-11-02-deploiement.html`
 
 ### Module 12 — Recettes ESN (~3 h)
 
@@ -176,6 +241,23 @@ Exercice : `exercices/10-auth-flow.md`
 | 02 | Checklist production et bonnes pratiques | `12-recettes-esn/02-checklist-production.md` |
 
 Exercice : `exercices/12-audit-projet.md`
+
+Quizzes :
+- `quizzes/quiz-12-01-patterns-esn.html`
+- `quizzes/quiz-12-02-entretien-technique.html`
+
+### Module 13 — Capacitor (~4 h)
+
+| Cours | Titre | Fichier |
+|---|---|---|
+| 01 | Capacitor fondamentaux | `13-capacitor/01-capacitor-fondamentaux.md` |
+| 02 | Plugins avancés | `13-capacitor/02-capacitor-plugins-avances.md` |
+
+Exercice : déployer ton app React comme app mobile avec Capacitor
+
+Quizzes :
+- `quizzes/quiz-13-01-capacitor-fondamentaux.html`
+- `quizzes/quiz-13-02-capacitor-plugins-avances.html`
 
 ---
 

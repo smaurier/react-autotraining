@@ -8,6 +8,8 @@
 > Durée estimée : 45 min
 > Prérequis : avoir terminé les formations Vue 3 et Angular 19+
 
+> **Ressource transversale** : consulte [`00-pieges-frequents.md`](../00-pieges-frequents.md) régulièrement — il liste les pièges courants quand on vient de Vue/Angular vers React.
+
 ---
 
 ## Objectif

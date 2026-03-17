@@ -4,24 +4,18 @@
 
 ---
 
-## Rappel du cours précédent
-
 <details>
-<summary>1. Quelle est la différence entre un input contrôlé et non-contrôlé ?</summary>
+<summary>Rappel du cours précédent</summary>
 
-Un input **contrôlé** a sa valeur pilotée par le state React (`value` + `onChange`). Un input **non-contrôlé** conserve son état dans le DOM, accessible via `useRef` et `defaultValue`.
-</details>
+1. **Quelle est la différence entre un input contrôlé et non-contrôlé ?**
+   Un input contrôlé a sa valeur pilotée par le state React (`value` + `onChange`). Un input non-contrôlé conserve son état dans le DOM, accessible via `useRef` et `defaultValue`.
 
-<details>
-<summary>2. Pourquoi faut-il appeler `e.preventDefault()` dans un `onSubmit` ?</summary>
+2. **Pourquoi faut-il appeler `e.preventDefault()` dans un `onSubmit` ?**
+   Sans `preventDefault()`, le navigateur effectue une requête HTTP classique et recharge la page, ce qui détruit l'état de l'application React.
 
-Sans `preventDefault()`, le navigateur effectue une requête HTTP classique et recharge la page, ce qui détruit l'état de l'application React.
-</details>
+3. **Quel type TypeScript utilise-t-on pour un événement `onChange` sur un `<input>` ?**
+   `React.ChangeEvent<HTMLInputElement>`. Pour un `<select>`, ce serait `React.ChangeEvent<HTMLSelectElement>`.
 
-<details>
-<summary>3. Quel type TypeScript utilise-t-on pour un événement `onChange` sur un `<input>` ?</summary>
-
-`React.ChangeEvent<HTMLInputElement>`. Pour un `<select>`, ce serait `React.ChangeEvent<HTMLSelectElement>`.
 </details>
 
 ---
