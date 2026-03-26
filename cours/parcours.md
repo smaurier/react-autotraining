@@ -33,11 +33,13 @@
 | 06 | Next.js App Router | 5 | 3 + 1 bonus | ~8 h |
 | 07 | Tests | 2 | 2 | ~3 h |
 | 08 | Performance & Patterns | 3 | 2 | ~5 h |
-| 09 | Styling | 2 | 1 | ~3 h |
+| 09a | Accessibilité | 2 | 1 | ~3 h |
+| 09b | Styling | 2 | 1 | ~3 h |
 | 10 | Auth & Sécurité | 1 | 1 | ~2 h |
 | 11 | CI/CD & Déploiement | 1 | 0 | ~2 h |
 | 12 | Recettes ESN | 2 | 1 | ~3 h |
-| | **Total** | **~41** | **~24** | **~60 h** |
+| 13 | Mobile (Capacitor) | 2 | 1 | ~4 h |
+| | **Total** | **~45** | **~27** | **~65 h** |
 
 ---
 
@@ -62,11 +64,11 @@ Quizzes :
 
 | Cours | Titre | Fichier |
 |---|---|---|
-| 01 | Anatomie d'un composant React | `01-composants-jsx/01-anatomie-composant.md` |
-| 02 | Props, children et typage TypeScript | `01-composants-jsx/02-props-children-typage.md` |
-| 03 | Rendu conditionnel et listes | `01-composants-jsx/03-rendu-conditionnel-listes.md` |
-| 04 | Événements et gestion du DOM | `01-composants-jsx/04-evenements-dom.md` |
-| 05 | Composition vs héritage | `01-composants-jsx/05-composition-vs-heritage.md` |
+| 01 | JSX en profondeur | `01-composants-jsx/01-jsx-en-profondeur.md` |
+| 02 | Props et children | `01-composants-jsx/02-props-et-children.md` |
+| 03 | Composants et composition | `01-composants-jsx/03-composants-et-composition.md` |
+| 04 | Rendu conditionnel et listes | `01-composants-jsx/04-rendu-conditionnel-et-listes.md` |
+| 05 | Événements et formulaires basiques | `01-composants-jsx/05-evenements-et-formulaires-basiques.md` |
 
 Exercices : `exercices/01-card-component.md`, `exercices/01-liste-filtrable.md`, `exercices/01-composant-generique.md`, `exercices/01-layout-compose.md`
 
@@ -83,9 +85,9 @@ Quizzes :
 |---|---|---|
 | 01 | useState en profondeur | `02-hooks-fondamentaux/01-usestate.md` |
 | 02 | useEffect et le cycle de vie | `02-hooks-fondamentaux/02-useeffect.md` |
-| 03 | useRef et accès au DOM | `02-hooks-fondamentaux/03-useref.md` |
-| 04 | useMemo, useCallback et React.memo | `02-hooks-fondamentaux/04-usememo-usecallback.md` |
-| 05 | Hooks personnalisés | `02-hooks-fondamentaux/05-hooks-personnalises.md` |
+| 03 | useRef et accès au DOM | `02-hooks-fondamentaux/03-useref-et-dom.md` |
+| 04 | useCallback, useMemo et React.memo | `02-hooks-fondamentaux/04-usecallback-usememo.md` |
+| 05 | Custom hooks | `02-hooks-fondamentaux/05-custom-hooks.md` |
 
 Exercices : `exercices/02-compteur-avance.md`, `exercices/02-hook-fetch.md`, `exercices/02-hook-localstorage.md`
 
@@ -100,10 +102,10 @@ Quizzes :
 
 | Cours | Titre | Fichier |
 |---|---|---|
-| 01 | useReducer et logique complexe | `03-state-management/01-usereducer.md` |
-| 02 | Context API (thème, auth, i18n) | `03-state-management/02-context-api.md` |
-| 03 | Zustand : store externe léger | `03-state-management/03-zustand.md` |
-| 04 | Quand utiliser quoi (arbre de décision) | `03-state-management/04-quand-utiliser-quoi.md` |
+| 01 | Context API (thème, auth, i18n) | `03-state-management/01-context-api.md` |
+| 02 | Zustand : store externe léger | `03-state-management/02-zustand.md` |
+| 03 | Redux Toolkit | `03-state-management/03-redux-toolkit.md` |
+| 04 | TanStack Query | `03-state-management/04-tanstack-query.md` |
 
 Exercices : `exercices/03-todo-reducer.md`, `exercices/03-theme-context.md`, `exercices/03-store-zustand.md`
 
@@ -117,9 +119,9 @@ Quizzes :
 
 | Cours | Titre | Fichier |
 |---|---|---|
-| 01 | React Router v7 : bases | `04-routing/01-react-router-bases.md` |
-| 02 | Routes imbriquées, layouts, loaders | `04-routing/02-routes-imbriquees.md` |
-| 03 | Navigation programmatique et guards | `04-routing/03-navigation-guards.md` |
+| 01 | React Router v7 : bases | `04-routing/01-react-router-basique.md` |
+| 02 | Paramètres et loaders | `04-routing/02-parametres-et-loaders.md` |
+| 03 | Protection des routes et lazy loading | `04-routing/03-protection-et-lazy.md` |
 
 Exercice : `exercices/04-routing-app.md`
 
@@ -132,9 +134,9 @@ Quizzes :
 
 | Cours | Titre | Fichier |
 |---|---|---|
-| 01 | Controlled vs uncontrolled | `05-formulaires/01-controlled-uncontrolled.md` |
-| 02 | React Hook Form + Zod | `05-formulaires/02-react-hook-form-zod.md` |
-| 03 | Formulaires complexes (multi-step, arrays) | `05-formulaires/03-formulaires-complexes.md` |
+| 01 | Controlled vs uncontrolled | `05-formulaires/01-controlled-vs-uncontrolled.md` |
+| 02 | React Hook Form + Zod | `05-formulaires/02-react-hook-form.md` |
+| 03 | Patterns formulaires avancés | `05-formulaires/03-patterns-formulaires-avances.md` |
 
 Exercices : `exercices/05-formulaire-inscription.md`, `exercices/05-formulaire-multi-etapes.md`
 
@@ -147,11 +149,11 @@ Quizzes :
 
 | Cours | Titre | Fichier |
 |---|---|---|
-| 01 | Architecture App Router | `06-nextjs/01-app-router-architecture.md` |
-| 02 | Server Components vs Client Components | `06-nextjs/02-server-vs-client.md` |
-| 03 | Data fetching et Server Actions | `06-nextjs/03-data-fetching-actions.md` |
-| 04 | Metadata, SEO et streaming | `06-nextjs/04-metadata-seo-streaming.md` |
-| 05 | Middleware et API Routes | `06-nextjs/05-middleware-api-routes.md` |
+| 01 | Next.js fondamentaux | `06-nextjs/01-nextjs-fondamentaux.md` |
+| 02 | Server Components vs Client Components | `06-nextjs/02-server-components.md` |
+| 03 | Data fetching | `06-nextjs/03-data-fetching.md` |
+| 04 | API routes et Server Actions | `06-nextjs/04-api-routes-et-server-actions.md` |
+| 05 | Middleware et configuration | `06-nextjs/05-middleware-et-config.md` |
 
 Exercices : `exercices/06-page-dynamique.md`, `exercices/06-server-action-form.md`, `exercices/06-dashboard-streaming.md`, `exercices/06-bonus-fullstack.md`
 
@@ -168,8 +170,8 @@ Quizzes :
 
 | Cours | Titre | Fichier |
 |---|---|---|
-| 02 | React Testing Library | `07-tests/02-react-testing-library.md` |
-| 03 | Tests d'intégration et MSW | `07-tests/03-integration-msw.md` |
+| 02 | Tests de composants avec React Testing Library | `07-tests/02-tests-composants-rtl.md` |
+| 03 | Tests d'intégration et MSW | `07-tests/03-tests-api-msw.md` |
 
 Exercices : `exercices/07-tests-composant.md`, `exercices/07-tests-hook.md`
 
@@ -181,9 +183,10 @@ Quizzes :
 
 | Cours | Titre | Fichier |
 |---|---|---|
-| 01 | Profiling et React DevTools | `08-performance-patterns/01-profiling-devtools.md` |
-| 02 | Code splitting et lazy loading | `08-performance-patterns/02-code-splitting-lazy.md` |
-| 03 | Patterns avancés (compound, render props, HOC) | `08-performance-patterns/03-patterns-avances.md` |
+| 01 | Performance React | `08-performance-patterns/01-performance-react.md` |
+| 02 | Patterns de composition | `08-performance-patterns/02-patterns-composition.md` |
+| 03 | Error boundaries et Suspense | `08-performance-patterns/03-error-boundaries-suspense.md` |
+| 04 | Nouveautés React 19 | `08-performance-patterns/04-react-19-nouveautes.md` |
 
 Exercices : `exercices/08-optimisation-liste.md`, `exercices/08-compound-component.md`
 
@@ -192,19 +195,30 @@ Quizzes :
 - `quizzes/quiz-08-02-patterns-composition.html`
 - `quizzes/quiz-08-03-error-boundaries-suspense.html`
 
-### Module 09 — Styling (~3 h)
+### Module 09a — Accessibilité (~3 h)
 
 | Cours | Titre | Fichier |
 |---|---|---|
-| 01 | CSS Modules, Tailwind CSS | `09-styling/01-css-modules-tailwind.md` |
-| 02 | Bibliothèques de composants (shadcn/ui) | `09-styling/02-shadcn-ui.md` |
+| 01 | Fondamentaux WCAG et React | `09-accessibilite/01-fondamentaux-wcag-react.md` |
+| 02 | Patterns ARIA avancés | `09-accessibilite/02-aria-patterns-avances.md` |
 
-Exercice : `exercices/09-design-system.md`
+Exercice : `exercices/24-accessibilite/ENONCE.md`
 
 Quizzes :
 - `quizzes/quiz-09-accessibilite.html`
 - `quizzes/quiz-09-01-fondamentaux-wcag-react.html`
 - `quizzes/quiz-09-02-aria-patterns-avances.html`
+
+### Module 09b — Styling (~3 h)
+
+| Cours | Titre | Fichier |
+|---|---|---|
+| 01 | Tailwind CSS | `09-styling/01-tailwind-css.md` |
+| 02 | CSS Modules et alternatives | `09-styling/02-css-modules-et-alternatives.md` |
+
+Exercice : `exercices/09-design-system.md`
+
+Quizzes :
 - `quizzes/quiz-09-styling-01-tailwind-css.html`
 - `quizzes/quiz-09-styling-02-css-modules.html`
 
@@ -214,7 +228,7 @@ Quizzes :
 
 | Cours | Titre | Fichier |
 |---|---|---|
-| 01 | Auth avec NextAuth.js / Auth.js | `10-auth-securite/01-nextauth.md` |
+| 01 | Auth avec NextAuth.js / Auth.js | `10-auth-securite/01-auth-nextauth.md` |
 
 Exercice : `exercices/10-auth-flow.md`
 
@@ -237,8 +251,8 @@ Quizzes :
 
 | Cours | Titre | Fichier |
 |---|---|---|
-| 01 | Architecture projet client type | `12-recettes-esn/01-architecture-projet.md` |
-| 02 | Checklist production et bonnes pratiques | `12-recettes-esn/02-checklist-production.md` |
+| 01 | Patterns ESN | `12-recettes-esn/01-patterns-esn.md` |
+| 02 | Entretien technique | `12-recettes-esn/02-entretien-technique.md` |
 
 Exercice : `exercices/12-audit-projet.md`
 
@@ -270,42 +284,47 @@ Copie ce tableau et coche au fur et à mesure.
 | 00 | 01 — Modèle mental | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 00 | 02 — Équivalences | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 00 | 03 — Premier projet | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 01 | 01 — Anatomie composant | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 01 | 02 — Props & typage | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 01 | 03 — Rendu conditionnel | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 01 | 04 — Événements | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 01 | 05 — Composition | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 01 | 01 — JSX en profondeur | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 01 | 02 — Props et children | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 01 | 03 — Composants et composition | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 01 | 04 — Rendu conditionnel et listes | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 01 | 05 — Événements et formulaires basiques | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 02 | 01 — useState | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 02 | 02 — useEffect | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 02 | 03 — useRef | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 02 | 04 — useMemo/useCallback | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 02 | 05 — Hooks perso | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 03 | 01 — useReducer | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 03 | 02 — Context API | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 03 | 03 — Zustand | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 03 | 04 — Arbre de décision | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 04 | 01 — Router bases | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 04 | 02 — Routes imbriquées | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 04 | 03 — Navigation/guards | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 05 | 01 — Controlled/uncontrolled | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 02 | 03 — useRef et DOM | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 02 | 04 — useCallback/useMemo | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 02 | 05 — Custom hooks | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 03 | 01 — Context API | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 03 | 02 — Zustand | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 03 | 03 — Redux Toolkit | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 03 | 04 — TanStack Query | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 04 | 01 — React Router bases | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 04 | 02 — Paramètres et loaders | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 04 | 03 — Protection et lazy loading | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 05 | 01 — Controlled vs uncontrolled | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 05 | 02 — React Hook Form | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 05 | 03 — Formulaires complexes | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 06 | 01 — App Router | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 06 | 02 — Server/Client Comp. | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 05 | 03 — Patterns formulaires avancés | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 06 | 01 — Next.js fondamentaux | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 06 | 02 — Server Components | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 06 | 03 — Data fetching | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 06 | 04 — Metadata/SEO | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 06 | 05 — Middleware/API | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 07 | 02 — Testing Library | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 07 | 03 — Intégration/MSW | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 08 | 01 — Profiling | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 08 | 02 — Code splitting | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 08 | 03 — Patterns avancés | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 09 | 01 — CSS Modules/Tailwind | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 09 | 02 — shadcn/ui | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 10 | 01 — NextAuth | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 06 | 04 — API routes/Server Actions | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 06 | 05 — Middleware et config | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 07 | 02 — Tests composants RTL | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 07 | 03 — Tests API/MSW | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 08 | 01 — Performance React | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 08 | 02 — Patterns composition | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 08 | 03 — Error boundaries/Suspense | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 08 | 04 — Nouveautés React 19 | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 09a | 01 — Fondamentaux WCAG | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 09a | 02 — Patterns ARIA avancés | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 09b | 01 — Tailwind CSS | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 09b | 02 — CSS Modules et alternatives | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 10 | 01 — Auth NextAuth | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 11 | 02 — Déploiement | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 12 | 01 — Architecture projet | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 12 | 02 — Checklist prod | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 12 | 01 — Patterns ESN | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 12 | 02 — Entretien technique | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 13 | 01 — Capacitor fondamentaux | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 13 | 02 — Plugins avancés | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 
 ---
 

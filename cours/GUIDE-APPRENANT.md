@@ -3,7 +3,7 @@
 > **Ce guide est ta boussole.** Il t'aide a savoir ou tu en es, par ou passer,
 > et quoi faire quand tu bloques. Lis-le avant de commencer, et reviens-y regulierement.
 >
-> **Temps estime** : ~130-170h (3-5 mois a 8-10h/semaine)
+> **Temps estimé** : ~65h de cours | ~130-170h parcours complet (cours + exercices + projet + révisions espacées, soit 3-5 mois à 8-10h/semaine)
 >
 > **Philosophie** : React n'est pas un framework magique. C'est une bibliotheque
 > pour construire des interfaces a partir de composants. Sa force, c'est sa simplicite

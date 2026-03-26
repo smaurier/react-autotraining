@@ -18,8 +18,8 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Cours', link: '/cours/00-de-vue-angular-a-react/01-react-mental-model' },
-      { text: 'Exercices', link: '/exercices/01-premier-composant/README' },
-      { text: 'Quizzes', link: '/quizzes/' },
+      { text: 'Exercices', link: '/exercices/01-premier-composant/ENONCE' },
+      { text: 'Quizzes', link: '/quizzes/quiz-00-01-react-mental-model' },
       { text: 'Projet fil rouge', link: '/projet-fil-rouge/README' }
     ],
 
@@ -123,44 +123,153 @@ export default defineConfig({
             { text: 'Patterns ESN', link: '/cours/12-recettes-esn/01-patterns-esn' },
             { text: 'Entretien technique', link: '/cours/12-recettes-esn/02-entretien-technique' }
           ]
+        },
+        {
+          text: 'Phase 11 — Mobile (Capacitor)',
+          items: [
+            { text: 'Capacitor fondamentaux', link: '/cours/13-capacitor/01-capacitor-fondamentaux' },
+            { text: 'Plugins avancés', link: '/cours/13-capacitor/02-capacitor-plugins-avances' }
+          ]
         }
       ],
       '/exercices/': [
         {
           text: 'Exercices pratiques',
           items: [
-            { text: '01 — Premier composant', link: '/exercices/01-premier-composant/README' },
-            { text: '02 — Compteur avec hooks', link: '/exercices/02-compteur-hooks/README' },
-            { text: '03 — Liste de tâches', link: '/exercices/03-liste-de-taches/README' },
-            { text: '04 — Catalogue produits', link: '/exercices/04-catalogue-produits/README' },
-            { text: '05 — Chronomètre', link: '/exercices/05-chronometre/README' },
-            { text: '06 — Hooks avancés', link: '/exercices/06-hooks-avances/README' },
-            { text: '07 — Custom hooks', link: '/exercices/07-custom-hooks/README' },
-            { text: '08 — Context theme', link: '/exercices/08-context-theme/README' },
-            { text: '09 — Zustand store', link: '/exercices/09-zustand-store/README' },
-            { text: '10 — React Query', link: '/exercices/10-react-query/README' },
-            { text: '11 — Routing multi-pages', link: '/exercices/11-routing-multi-pages/README' },
-            { text: '12 — Formulaire RHF', link: '/exercices/12-formulaire-rhf/README' },
-            { text: '13 — Formulaire multi-étapes', link: '/exercices/13-formulaire-multi-etapes/README' },
-            { text: '14 — Next.js blog', link: '/exercices/14-nextjs-blog/README' },
-            { text: '15 — Server Components', link: '/exercices/15-server-components/README' },
-            { text: '16 — API Routes', link: '/exercices/16-api-routes/README' },
-            { text: '17 — Tests composants', link: '/exercices/17-tests-composants/README' },
-            { text: '18 — Tests intégration', link: '/exercices/18-tests-integration/README' },
-            { text: '20 — Performance audit', link: '/exercices/20-performance-audit/README' },
-            { text: '21 — Composition patterns', link: '/exercices/21-composition-patterns/README' },
-            { text: '22 — Tailwind dashboard', link: '/exercices/22-tailwind-dashboard/README' },
-            { text: '23 — Auth NextAuth', link: '/exercices/23-auth-nextauth/README' },
-            { text: '25 — Entretien React', link: '/exercices/25-entretien-react/README' }
+            { text: '01 — Premier composant', link: '/exercices/01-premier-composant/ENONCE' },
+            { text: '02 — Compteur avec hooks', link: '/exercices/02-compteur-hooks/ENONCE' },
+            { text: '03 — Liste de tâches', link: '/exercices/03-liste-de-taches/ENONCE' },
+            { text: '04 — Catalogue produits', link: '/exercices/04-catalogue-produits/ENONCE' },
+            { text: '05 — Chronomètre', link: '/exercices/05-chronometre/ENONCE' },
+            { text: '06 — Hooks avancés', link: '/exercices/06-hooks-avances/ENONCE' },
+            { text: '07 — Custom hooks', link: '/exercices/07-custom-hooks/ENONCE' },
+            { text: '08 — Context theme', link: '/exercices/08-context-theme/ENONCE' },
+            { text: '09 — Zustand store', link: '/exercices/09-zustand-store/ENONCE' },
+            { text: '10 — React Query', link: '/exercices/10-react-query/ENONCE' },
+            { text: '11 — Routing multi-pages', link: '/exercices/11-routing-multi-pages/ENONCE' },
+            { text: '12 — Formulaire RHF', link: '/exercices/12-formulaire-rhf/ENONCE' },
+            { text: '13 — Formulaire multi-étapes', link: '/exercices/13-formulaire-multi-etapes/ENONCE' },
+            { text: '14 — Next.js blog', link: '/exercices/14-nextjs-blog/ENONCE' },
+            { text: '15 — Server Components', link: '/exercices/15-server-components/ENONCE' },
+            { text: '16 — API Routes', link: '/exercices/16-api-routes/ENONCE' },
+            { text: '16b — Middleware Next.js', link: '/exercices/16b-middleware-nextjs/ENONCE' },
+            { text: '17 — Tests composants', link: '/exercices/17-tests-composants/ENONCE' },
+            { text: '18 — Tests intégration', link: '/exercices/18-tests-integration/ENONCE' },
+            { text: '19 — Tests E2E Playwright', link: '/exercices/19-tests-e2e/ENONCE' },
+            { text: '20 — Performance audit', link: '/exercices/20-performance-audit/ENONCE' },
+            { text: '21 — Composition patterns', link: '/exercices/21-composition-patterns/ENONCE' },
+            { text: '22 — Tailwind dashboard', link: '/exercices/22-tailwind-dashboard/ENONCE' },
+            { text: '23 — Auth NextAuth', link: '/exercices/23-auth-nextauth/ENONCE' },
+            { text: '24 — Accessibilité', link: '/exercices/24-accessibilite/ENONCE' },
+            { text: '25 — Entretien React', link: '/exercices/25-entretien-react/ENONCE' },
+            { text: '26 — App mobile Capacitor', link: '/exercices/26-app-mobile-capacitor/ENONCE' }
           ]
         }
       ],
       '/quizzes/': [
         {
-          text: 'Quizzes',
+          text: 'Module 00 — Transition vers React',
           items: [
-            { text: 'Quiz 09 — Accessibilité', link: '/quizzes/quiz-09-accessibilite.html' },
-            { text: 'Quiz 10 — React 19', link: '/quizzes/quiz-10-react19.html' }
+            { text: 'React Mental Model', link: '/quizzes/quiz-00-01-react-mental-model.html' },
+            { text: 'Équivalences triple', link: '/quizzes/quiz-00-02-equivalences-triple.html' },
+            { text: 'Premier projet React', link: '/quizzes/quiz-00-03-premier-projet-react.html' }
+          ]
+        },
+        {
+          text: 'Module 01 — Composants & JSX',
+          items: [
+            { text: 'JSX en profondeur', link: '/quizzes/quiz-01-01-jsx-en-profondeur.html' },
+            { text: 'Props & Children', link: '/quizzes/quiz-01-02-props-et-children.html' },
+            { text: 'Composants & Composition', link: '/quizzes/quiz-01-03-composants-et-composition.html' },
+            { text: 'Rendu conditionnel & Listes', link: '/quizzes/quiz-01-04-rendu-conditionnel-et-listes.html' },
+            { text: 'Événements & Formulaires', link: '/quizzes/quiz-01-05-evenements-et-formulaires.html' }
+          ]
+        },
+        {
+          text: 'Module 02 — Hooks fondamentaux',
+          items: [
+            { text: 'useState', link: '/quizzes/quiz-02-01-usestate.html' },
+            { text: 'useEffect', link: '/quizzes/quiz-02-02-useeffect.html' },
+            { text: 'useRef & DOM', link: '/quizzes/quiz-02-03-useref-et-dom.html' },
+            { text: 'useCallback & useMemo', link: '/quizzes/quiz-02-04-usecallback-usememo.html' },
+            { text: 'Custom Hooks', link: '/quizzes/quiz-02-05-custom-hooks.html' }
+          ]
+        },
+        {
+          text: 'Module 03 — State Management',
+          items: [
+            { text: 'Context API', link: '/quizzes/quiz-03-01-context-api.html' },
+            { text: 'Zustand', link: '/quizzes/quiz-03-02-zustand.html' },
+            { text: 'Redux Toolkit', link: '/quizzes/quiz-03-03-redux-toolkit.html' },
+            { text: 'TanStack Query', link: '/quizzes/quiz-03-04-tanstack-query.html' }
+          ]
+        },
+        {
+          text: 'Module 04 — Routing',
+          items: [
+            { text: 'React Router basique', link: '/quizzes/quiz-04-01-react-router-basique.html' },
+            { text: 'Paramètres & Loaders', link: '/quizzes/quiz-04-02-parametres-et-loaders.html' },
+            { text: 'Protection & Lazy', link: '/quizzes/quiz-04-03-protection-et-lazy.html' }
+          ]
+        },
+        {
+          text: 'Module 05 — Formulaires',
+          items: [
+            { text: 'Controlled vs Uncontrolled', link: '/quizzes/quiz-05-01-controlled-vs-uncontrolled.html' },
+            { text: 'React Hook Form', link: '/quizzes/quiz-05-02-react-hook-form.html' },
+            { text: 'Patterns formulaires avancés', link: '/quizzes/quiz-05-03-patterns-formulaires-avances.html' }
+          ]
+        },
+        {
+          text: 'Module 06 — Next.js 15',
+          items: [
+            { text: 'Next.js fondamentaux', link: '/quizzes/quiz-06-01-nextjs-fondamentaux.html' },
+            { text: 'Server Components', link: '/quizzes/quiz-06-02-server-components.html' },
+            { text: 'Data Fetching', link: '/quizzes/quiz-06-03-data-fetching.html' },
+            { text: 'API Routes & Server Actions', link: '/quizzes/quiz-06-04-api-routes-server-actions.html' },
+            { text: 'Middleware & Config', link: '/quizzes/quiz-06-05-middleware-et-config.html' }
+          ]
+        },
+        {
+          text: 'Module 07 — Tests',
+          items: [
+            { text: 'Tests composants (RTL)', link: '/quizzes/quiz-07-02-tests-composants-rtl.html' },
+            { text: 'Tests API (MSW)', link: '/quizzes/quiz-07-03-tests-api-msw.html' }
+          ]
+        },
+        {
+          text: 'Module 08 — Performance & Patterns',
+          items: [
+            { text: 'Performance React', link: '/quizzes/quiz-08-01-performance-react.html' },
+            { text: 'Patterns composition', link: '/quizzes/quiz-08-02-patterns-composition.html' },
+            { text: 'Error Boundaries & Suspense', link: '/quizzes/quiz-08-03-error-boundaries-suspense.html' }
+          ]
+        },
+        {
+          text: 'Module 09 — Accessibilité & Styling',
+          items: [
+            { text: 'Fondamentaux WCAG React', link: '/quizzes/quiz-09-01-fondamentaux-wcag-react.html' },
+            { text: 'ARIA patterns avancés', link: '/quizzes/quiz-09-02-aria-patterns-avances.html' },
+            { text: 'Accessibilité (synthèse)', link: '/quizzes/quiz-09-accessibilite.html' },
+            { text: 'Tailwind CSS', link: '/quizzes/quiz-09-styling-01-tailwind-css.html' },
+            { text: 'CSS Modules', link: '/quizzes/quiz-09-styling-02-css-modules.html' }
+          ]
+        },
+        {
+          text: 'Module 10+ — Production',
+          items: [
+            { text: 'Auth NextAuth', link: '/quizzes/quiz-10-01-auth-nextauth.html' },
+            { text: 'React 19 nouveautés', link: '/quizzes/quiz-10-react19.html' },
+            { text: 'Déploiement', link: '/quizzes/quiz-11-02-deploiement.html' },
+            { text: 'Patterns ESN', link: '/quizzes/quiz-12-01-patterns-esn.html' },
+            { text: 'Entretien technique', link: '/quizzes/quiz-12-02-entretien-technique.html' }
+          ]
+        },
+        {
+          text: 'Module 13 — Capacitor',
+          items: [
+            { text: 'Capacitor fondamentaux', link: '/quizzes/quiz-13-01-capacitor-fondamentaux.html' },
+            { text: 'Plugins avancés', link: '/quizzes/quiz-13-02-capacitor-plugins-avances.html' }
           ]
         }
       ]
