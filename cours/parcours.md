@@ -27,9 +27,10 @@
 | 00 | De Vue/Angular à React | 3 | 1 | ~3 h |
 | 01 | Composants & JSX | 5 | 4 | ~8 h |
 | 02 | Hooks fondamentaux | 5 | 3 | ~8 h |
-| 03 | State Management | 4 | 3 | ~6 h |
+| 03 | State Management (client) | 5 | 3 | ~7 h |
 | 04 | Routing | 3 | 1 | ~4 h |
 | 05 | Formulaires | 3 | 2 | ~5 h |
+| 05b | Async State (TanStack Query) | 1 | 1 | ~2 h |
 | 06 | Next.js App Router | 5 | 3 + 1 bonus | ~8 h |
 | 07 | Tests | 2 | 2 | ~3 h |
 | 08 | Performance & Patterns | 3 | 2 | ~5 h |
@@ -39,7 +40,7 @@
 | 11 | CI/CD & Déploiement | 1 | 0 | ~2 h |
 | 12 | Recettes ESN | 2 | 1 | ~3 h |
 | 13 | Mobile (Capacitor) | 2 | 1 | ~4 h |
-| | **Total** | **~45** | **~27** | **~65 h** |
+| | **Total** | **~47** | **~28** | **~68 h** |
 
 ---
 
@@ -98,14 +99,17 @@ Quizzes :
 - `quizzes/quiz-02-04-usecallback-usememo.html`
 - `quizzes/quiz-02-05-custom-hooks.html`
 
-### Module 03 — State Management (~6 h)
+### Module 03 — State Management — client state (~7 h)
+
+> ⚠️ Ce module couvre exclusivement le **client state** (données qui vivent dans l’app, pas sur un serveur). Pour les données serveur (fetch, cache, revalidation), voir le module 05b.
 
 | Cours | Titre | Fichier |
 |---|---|---|
+| 00 | useReducer et logique de state complexe | `03-state-management/00-usereducer.md` |
 | 01 | Context API (thème, auth, i18n) | `03-state-management/01-context-api.md` |
 | 02 | Zustand : store externe léger | `03-state-management/02-zustand.md` |
 | 03 | Redux Toolkit | `03-state-management/03-redux-toolkit.md` |
-| 04 | TanStack Query | `03-state-management/04-tanstack-query.md` |
+| — | Quand utiliser quoi ? (arbre de décision) | voir fin du cours `00-usereducer.md` |
 
 Exercices : `exercices/03-todo-reducer.md`, `exercices/03-theme-context.md`, `exercices/03-store-zustand.md`
 
@@ -113,6 +117,18 @@ Quizzes :
 - `quizzes/quiz-03-01-context-api.html`
 - `quizzes/quiz-03-02-zustand.html`
 - `quizzes/quiz-03-03-redux-toolkit.html`
+
+### Module 05b — Async State : TanStack Query (~2 h)
+
+> **Pourquoi ici et pas dans le module 03 ?** TanStack Query gère du **server state** (données qui vivent sur un serveur, qui périment, et qui doivent être sync’es). C’est une catégorie fondamentalement différente du client state de Zustand ou Context. Ce module se place après les formulaires car `useMutation` s’utilise souvent avec des formulaires de soumission.
+
+| Cours | Titre | Fichier |
+|---|---|---|
+| 01 | TanStack Query : server state | `05b-tanstack-query/01-tanstack-query.md` |
+
+Exercice : `exercices/10-react-query/ENONCE.md`
+
+Quizzes :
 - `quizzes/quiz-03-04-tanstack-query.html`
 
 ### Module 04 — Routing (~4 h)
@@ -294,16 +310,17 @@ Copie ce tableau et coche au fur et à mesure.
 | 02 | 03 — useRef et DOM | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 02 | 04 — useCallback/useMemo | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 02 | 05 — Custom hooks | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 03 | 00 — useReducer | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 03 | 01 — Context API | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 03 | 02 — Zustand | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 03 | 03 — Redux Toolkit | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
-| 03 | 04 — TanStack Query | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 04 | 01 — React Router bases | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 04 | 02 — Paramètres et loaders | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 04 | 03 — Protection et lazy loading | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 05 | 01 — Controlled vs uncontrolled | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 05 | 02 — React Hook Form | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 05 | 03 — Patterns formulaires avancés | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
+| 05b | TanStack Query | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 06 | 01 — Next.js fondamentaux | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 06 | 02 — Server Components | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |
 | 06 | 03 — Data fetching | _ _ /_ _ /_ _ | [ ] | [ ] | [ ] |

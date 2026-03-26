@@ -92,17 +92,21 @@ un formulaire de recherche. Le but est de sentir le flux de donnees.
 
 | Module | Sujet | Temps | Note |
 |---|---|---|---|
-| 03 | State management | 4h | **Cours cle** -- Context, Zustand, quand utiliser quoi |
-| 04 | Routing | 3h | React Router, routes imbriquees, parametres |
+| 03 | State management (client) | 5h | **Cours clé** -- useReducer, Context, Zustand, Redux. Client state uniquement. |
+| 04 | Routing | 3h | React Router, routes imbriquées, paramètres |
 | 05 | Formulaires | 3h | Controlled components, validation, React Hook Form |
+| 05b | TanStack Query (server state) | 2h | **Cours clé** -- server state vs client state. Separe intentionnellement du module 03. |
 
-**Conseil** : Le state management (module 03) est le sujet ou les devs React se perdent le plus.
-Ne tombe pas dans le piege du "tout dans le state global". La plupart du state est local.
+**Conseil** : La distinction **client state vs server state** est le sujet où les devs React se perdent le plus.
+Mets tes données serveur (utilisateurs, posts, produits) dans TanStack Query, pas dans Zustand.
+Zustand/Context/Redux sont pour l’état UI : menu ouvert, sélection, panier temporaire.
 
 **Checkpoint Phase 2** :
+- [ ] Tu sais quand remplacer `useState` par `useReducer` (logique multi-dimensions)
 - [ ] Tu sais choisir entre state local, Context, et un store externe selon le cas
-- [ ] Tu sais configurer React Router avec des routes imbriquees et des parametres
-- [ ] Tu sais creer un formulaire controle avec validation
+- [ ] Tu comprends la différence entre client state (Zustand) et server state (TanStack Query)
+- [ ] Tu sais configurer React Router avec des routes imbriquées et des paramètres
+- [ ] Tu sais créer un formulaire contrôlé avec validation
 - [ ] Tu sais quand lifter le state et quand le garder local
 - [ ] Tu sais utiliser `useContext` sans provoquer de re-renders inutiles
 
@@ -148,8 +152,9 @@ des composants classiques. Prends le temps de comprendre la frontiere client/ser
 | Module | Sujet | Temps | Note |
 |---|---|---|---|
 | 07 | Tests | 4h | Testing Library, tests de composants, MSW |
-| 08 | Performance patterns | 4h | **Cours cle** -- `memo`, `useMemo`, `useCallback`, React Profiler |
-| 09 | Accessibilite et Styling | 4h | ARIA, semantique, CSS-in-JS, Tailwind |
+| 08 | Performance patterns | 4h | **Cours cle** -- `memo`, `useMemo`, `useCallback`, React Profiler, React 19 |
+| 09a | Accessibilite | 3h | ARIA, semantique, WCAG 2.1 AA, focus management |
+| 09b | Styling | 3h | Tailwind CSS, CSS Modules |
 | 10 | Auth et securite | 3h | NextAuth, CSRF, XSS, tokens |
 | 11 | CI/CD et deploiement | 3h | GitHub Actions, Docker, preview deployments |
 | 12 | Recettes ESN | 4h | Patterns concrets pour les projets en entreprise |

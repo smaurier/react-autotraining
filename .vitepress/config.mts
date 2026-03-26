@@ -56,12 +56,12 @@ export default defineConfig({
           ]
         },
         {
-          text: 'Phase 3 — State Management',
+          text: 'Phase 3 — State Management (client state)',
           items: [
+            { text: 'useReducer', link: '/cours/03-state-management/00-usereducer' },
             { text: 'Context API', link: '/cours/03-state-management/01-context-api' },
             { text: 'Zustand', link: '/cours/03-state-management/02-zustand' },
-            { text: 'Redux Toolkit', link: '/cours/03-state-management/03-redux-toolkit' },
-            { text: 'TanStack Query', link: '/cours/03-state-management/04-tanstack-query' }
+            { text: 'Redux Toolkit', link: '/cours/03-state-management/03-redux-toolkit' }
           ]
         },
         {
@@ -78,6 +78,12 @@ export default defineConfig({
             { text: 'Controlled vs Uncontrolled', link: '/cours/05-formulaires/01-controlled-vs-uncontrolled' },
             { text: 'React Hook Form', link: '/cours/05-formulaires/02-react-hook-form' },
             { text: 'Patterns formulaires avancés', link: '/cours/05-formulaires/03-patterns-formulaires-avances' }
+          ]
+        },
+        {
+          text: 'Phase 5b — Async State (server state)',
+          items: [
+            { text: 'TanStack Query', link: '/cours/05b-tanstack-query/01-tanstack-query' }
           ]
         },
         {
@@ -196,11 +202,16 @@ export default defineConfig({
           ]
         },
         {
-          text: 'Module 03 — State Management',
+          text: 'Module 03 — State Management (client state)',
           items: [
             { text: 'Context API', link: '/quizzes/quiz-03-01-context-api.html' },
             { text: 'Zustand', link: '/quizzes/quiz-03-02-zustand.html' },
-            { text: 'Redux Toolkit', link: '/quizzes/quiz-03-03-redux-toolkit.html' },
+            { text: 'Redux Toolkit', link: '/quizzes/quiz-03-03-redux-toolkit.html' }
+          ]
+        },
+        {
+          text: 'Module 05b — Async State (server state)',
+          items: [
             { text: 'TanStack Query', link: '/quizzes/quiz-03-04-tanstack-query.html' }
           ]
         },
@@ -242,7 +253,8 @@ export default defineConfig({
           items: [
             { text: 'Performance React', link: '/quizzes/quiz-08-01-performance-react.html' },
             { text: 'Patterns composition', link: '/quizzes/quiz-08-02-patterns-composition.html' },
-            { text: 'Error Boundaries & Suspense', link: '/quizzes/quiz-08-03-error-boundaries-suspense.html' }
+            { text: 'Error Boundaries & Suspense', link: '/quizzes/quiz-08-03-error-boundaries-suspense.html' },
+            { text: 'React 19 nouveautés', link: '/quizzes/quiz-10-react19.html' }
           ]
         },
         {
@@ -259,7 +271,6 @@ export default defineConfig({
           text: 'Module 10+ — Production',
           items: [
             { text: 'Auth NextAuth', link: '/quizzes/quiz-10-01-auth-nextauth.html' },
-            { text: 'React 19 nouveautés', link: '/quizzes/quiz-10-react19.html' },
             { text: 'Déploiement', link: '/quizzes/quiz-11-02-deploiement.html' },
             { text: 'Patterns ESN', link: '/quizzes/quiz-12-01-patterns-esn.html' },
             { text: 'Entretien technique', link: '/quizzes/quiz-12-02-entretien-technique.html' }

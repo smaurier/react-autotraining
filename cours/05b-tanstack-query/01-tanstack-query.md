@@ -1,5 +1,22 @@
-# Cours 17 — TanStack Query : gérer l'état serveur
+# TanStack Query : gérer l'état serveur
 
+> **Module** : 05b — Async State (Server State) · **Durée** : ~60 min
+>
+> **Prérequis** : module 03 (State Management) et module 05 (Formulaires)
+>
+> ⚠️ **Pourquoi ce module est séparé du State Management (module 03)**
+>
+> TanStack Query ne gère **pas** le même type d'état que Zustand, Redux ou Context. Ces trois gèrent du **client state** (état local à ton application, qui n'existe pas sur un serveur). TanStack Query gère du **server state** : des données qui **vivent sur un serveur**, qui sont potentiellement périmées, et qui doivent être synchronisées.
+>
+> | | Client State | Server State |
+> |---|---|---|
+> | **Exemples** | `isMenuOpen`, sélection UI, panier local | Liste d'utilisateurs, posts, produits |
+> | **Où vit la source de vérité ?** | Dans l'app | Sur le serveur |
+> | **Outil adapté** | `useState`, Zustand, Redux | **TanStack Query**, SWR |
+> | **Périme-t-il ?** | Non | Oui (un autre user peut modifier les données) |
+>
+> Mettre des données serveur dans Zustand/Redux, c'est gérer manuellement des problèmes (loading, erreur, cache, revalidation, stale-time) que TanStack Query résout automatiquement.
+>
 > **Objectif** : Comprendre la distinction fondamentale entre état client et état serveur. Maîtriser `useQuery` et `useMutation` de TanStack Query pour le fetching, le cache et l'invalidation des données serveur. Comparer avec `resource()` et `HttpClient` d'Angular, et savoir quand utiliser TanStack Query plutôt que Zustand.
 
 ---
