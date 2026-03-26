@@ -17,7 +17,7 @@ Formation progressive React : de Vue/Angular vers React staffable ESN.
 
 ```bash
 pnpm install
-pnpm dev
+pnpm docs:dev    # → http://localhost:5170
 ```
 
 ## Structure

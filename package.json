@@ -2,13 +2,20 @@
   "name": "react-curriculum",
   "private": true,
   "version": "1.0.0",
+  "description": "Formation React 19 + Next.js 15 : de Vue/Angular vers React staffable ESN",
   "type": "module",
   "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest",
     "test:run": "vitest run"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -23,6 +30,7 @@
     "vite": "^6.0.0",
     "vitest": "^2.0.0",
     "@testing-library/react": "^16.0.0",
-    "happy-dom": "^15.0.0"
+    "happy-dom": "^15.0.0",
+    "vitepress": "^1.6.3"
   }
 }
