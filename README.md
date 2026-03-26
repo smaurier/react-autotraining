@@ -48,4 +48,4 @@ projet-fil-rouge/→ TaskFlow : app Next.js construite progressivement
 
 **Durée estimée** : ~65h (~2.5 mois à 1 cours/jour)
 
-**Prérequis** : avoir complété les formations Vue 3 et Angular 19+
+**Prérequis** : avoir complété les formations Vue 3 (00-vue) et Angular 19+ (01-angular)
