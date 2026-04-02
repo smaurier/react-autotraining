@@ -1,9 +1,9 @@
 # Parcours React 19 + Next.js 15
 
-> **Prérequis validés** : formation Vue 3 (00) + formation Angular 19+ (01).
+> **Prérequis validés** : formation Vue 3 (02) + formation Angular 19+ (03).
 > Tu connais la réactivité, les composants, la DI et RxJS ; ce parcours te fait passer au niveau opérationnel ESN sur le troisième framework front.
 >
-> **Ce cours se fait APRÈS Vue (00) et Angular (01).** Ce cours est le troisième framework dans l'ordre pédagogique. Si tu n'as pas fait 00-Vue et 01-Angular, commence par là.
+> **Ce cours se fait APRÈS Vue (02) et Angular (03).** Ce cours est le troisième framework dans l'ordre pédagogique. Si tu n'as pas fait 02-Vue et 03-Angular, commence par là.
 
 ---
 

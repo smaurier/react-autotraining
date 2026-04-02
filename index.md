@@ -49,4 +49,4 @@ pnpm docs:dev
 
 Ouvre [http://localhost:5170](http://localhost:5170)
 
-**Prérequis** : avoir complété les formations Vue 3 (`01-vue`) et Angular (`02-angular`)
+**Prérequis** : avoir complété les formations Vue 3 (`02-vue`) et Angular (`03-angular`)
