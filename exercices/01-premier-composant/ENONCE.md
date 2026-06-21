@@ -43,7 +43,7 @@ L'exercice te demandé de construire un composant `Greeting` qui affiche un mess
 - L'interface `GreetingProps` doit etre exportee.
 - Le type de `useState` doit etre explicite : `useState<"fr" | "en">`.
 - Aucun `any` autorise.
-- Utiliser `React.FC<GreetingProps>` ou la syntaxe avec typage direct des paramètres.
+- Utiliser la syntaxe avec typage direct des paramètres (pattern recommandé React 19+). Note : `React.FC` est un pattern legacy, à éviter dans du nouveau code.
 
 ---
 
