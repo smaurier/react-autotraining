@@ -105,7 +105,8 @@ export default useToggle;
 
 // ─── src/hooks/useFamilies.ts ───────────────────────────────────
 import { useState, useEffect } from 'react';
-import type { Family } from '@/types/family';
+// Import relatif — le starter Vite ne configure pas l'alias @/ (hooks → types)
+import type { Family } from '../types/family';
 
 interface UseFamiliesResult {
   families: Family[];
@@ -149,7 +150,8 @@ function useFamilies(): UseFamiliesResult {
 export default useFamilies;
 
 // ─── src/pages/FamilyListPage.tsx ───────────────────────────────
-import useFamilies from '@/hooks/useFamilies';
+// Import relatif — le starter Vite ne configure pas l'alias @/ (pages → hooks)
+import useFamilies from '../hooks/useFamilies';
 
 function FamilyListPage() {
   const { families, isLoading, error, refetch } = useFamilies();
@@ -178,8 +180,9 @@ function FamilyListPage() {
 export default FamilyListPage;
 
 // ─── src/pages/InvitationPage.tsx ───────────────────────────────
-import useFamilies from '@/hooks/useFamilies';
-import useToggle from '@/hooks/useToggle';
+// Imports relatifs — le starter Vite ne configure pas l'alias @/ (pages → hooks)
+import useFamilies from '../hooks/useFamilies';
+import useToggle from '../hooks/useToggle';
 
 function InvitationPage() {
   // 2e instance indépendante de useFamilies → 2e fetch, 2e état

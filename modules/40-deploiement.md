@@ -445,7 +445,7 @@ AUTH_SECRET    → signature des sessions NextAuth
 NEXT_PUBLIC_API_URL → URL de l'API métier consommée côté client
 ```
 
-**Runtime par route :** les routes qui lisent la DB famille/membre restent en **node runtime** ; `middleware.ts` (garde d'auth, redirection `/login`) tourne en **edge** pour intercepter au plus près du visiteur.
+**Runtime par route :** les routes qui lisent la DB famille/membre restent en **node runtime** ; `middleware.ts` (garde d'auth, redirection `/login`) tourne en **edge** pour intercepter au plus près du visiteur. Conséquence directe : le middleware ne peut pas importer un `auth.ts` qui tire `bcryptjs` ou un driver DB Node → applique le pattern **split-config** d'Auth.js v5 (`auth.config.ts` edge-safe importé par le middleware, `auth.ts` Node pour le reste), détaillé en **§2.10 du module 39**.
 
 **Variante self-host :** si un déploiement TribuZen white-label doit vivre chez un hébergeur imposé, on bascule `output: 'standalone'` + Dockerfile multi-stage (Exemple 2), avec `NEXT_PUBLIC_API_URL` en `--build-arg` et les secrets en `--env-file`.
 

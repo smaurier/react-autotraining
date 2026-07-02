@@ -134,7 +134,7 @@ function MemberContainer({ memberId }: { memberId: string }) {
 }
 ```
 
-> En pratique avec React Query / TanStack Query (module 05b), les containers deviennent de simples composants avec `useQuery`. Le pattern reste valide — seul le mécanisme de fetch change.
+> En pratique avec React Query / TanStack Query (module 23), les containers deviennent de simples composants avec `useQuery`. Le pattern reste valide — seul le mécanisme de fetch change.
 
 ### 2.3 Composants réutilisables
 

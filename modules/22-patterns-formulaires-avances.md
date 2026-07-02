@@ -147,9 +147,12 @@ L'état partagé (les données déjà saisies) vit dans le composant parent. Cha
 
 Zod valide de façon synchrone (format, longueur). Vérifier qu'un email n'existe **pas déjà côté serveur** demande un appel réseau : c'est de la validation **asynchrone**. Deux façons :
 
-**a) `validate` async dans `register`** — ciblé sur un champ :
+> **Encart — resolver et `register` ne se cumulent pas.** Dès que `useForm` a un `resolver` (ici `zodResolver`), les règles passées à `register` (`validate`, `required`, `min`, `pattern`…) **ne s'exécutent pas** : la doc RHF le dit explicitement (« Resolvers cannot be used with built-in validators »). **Toute** la validation passe alors par le schéma. L'option (a) ci-dessous n'est donc valable **que sans resolver** ; avec un schéma Zod, utilise l'option (b).
+
+**a) `validate` async dans `register`** — ciblé sur un champ, **uniquement si `useForm` n'a PAS de `resolver`** :
 
 ```tsx
+// Valable seulement sans resolver (sinon ce validate est ignoré).
 <input
   {...register('email', {
     validate: async (value) => {
@@ -319,7 +322,12 @@ const membersSchema = z
       .array(
         z.object({
           name: z.string().min(2, 'Nom requis'),
-          email: z.string().email('Email invalide'),
+          // unicité SERVEUR : refine async dans le schéma (zodResolver → parseAsync).
+          // Un `validate` dans register serait ignoré à cause du resolver (voir encart).
+          email: z
+            .string()
+            .email('Email invalide')
+            .refine(async (e) => !(await isEmailTaken(e)), 'Email déjà pris'),
         })
       )
       .min(1, 'Au moins un membre'),
@@ -387,11 +395,10 @@ function StepMembers({
 
           <input
             placeholder="Email"
-            // validation async ciblée : unicité serveur
-            {...register(`members.${i}.email`, {
-              validate: async (value) =>
-                (await isEmailTaken(value)) ? 'Email déjà pris' : true,
-            })}
+            // Pas de `validate` ici : le resolver Zod court-circuite les
+            // validators de register. L'unicité serveur est dans le schéma
+            // (.refine async sur email), exécutée via parseAsync au blur.
+            {...register(`members.${i}.email`)}
           />
           {errors.members?.[i]?.email && <p>{errors.members[i]?.email?.message}</p>}
 
@@ -511,7 +518,7 @@ Ce que l'exemple démontre :
 - Chaque étape = un `useForm` indépendant → validation isolée, pas de désenregistrement à gérer.
 - Les données saisies survivent aux allers-retours car elles vivent dans le state parent (`data`), pas dans les forms démontés.
 - `useFieldArray` gère les membres ; `field.id` sert de `key`.
-- Unicité en deux couches : intra-formulaire (Zod `.refine`) + serveur (`validate` async).
+- Unicité en deux couches, toutes deux dans le schéma Zod : intra-formulaire (`.refine` sur l'objet) + serveur (`.refine` async sur l'email). Avec un `resolver`, un `validate` de `register` ne s'exécuterait pas.
 
 ### Exemple 2 — Champ dépendant via `watch`
 

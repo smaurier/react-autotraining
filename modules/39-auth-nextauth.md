@@ -15,7 +15,7 @@ last-reviewed: 2026-07
 > **Outcomes — tu sauras FAIRE :** configurer Auth.js v5 dans un projet Next.js 15 App Router, protéger une route serveur avec `auth()` et un contrôle de rôle, distinguer la barrière middleware de l'autorisation revérifiée côté serveur.
 > **Difficulté :** :star::star::star:
 
-> **Note de fiabilité (module sécurité)** — L'API décrite ici (`auth.ts`, `handlers`, `auth()`, callbacks, middleware, Server Actions `signIn`/`signOut`, contrainte JWT du provider Credentials) a été **vérifiée sur la documentation Auth.js à jour (juillet 2026)** via Context7. Les points marqués *(pratique standard, non spécifique Auth.js)* — bcrypt, détails cookie `httpOnly` — relèvent de bonnes pratiques générales à recouper avec la doc de sécurité de ton projet. La v5 (Auth.js) diffère fortement de la v4 (NextAuth.js) : ne copie jamais un tuto v4 sans vérifier.
+> **Note de fiabilité (module sécurité)** — L'API décrite ici (`auth.ts`, `handlers`, `auth()`, callbacks, middleware, Server Actions `signIn`/`signOut`, contrainte JWT du provider Credentials) a été **vérifiée sur la documentation Auth.js à jour (juillet 2026)** via Context7. **Réserve importante :** les exemples de middleware montrés dans les worked examples importent `auth` depuis `@/auth` — ce raccourci n'est valable que si `auth.ts` reste 100 % edge-compatible. Dès qu'un adapter DB / `bcryptjs` entre en jeu, le middleware Next tourne en **Edge runtime** et doit passer par le pattern **split-config** (`auth.config.ts` edge-safe), détaillé en §2.10 — cette contrainte Edge n'était pas couverte par la vérification initiale. Les points marqués *(pratique standard, non spécifique Auth.js)* — bcrypt, détails cookie `httpOnly` — relèvent de bonnes pratiques générales à recouper avec la doc de sécurité de ton projet. La v5 (Auth.js) diffère fortement de la v4 (NextAuth.js) : ne copie jamais un tuto v4 sans vérifier.
 
 ## 1. Cas concret d'abord
 
@@ -253,6 +253,60 @@ export const config = {
 
 > **Middleware ≠ seule barrière (rappel 27/28).** Le middleware améliore l'UX (rediriger tôt, éviter d'envoyer le JS d'une page interdite) mais peut être contourné (bugs de matcher, requêtes directes à une Server Action ou une route API). L'autorisation **doit** être revérifiée là où les données sont lues — dans la page/action serveur (§2.9), idéalement centralisée dans une **DAL** (Data Access Layer).
 
+> **⚠️ Piège Edge runtime — split-config obligatoire dès qu'une DB entre en jeu.** Le middleware Next.js tourne en **Edge runtime** (Web APIs, pas de Node.js complet). Or `import { auth } from "@/auth"` tire **tout** `auth.ts` : provider `Credentials`, `bcryptjs`, `zod`, et — en migration TribuZen — un **accès DB** (adapter, driver). Un driver DB Node (TCP) ou `bcryptjs` **casse en Edge**. Tant que `auth.ts` reste 100 % edge-compatible (OAuth seul, aucun accès Node), l'import direct fonctionne ; **dès qu'une vraie DB / bcrypt entre en jeu**, le middleware ne doit importer **que** la portion edge-safe. Auth.js v5 documente pour ça le pattern **split-config** :
+
+```ts
+// auth.config.ts — portion EDGE-SAFE : providers OAuth + callback authorized.
+// AUCUN adapter, AUCUN bcrypt, AUCUN accès DB ici.
+import type { NextAuthConfig } from "next-auth";
+import GitHub from "next-auth/providers/github";
+
+export const authConfig = {
+  providers: [GitHub], // OAuth uniquement : pas de logique Node
+  callbacks: {
+    // décide l'accès au niveau du middleware (edge)
+    authorized({ auth, request: { nextUrl } }) {
+      const isLoggedIn = !!auth?.user;
+      const isOnAdmin = nextUrl.pathname.startsWith("/admin");
+      if (isOnAdmin) return isLoggedIn; // false → redirige vers la page signIn
+      return true;
+    },
+  },
+  pages: { signIn: "/login" },
+} satisfies NextAuthConfig;
+```
+
+```ts
+// auth.ts — portion NODE complète : étend authConfig + Credentials/bcrypt/DB.
+import NextAuth from "next-auth";
+import Credentials from "next-auth/providers/credentials";
+import { authConfig } from "./auth.config";
+// import { PrismaAdapter } from "@auth/prisma-adapter"; // adapter DB → Node only
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
+  // adapter: PrismaAdapter(db), // ← accès DB : interdit en Edge
+  session: { strategy: "jwt" },
+  providers: [
+    ...authConfig.providers,
+    Credentials({ /* authorize : Zod + bcrypt.compare + getAdminByEmail (Node) */ }),
+  ],
+});
+```
+
+```ts
+// middleware.ts — construit sur la SEULE portion edge-safe.
+import NextAuth from "next-auth";
+import { authConfig } from "./auth.config"; // ← PAS "@/auth"
+
+export const { auth: middleware } = NextAuth(authConfig);
+export default middleware; // ou : export default middleware((req) => { ... })
+
+export const config = { matcher: ["/((?!api/auth|_next/static|_next/image|favicon.ico).*)"] };
+```
+
+> Règle : le middleware importe **`auth.config.ts`** (edge-safe), **jamais `auth.ts`** dès que ce dernier tire un adapter DB, `bcryptjs` ou tout module Node. La revérification serveur (§2.9, `requireAdmin()`) continue d'utiliser `auth()` depuis `auth.ts` — elle tourne en Node, pas en Edge.
+
 ### 2.11 Autorisation dans la DAL
 
 Centraliser le contrôle près des données évite d'oublier une vérification. Une fonction `requireAdmin()` réutilisable :
@@ -420,6 +474,8 @@ export const config = { matcher: ["/((?!api/auth|_next/static|_next/image|favico
 ```
 
 **Chaîne de sécurité obtenue :** le mot de passe n'est comparé qu'en hash serveur → le rôle est scellé dans un token signé → le middleware redirige les visiteurs non connectés → la page revérifie le rôle avant de lire quoi que ce soit. Deux barrières indépendantes.
+
+> **⚠️ Edge runtime dès la migration DB.** Ici `middleware.ts` importe `auth` depuis `@/auth`, ce qui fonctionne **tant que** `auth.ts` reste edge-compatible. Cet `auth.ts` tire déjà `bcryptjs` et `getAdminByEmail` (accès données) : en Edge runtime, `bcryptjs` et un driver DB Node **cassent**. Dès que TribuZen branche une vraie base (adapter Prisma/Drizzle, hash serveur), applique le **split-config** de §2.10 : middleware construit sur `NextAuth(authConfig).auth` important **uniquement** `auth.config.ts` (OAuth + callback `authorized`, sans adapter/bcrypt/DB), jamais `auth.ts`.
 
 ### Exemple 2 — Login credentials + provider GitHub
 

@@ -88,7 +88,7 @@ function ContactForm() {
 }
 ```
 
-Une fonction passée à `action` (ou déclenchée dans une transition) est appelée une **Action**. Elle croise directement les Server Actions traitées aux modules 20 et 27 — côté serveur, la même fonction porte la directive `"use server"` et s'exécute sur le back.
+Une fonction passée à `action` (ou déclenchée dans une transition) est appelée une **Action**. Elle croise directement les Server Actions traitées au module 27 — côté serveur, la même fonction porte la directive `"use server"` et s'exécute sur le back.
 
 ### 2.2 `useActionState` — état + pending du formulaire
 
@@ -561,7 +561,7 @@ L'admin TribuZen tourne sous Vite + React 19 (pas Next.js), donc ces API brutes 
 
 **Document Metadata — par page** : chaque page admin (`FamilyPage`, `MemberPage`) pose son propre `<title>`/`<meta>` directement dans le JSX, hoisté dans le `<head>` par React.
 
-Ponts inter-cours : côté back (modules 20 et 27), ces mêmes formulaires basculent sur des **Server Actions** (`"use server"`) — l'Action passée à `<form action>` devient une fonction serveur, et `useActionState` reste identique côté client.
+Ponts inter-cours : côté back (module 27), ces mêmes formulaires basculent sur des **Server Actions** (`"use server"`) — l'Action passée à `<form action>` devient une fonction serveur, et `useActionState` reste identique côté client.
 
 Fichiers cibles dans `smaurier/tribuzen` :
 ```

@@ -282,6 +282,8 @@ Objectif : la page `/familles` doit être rapide (cachée) mais raisonnablement 
 
 ```tsx
 // app/familles/page.tsx — Server Component
+import Link from "next/link";
+
 interface Famille {
   id: string;
   nom: string;
@@ -307,9 +309,9 @@ export default async function FamillesPage() {
       <ul>
         {familles.map((f) => (
           <li key={f.id}>
-            <a href={`/familles/${f.id}`}>
+            <Link href={`/familles/${f.id}`}>
               {f.nom} — {f.nbMembres} membre(s)
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

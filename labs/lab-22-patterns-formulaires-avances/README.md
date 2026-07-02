@@ -36,9 +36,9 @@ export async function isEmailTaken(email: string): Promise<boolean> {
 
 ## Étapes (en friction)
 
-1. Écris `family.schema.ts` : `infoSchema` (familyName ≥ 2, city ≥ 2) et `membersSchema` (tableau `members` de `{ name, email }`, `.min(1)`, plus un `.refine` qui interdit les emails en double dans le formulaire). Exporte les types inférés.
+1. Écris `family.schema.ts` : `infoSchema` (familyName ≥ 2, city ≥ 2) et `membersSchema` (tableau `members` de `{ name, email }`, `.min(1)`, un `.refine` qui interdit les emails en double dans le formulaire, et sur l'email un `.refine` **async** qui appelle `isEmailTaken` pour l'unicité serveur). Exporte les types inférés.
 2. Écris `StepInfo` : un `useForm` avec `zodResolver(infoSchema)`, `defaultValues` reçus en props, `onNext` appelé au `handleSubmit`.
-3. Écris `StepMembers` : `useForm` + `useFieldArray({ control, name: 'members' })`. Boucle sur `fields` avec `key={field.id}`. Boutons ajouter/retirer. Sur le champ email, ajoute un `validate` async qui appelle `isEmailTaken`. Mets le form en `mode: 'onBlur'`.
+3. Écris `StepMembers` : `useForm` + `useFieldArray({ control, name: 'members' })`. Boucle sur `fields` avec `key={field.id}`. Boutons ajouter/retirer. N'ajoute **pas** de `validate` sur le `register` de l'email : avec un `resolver` Zod, ce validator serait ignoré — l'unicité serveur vit dans le schéma (`.refine` async). Mets le form en `mode: 'onBlur'`.
 4. Écris `StepConfirm` : récap lecture seule + bouton créer (POST simulé).
 5. Écris le parent `CreateFamilyWizard` : un state `data` qui agrège les étapes, un state `step`, et réinjecte `data` dans chaque étape via `initial`/`defaultValues`.
 6. Vérifie à la main : ajoute 3 membres, saisis `paul@dejapris.fr` → erreur async ; saisis deux fois le même email → erreur de doublon ; reviens à l'étape 1 → les champs sont toujours remplis.
@@ -48,6 +48,7 @@ export async function isEmailTaken(email: string): Promise<boolean> {
 ```tsx
 // ─── src/features/family/family.schema.ts ────────────────────────
 import { z } from 'zod';
+import { isEmailTaken } from '../../api/members';
 
 export const infoSchema = z.object({
   familyName: z.string().min(2, 'Nom de famille requis'),
@@ -60,7 +61,13 @@ export const membersSchema = z
       .array(
         z.object({
           name: z.string().min(2, 'Nom requis'),
-          email: z.string().email('Email invalide'),
+          // unicité SERVEUR : refine ASYNC dans le schéma.
+          // zodResolver appelle parseAsync → les refine async s'exécutent.
+          // (Avec un resolver, un `validate` dans register serait IGNORÉ.)
+          email: z
+            .string()
+            .email('Email invalide')
+            .refine(async (e) => !(await isEmailTaken(e)), 'Email déjà utilisé'),
         })
       )
       .min(1, 'Au moins un membre'),
@@ -112,7 +119,6 @@ export function StepInfo({ initial, onNext }: Props) {
 import { useForm, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { membersSchema, type MembersData } from './family.schema';
-import { isEmailTaken } from '../../api/members';
 
 interface Props {
   initial: MembersData;
@@ -145,11 +151,10 @@ export function StepMembers({ initial, onNext, onBack }: Props) {
 
           <input
             placeholder="Email"
-            // validation ASYNC ciblée : unicité côté serveur
-            {...register(`members.${i}.email`, {
-              validate: async (value) =>
-                (await isEmailTaken(value)) ? 'Email déjà utilisé' : true,
-            })}
+            // Pas de `validate` ici : avec un resolver Zod, les validators de
+            // register ne s'exécutent JAMAIS. L'unicité serveur est dans le
+            // schéma (.refine async), exécutée via parseAsync au blur.
+            {...register(`members.${i}.email`)}
           />
           {errors.members?.[i]?.email && <p role="alert">{errors.members[i]?.email?.message}</p>}
 
@@ -281,7 +286,7 @@ export function CreateFamilyWizard() {
 
 Vérifications manuelles attendues :
 - Ajouter/retirer des membres fonctionne sans mélanger les valeurs (grâce à `field.id`).
-- `paul@dejapris.fr` déclenche l'erreur async « Email déjà utilisé » au blur.
+- `paul@dejapris.fr` déclenche l'erreur async « Email déjà utilisé » au blur — portée par le `.refine` async du schéma (exécuté par `parseAsync` via `zodResolver`), pas par un `validate` de `register`.
 - Deux membres avec le même email → « Deux membres ont le même email » (erreur de niveau tableau).
 - Revenir à l'étape 1 conserve nom/ville ; revenir à l'étape 2 conserve les membres.
 

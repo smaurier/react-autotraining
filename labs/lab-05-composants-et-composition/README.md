@@ -83,20 +83,23 @@ Lance `pnpm dev` et valide dans le navigateur au fur et à mesure.
 // ─── src/components/ui/Card.tsx ─────────────────────────────────
 import React from 'react';
 
-interface CardProps {
+// Hérite de toutes les props d'un <div> natif (style, onClick, aria-*, data-*…)
+// → MemberPanel peut passer style={{ padding, maxWidth }} sans erreur TS
+interface CardProps extends React.ComponentPropsWithoutRef<'div'> {
   children: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
 }
 
 // Composant présentationnel pur — pas d'état, pas de fetch
 // onClick optionnel : on adapte le curseur seulement si fourni
-function Card({ children, className, onClick }: CardProps) {
+// ...rest transmet toutes les autres props div (dont style) au <div>
+function Card({ children, className, onClick, style, ...rest }: CardProps) {
   return (
     <div
+      {...rest}
       className={['card', className].filter(Boolean).join(' ')}
       onClick={onClick}
-      style={{ cursor: onClick ? 'pointer' : undefined }}
+      // style calculé fusionné avec le style éventuel reçu en prop
+      style={{ cursor: onClick ? 'pointer' : undefined, ...style }}
     >
       {children}
     </div>
@@ -230,9 +233,11 @@ export default Badge;
 
 // ─── src/features/member/MemberPanel.tsx ────────────────────────
 import { useState } from 'react';
-import Card from '@/components/ui/Card';
-import Avatar from '@/components/ui/Avatar';
-import Badge from '@/components/ui/Badge';
+// Imports relatifs — le starter Vite ne configure pas l'alias @/
+// (features/member → components/ui : on remonte de deux niveaux)
+import Card from '../../components/ui/Card';
+import Avatar from '../../components/ui/Avatar';
+import Badge from '../../components/ui/Badge';
 
 export interface Member {
   id: string;

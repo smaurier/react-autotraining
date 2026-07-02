@@ -244,7 +244,7 @@ function Form() {
 > TextField.displayName = 'TextField';
 > ```
 >
-> En React 19, tu supprimes `forwardRef`, tu ajoutes `ref?: React.Ref<...>` aux props, et tu utilises `ref` directement. Un codemod officiel (`npx codemod react/19/replace-reactdom-render` et le codemod `forward-ref`) fait la migration.
+> En React 19, tu supprimes `forwardRef`, tu ajoutes `ref?: React.Ref<...>` aux props, et tu utilises `ref` directement. La migration se fait composant par composant — attention, le codemod `react/19/replace-reactdom-render` concerne `ReactDOM.render`, **pas** `forwardRef` : ne compte pas sur lui pour ce remplacement.
 
 ### 2.7 Callback refs
 
