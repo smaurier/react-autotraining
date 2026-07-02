@@ -239,9 +239,9 @@ export function useAuth(): AuthValue {
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   return (
-    <AuthContext.Provider value={{ user, login: setUser, logout: () => setUser(null) }}>
+    <AuthContext value={{ user, login: setUser, logout: () => setUser(null) }}>
       {children}
-    </AuthContext.Provider>
+    </AuthContext>
   );
 }
 

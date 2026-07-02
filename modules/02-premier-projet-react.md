@@ -395,15 +395,15 @@ tribuzen-admin/
       layout/
         AdminLayout.tsx    ← créé dans ce module
     pages/
-      DashboardPage.tsx    ← module 04 (state, listes)
+      DashboardPage.tsx    ← module 08 (state, listes)
     App.tsx
     main.tsx
 ```
 
 À ce stade, `AdminLayout` est statique (pas de state, pas de routing). Les modules suivants viennent l'enrichir :
 - **Module 03** — JSX en profondeur (expressions, listes, className conditionnel)
-- **Module 04** — `useState` (compteurs, bascules, données asynchrones dans le dashboard)
-- **Module 07** — React Router (navigation entre pages admin)
+- **Module 08** — `useState` (compteurs, bascules, données asynchrones dans le dashboard)
+- **Module 17** — React Router (navigation entre pages admin)
 
 > `AdminLayout` incarne le principe React de responsabilité unique : fournir le squelette de mise en page. La logique métier (listes de familles, stats) vit dans les composants-page qu'on passe en `children`.
 

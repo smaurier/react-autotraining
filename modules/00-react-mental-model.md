@@ -6,7 +6,7 @@ outcomes: [expliquer le modèle mental déclaratif de React, comprendre le flux 
 prerequis: [TypeScript labs 01-10]
 next: 01-equivalences-triple
 libs: [{ name: react, version: "^19" }]
-tribuzen: poser le modèle mental React pour l'admin web de TribuZen (Next.js)
+tribuzen: poser le modèle mental React pour l'admin web de TribuZen (SPA Vite + React Router ; Next.js à partir du module 24)
 last-reviewed: 2026-07
 ---
 
@@ -19,10 +19,10 @@ last-reviewed: 2026-07
 
 ## 1. Cas concret d'abord
 
-Tu rejoins l'équipe qui construit l'admin web de TribuZen (Next.js / React 19). Ton premier ticket : relire une PR qui ajoute une page `FamilyList`. Tu ouvres le fichier et tu lis :
+Tu rejoins l'équipe qui construit l'admin web de TribuZen (React 19, SPA Vite + React Router — l'admin passera à Next.js au module 24). Ton premier ticket : relire une PR qui ajoute une page `FamilyList`. Tu ouvres le fichier et tu lis :
 
 ```tsx
-// app/admin/families/page.tsx (React 19, Next.js App Router)
+// src/pages/FamilyListPage.tsx (React 19, Vite + React Router)
 export default function FamilyListPage() {
   const [search, setSearch] = useState('')
   const filtered = families.filter(f =>
@@ -475,27 +475,27 @@ React est une **bibliothèque UI** — elle gère uniquement le rendu. Routing, 
 
 ## 5. Ancrage TribuZen
 
-L'**admin web de TribuZen** est construit avec Next.js 19 / App Router. Chaque page de l'admin est un composant React — server ou client selon le besoin.
+L'**admin web de TribuZen** démarre en **SPA (Vite + React Router)** — c'est ce que tu bootstrappes dès le module 02 et dans tous les labs qui suivent. Chaque page de l'admin est un composant React rendu côté client. L'admin **évoluera vers Next.js (App Router) à partir du module 24**, quand le rendu serveur et le SEO deviendront un besoin réel ; les concepts de ce module (arbre de composants, props, flux unidirectionnel) restent identiques dans les deux cas.
 
 L'arbre de l'admin illustre directement les concepts de ce module :
 
 ```
-app/admin/layout.tsx          ← AdminLayout (server component)
-  ├── components/AdminNav.tsx  ← NavBar (client component — interaction)
-  └── app/admin/
-        ├── families/page.tsx  ← FamilyListPage (server, passe données aux clients)
+src/App.tsx                    ← AdminLayout + routes React Router
+  ├── components/AdminNav.tsx  ← NavBar (navigation)
+  └── pages/
+        ├── FamilyListPage.tsx ← charge les familles, les descend en props
         │     └── FamilyCard.tsx ← composant feuille
-        ├── members/page.tsx
-        └── stats/page.tsx
+        ├── MembersPage.tsx
+        └── StatsPage.tsx
 ```
 
 **Flux de données dans TribuZen admin :**
 
-- `FamilyListPage` (server) charge les familles depuis l'API, les descend comme props à `FamilyCard`.
-- Le filtre de recherche est un `useState` dans un composant client (`SearchInput`) — il remonte la valeur via callback vers `FamilyListPage` (ou via un store si l'état doit traverser plusieurs niveaux).
+- `FamilyListPage` charge les familles depuis l'API, les descend comme props à `FamilyCard`.
+- Le filtre de recherche est un `useState` dans un composant `SearchInput` — il remonte la valeur via callback vers `FamilyListPage` (ou via un store si l'état doit traverser plusieurs niveaux).
 - Chaque `FamilyCard` reçoit une `family` en prop et ne connaît pas l'état global.
 
-Ce modèle — **server components pour le data fetching, client components pour l'interactivité** — est la déclinaison React/Next.js du flux unidirectionnel vu en section 2.3.
+Ce flux — **données descendantes par les props, événements montants par les callbacks** — est le même en SPA aujourd'hui et sous Next.js (server/client components) à partir du module 24.
 
 ---
 

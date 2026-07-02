@@ -228,7 +228,7 @@ Quand un Server Component passe des props à un Client Component, ces props trav
 <ArchiveButton familyId={f.id} />
 ```
 
-**Exception importante :** une **Server Action** (fonction marquée `"use server"`) *peut* être passée en prop à un Client Component. Ce n'est pas la fonction qui traverse, mais une référence que React résout côté serveur à l'appel. C'est le mécanisme officiel pour déclencher une mutation serveur depuis un bouton client (couvert au module 26).
+**Exception importante :** une **Server Action** (fonction marquée `"use server"`) *peut* être passée en prop à un Client Component. Ce n'est pas la fonction qui traverse, mais une référence que React résout côté serveur à l'appel. C'est le mécanisme officiel pour déclencher une mutation serveur depuis un bouton client (couvert au module 27).
 
 ### 2.8 Streaming avec Suspense
 

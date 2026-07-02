@@ -198,7 +198,7 @@ async function registerPushListeners(): Promise<void> {
 }
 ```
 
-> **Piège plateforme** : les push **ne fonctionnent pas** sur le simulateur iOS — tester sur device physique. Sur le web, `@capacitor/push-notifications` n'est pas disponible → gardez ce code derrière `Capacitor.isNativePlatform()`.
+> **Piège plateforme** : les push **distantes** ne marchent pas sur les simulateurs iOS **antérieurs à iOS 16** (ni sur Mac Intel). Sur un simulateur **iOS 16+ / Apple Silicon**, c'est possible (glisser un fichier `.apns` sur le simulateur, ou recevoir un vrai push APNs) — mais **tester sur device physique reste recommandé**. Sur le web, `@capacitor/push-notifications` n'est pas disponible → gardez ce code derrière `Capacitor.isNativePlatform()`.
 
 ### 2.5 Preferences — session persistante
 
@@ -561,7 +561,7 @@ tribuzen/src/
 2. Les plugins sensibles exposent `checkPermissions()` / `requestPermissions()` — vérifier `granted` **avant** l'action.
 3. `Capacitor.isNativePlatform()` (et `isPluginAvailable`) sont le point de décision pour dégrader proprement.
 4. Prévoir un **fallback web** pour les plugins sans implémentation navigateur ; `PushNotifications` n'en a aucune, `Preferences`/`Share`/`Haptics` si.
-5. Push = séquence stricte **permission → register → écoute des events** ; tester sur device physique (pas le simulateur iOS).
+5. Push = séquence stricte **permission → register → écoute des events** ; les push distantes échouent sur simulateur iOS < 16 / Mac Intel (possibles sur simulateur iOS 16+/Apple Silicon via `.apns` ou APNs réel), mais tester sur device physique reste recommandé.
 6. `Preferences` est persistant mais **non chiffré** — session oui, secret fort non (secure storage dédié).
 7. Un plugin custom = interface TS + `registerPlugin` (avec `web:` optionnel via `WebPlugin`) + natif ; le **nom** doit matcher exactement des deux côtés.
 8. Publication : `cap sync` avant build, signing avec une clé constante (ne jamais perdre/committer le keystore), `.ipa`/`.aab` vers les stores.

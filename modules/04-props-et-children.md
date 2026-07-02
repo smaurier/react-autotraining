@@ -250,7 +250,7 @@ function UserAvatar({ user }: { user: User }) {
 - Toute modification du type `User` force la mise à jour de chaque intermédiaire.
 - Au-delà de 2-3 niveaux, la maintenance devient coûteuse.
 
-**Solutions au prop drilling :** Context API (module 08) ou state management (Zustand, Jotai — modules avancés). Pour l'instant, retenir que le prop drilling est acceptable sur 2 niveaux et devient une dette technique au-delà.
+**Solutions au prop drilling :** Context API (module 14) ou state management (Zustand, Jotai — module 15). Pour l'instant, retenir que le prop drilling est acceptable sur 2 niveaux et devient une dette technique au-delà.
 
 ---
 
@@ -269,6 +269,7 @@ export interface Family {
 }
 
 // components/family/FamilyCard.tsx
+import { useState } from "react";
 import { type Family } from "../../types/family";
 
 interface FamilyCardProps {
@@ -305,7 +306,7 @@ export function FamilyCard({ family, highlighted = false, onSelect }: FamilyCard
 
 // Utilisation dans le parent
 function FamilyList() {
-  const [selectedId, setSelectedId] = React.useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
   const families: Family[] = [/* ... données API ... */];
 
   return (
@@ -449,7 +450,7 @@ function FamilySection({ currentUser, families }: { currentUser: User; families:
 // → candidat au refactoring vers Context ou état global
 ```
 
-Le symptôme est un composant qui ne consomme pas une prop mais la passe à un enfant. C'est le critère objectif pour introduire un Context (module 08).
+Le symptôme est un composant qui ne consomme pas une prop mais la passe à un enfant. C'est le critère objectif pour introduire un Context (module 14).
 
 ### PIÈGE #5 — `...rest` écrase les props explicites si mal ordonné
 

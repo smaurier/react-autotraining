@@ -216,8 +216,8 @@ tribuzen-admin/
 
 **Différences par rapport au lab quand le produit mûrit :**
 
-- `AdminLayout` recevra une barre de navigation latérale (sidebar) avec des liens React Router (module 07) — pour l'instant, le header seul suffit.
-- `DashboardWelcome` affichera le vrai nom du coach depuis un contexte d'authentification (module 08 — `useContext`) — pour l'instant, `userName` est passé en prop hardcodée.
+- `AdminLayout` recevra une barre de navigation latérale (sidebar) avec des liens React Router (module 17) — pour l'instant, le header seul suffit.
+- `DashboardWelcome` affichera le vrai nom du coach depuis un contexte d'authentification (module 14 — `useContext`) — pour l'instant, `userName` est passé en prop hardcodée.
 - Le style inline sera remplacé par des classes CSS Tailwind (ou CSS Modules) — mais la structure des composants reste identique.
 
 **Commit cible :**

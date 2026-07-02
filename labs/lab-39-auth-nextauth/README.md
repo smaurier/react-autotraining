@@ -156,6 +156,13 @@ export const config = {
 };
 ```
 
+> **⚠️ Edge runtime — split-config dès qu'une vraie DB entre en jeu.** Ci-dessus, `middleware.ts` importe `auth` depuis `@/auth`, qui tire tout `auth.ts` : `Credentials`, `bcryptjs`, Zod. Pour ce lab (base admin factice en mémoire, pas de driver DB), ça passe. **Mais** le middleware Next tourne en **Edge runtime** : `bcryptjs` et un driver DB Node (accès TCP) y **cassent**. Au portage TribuZen (vraie table `admins`, hash stocké), applique le pattern **split-config** d'Auth.js v5 :
+> - `auth.config.ts` — portion **edge-safe** : providers OAuth + callback `authorized`, **sans** adapter / bcrypt / DB.
+> - `auth.ts` — `NextAuth({ ...authConfig, adapter, providers: [Credentials(...)] })` : la partie Node complète.
+> - `middleware.ts` — construit sur `NextAuth(authConfig).auth`, important **uniquement** `auth.config.ts`, **jamais** `auth.ts`.
+>
+> Voir §2.10 du module 39 pour les trois fichiers complets. Règle : le middleware n'importe que la portion edge-compatible ; la revérification serveur (`requireAdmin()` via `auth()`) continue d'utiliser `auth.ts` en Node.
+
 ```ts
 // lib/dal.ts — LA vraie barrière d'autorisation, près des données
 import { auth } from "@/auth";
