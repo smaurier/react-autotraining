@@ -15,6 +15,21 @@ export default defineConfig({
 
   ignoreDeadLinks: true,
 
+  // Refonte v1 : le cours vit dans `modules/` + `labs/`. L'ancien `cours/` (archive/source
+  // d'audit) contient du JSX React que le compilateur Vue de VitePress ne peut pas parser
+  // → exclu du build (conservé sur disque comme archive git). Nav basculée sur modules/ à la fin.
+  srcExclude: ['cours/**', 'quizzes/**'],
+
+  // Docs statiques : neutralise l'interpolation Vue `{{ }}` (délimiteurs improbables) pour que
+  // les moustaches en prose et les expressions `${{ }}` (GitHub Actions) ne cassent pas le SSR.
+  vue: {
+    template: {
+      compilerOptions: {
+        delimiters: ['(%(', ')%)'],
+      },
+    },
+  },
+
   themeConfig: {
     nav: [
       { text: 'Cours', link: '/cours/00-de-vue-angular-a-react/01-react-mental-model' },
