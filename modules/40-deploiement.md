@@ -306,7 +306,7 @@ jobs:
           NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL }}
 ```
 
-`--frozen-lockfile` fait échouer le build si `pnpm-lock.yaml` est désynchronisé de `package.json`. Les secrets/vars viennent de `${{ secrets.X }}` / `${{ vars.X }}`, jamais du code.
+`--frozen-lockfile` fait échouer le build si `pnpm-lock.yaml` est désynchronisé de `package.json`. Les secrets/vars viennent de <code v-pre>${{ secrets.X }}</code> / <code v-pre>${{ vars.X }}</code>, jamais du code.
 
 ---
 

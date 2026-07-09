@@ -78,7 +78,7 @@ export default function App() {
 
 ## Étapes (en friction)
 
-1. **Écris la garde toi-même.** Crée `src/auth/guards.tsx` avec `RequireRole({ role })` : lit `useAuth()` et `useLocation()`, rend `<Navigate to="/login" state={{ from }} replace />` si pas de user, `<Navigate to="/403" replace />` si mauvais rôle, `<Outlet />` sinon. Ne recopie pas le module — reconstruis de mémoire.
+1. **Écris la garde toi-même.** Crée `src/auth/guards.tsx` avec `RequireRole({ role })` : lit `useAuth()` et `useLocation()`, rend <code v-pre>&lt;Navigate to="/login" state={{ from }} replace /&gt;</code> si pas de user, `<Navigate to="/403" replace />` si mauvais rôle, `<Outlet />` sinon. Ne recopie pas le module — reconstruis de mémoire.
 2. **Câble la garde** dans `App.tsx` : regroupe `admin` et `admin/stats` sous une route parente `{ element: <RequireRole role="admin" />, children: [...] }`.
 3. **Gère le retour après login.** Dans `Login`, lis `location.state.from?.pathname` (défaut `/admin`) et `navigate(from, { replace: true })` après `login(...)`.
 4. **Lazy-load l'écran stats.** Remplace l'import statique de `AdminStats` par `const AdminStats = lazy(() => import('./pages/AdminStats'))`, et entoure-le d'un `<Suspense fallback={<StatsSkeleton />}>`. Crée `StatsSkeleton` avec `aria-busy`.
