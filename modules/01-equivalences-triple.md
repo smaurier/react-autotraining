@@ -277,7 +277,7 @@ export function FamilyCard({ family }: FamilyCardProps) {
 | `expanded = !expanded` | `setExpanded(prev => !prev)` | Jamais mutation directe |
 | `@click="..."` | `onClick={...}` | camelCase en React |
 | `v-if="expanded"` | `{expanded && ...}` | JavaScript pur dans JSX |
-| `{{ props.family.name }}` | `{family.name}` | Accolades simples, pas `{{ }}` |
+| <code v-pre>{{ props.family.name }}</code> | `{family.name}` | Accolades simples, pas <code v-pre>{{ }}</code> |
 | `class="card"` | `className="card"` | Faux-ami JSX — `class` est réservé JS |
 
 ### Exemple 2 — Événements : de defineEmits à callback prop

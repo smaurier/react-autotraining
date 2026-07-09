@@ -116,7 +116,7 @@ JSX utilise les noms de propriétés JavaScript, pas les noms d'attributs HTML. 
 | `class` | `className` | `class` est un mot réservé JS |
 | `for` | `htmlFor` | `for` est un mot réservé JS |
 | `tabindex` | `tabIndex` | camelCase systématique |
-| `style="..."` | `style={{...}}` | objet JS, pas chaîne CSS |
+| `style="..."` | <code v-pre>style={{...}}</code> | objet JS, pas chaîne CSS |
 | `onclick` | `onClick` | camelCase pour les événements |
 
 ```tsx
@@ -246,7 +246,7 @@ Récapitulatif des divergences JSX / HTML à connaître pour éviter les erreurs
 | `<br>` | `<br />` | JSX exige la fermeture |
 | `<input type="text">` | `<input type="text" />` | Idem |
 | `<!-- commentaire -->` | `{/* commentaire */}` | JS dans JSX |
-| `style="color: red"` | `style={{ color: 'red' }}` | Objet JS |
+| `style="color: red"` | <code v-pre>style={{ color: 'red' }}</code> | Objet JS |
 | `onclick` | `onClick` | camelCase |
 | `onchange` | `onChange` | camelCase |
 
@@ -473,7 +473,7 @@ tribuzen/
 
 1. JSX compile en appels `_jsx()` via `react/jsx-runtime` — ce n'est pas du HTML, c'est du JavaScript.
 2. `{}` accepte toute expression JS, jamais un statement (`if`, `for`) — utiliser ternaire ou `.map()`.
-3. `className` (pas `class`), `htmlFor` (pas `for`), `style={{}}` (objet camelCase, pas une chaîne).
+3. `className` (pas `class`), `htmlFor` (pas `for`), <code v-pre>style={{}}</code> (objet camelCase, pas une chaîne).
 4. Les balises sans enfants doivent être auto-fermantes (`<br />`, `<img />`, `<input />`).
 5. `<> </>` groupe sans ajouter de nœud DOM ; `<Fragment key={...}>` quand une `key` est nécessaire dans une liste.
 6. `.map()` + `key` stable (ID métier) pour le rendu de liste — jamais l'index si la liste peut changer d'ordre.
