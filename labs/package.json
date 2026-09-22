@@ -18,7 +18,9 @@
     "lab:06": "vitest run --root lab-06-re-render-mesure",
     "solution:06": "vitest run --root lab-06-re-render-mesure --config vitest.solution.config.ts",
     "lab:07": "vitest run --root lab-07-migrer-vers-server-components",
-    "solution:07": "vitest run --root lab-07-migrer-vers-server-components --config vitest.solution.config.ts"
+    "solution:07": "vitest run --root lab-07-migrer-vers-server-components --config vitest.solution.config.ts",
+    "lab:08": "vitest run --root lab-08-relire-une-pr-react",
+    "solution:08": "vitest run --root lab-08-relire-une-pr-react --config vitest.solution.config.ts"
   },
   "engines": {
     "node": ">=20.0.0"
