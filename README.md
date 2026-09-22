@@ -9,7 +9,7 @@ Formation progressive React : de Vue/Angular vers React staffable ESN.
 <!-- labs-gestes:start -->
 ## Labs — refonte du 22/09/2026 : un lab = un geste métier complet
 
-> Règle qualité 5 du parcours : chaque lab est **un geste métier complet**, sous deux formes — **Zéro** (construire de zéro un artefact réel et entier) ou **Intervention** (modifier de l'existant avec consommateurs, findings avant code, non-régression). Un lab n'entre en file qu'avec un **oracle exécutable** (`src/` starter · `test/` · `solution/` séparée). Les labs historiques de ce cours (un concept par lab, sans oracle) restent dans `labs/` jusqu'à remplacement et **ne sont plus la file**. Cible détaillée : [`docs/gestes-complets.md`](../docs/gestes-complets.md). État : **4/8 avec oracle**.
+> Règle qualité 5 du parcours : chaque lab est **un geste métier complet**, sous deux formes — **Zéro** (construire de zéro un artefact réel et entier) ou **Intervention** (modifier de l'existant avec consommateurs, findings avant code, non-régression). Un lab n'entre en file qu'avec un **oracle exécutable** (`src/` starter · `test/` · `solution/` séparée). Les labs historiques de ce cours (un concept par lab, sans oracle) restent dans `labs/` jusqu'à remplacement et **ne sont plus la file**. Cible détaillée : [`docs/gestes-complets.md`](../docs/gestes-complets.md). État : **5/8 avec oracle**.
 
 | # | Lab | Forme | Geste | Oracle |
 |---|-----|-------|-------|--------|
@@ -17,7 +17,7 @@ Formation progressive React : de Vue/Angular vers React staffable ESN.
 | 02 | [`lab-02-state-et-cache`](labs/lab-02-state-et-cache/README.md) | Zéro | Zustand + TanStack Query sur une feature réelle | ✅ vérifié |
 | 03 | [`lab-03-page-nextjs-de-zero`](labs/lab-03-page-nextjs-de-zero/README.md) | Zéro | App Router, Server Components, Route Handler, devant l'API NestJS | ✅ vérifié |
 | 04 | [`lab-04-recette-esn`](labs/lab-04-recette-esn/README.md) | Zéro | un pattern réel de mission de bout en bout | ✅ vérifié |
-| 05 | `lab-05-ajouter-une-capacite` | Intervention | composant existant consommé par plusieurs écrans (le cas Elcia côté React) | · à écrire |
+| 05 | [`lab-05-ajouter-une-capacite`](labs/lab-05-ajouter-une-capacite/README.md) | Intervention | composant existant consommé par plusieurs écrans (le cas Elcia côté React) | ✅ vérifié |
 | 06 | `lab-06-re-render-mesure` | Intervention | profiler, trouver, corriger, prouver | · à écrire |
 | 07 | `lab-07-migrer-vers-server-components` | Intervention | une page client existante | · à écrire |
 | 08 | `lab-08-relire-une-pr-react` | Intervention | findings avant vérité | · à écrire |
