@@ -14,7 +14,9 @@
     "lab:04": "vitest run --root lab-04-recette-esn",
     "solution:04": "vitest run --root lab-04-recette-esn --config vitest.solution.config.ts",
     "lab:05": "vitest run --root lab-05-ajouter-une-capacite",
-    "solution:05": "vitest run --root lab-05-ajouter-une-capacite --config vitest.solution.config.ts"
+    "solution:05": "vitest run --root lab-05-ajouter-une-capacite --config vitest.solution.config.ts",
+    "lab:06": "vitest run --root lab-06-re-render-mesure",
+    "solution:06": "vitest run --root lab-06-re-render-mesure --config vitest.solution.config.ts"
   },
   "engines": {
     "node": ">=20.0.0"
