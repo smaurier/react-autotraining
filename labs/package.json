@@ -1,0 +1,29 @@
+{
+  "name": "react-labs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Oracles exécutables des labs React (règle : un lab = un geste métier complet). Chaque lab est vérifié par de vrais tests RTL, avec MSW pour les appels API — jamais de mock manuel du fetch.",
+  "type": "module",
+  "scripts": {
+    "lab:01": "vitest run --root lab-01-feature-de-zero",
+    "solution:01": "vitest run --root lab-01-feature-de-zero --config vitest.solution.config.ts"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "14.6.7",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "jsdom": "^25.0.1",
+    "msw": "2.15.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0",
+    "vitest": "^2.0.0"
+  }
+}
