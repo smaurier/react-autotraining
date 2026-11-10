@@ -12,6 +12,11 @@ last-reviewed: 2026-07
 
 # Patterns ARIA avancés en React
 
+> 📐 **Les contrats des patterns (rôles, états, clavier touche par touche) sont dans le cours 25
+> HTML & CSS**, module 17, qui en est la source unique du curriculum. Ce module garde ce que React
+> change : la gestion du focus par refs, les live regions dans un rendu contrôlé, et les pièges
+> propres au cycle de rendu.
+
 > **Outcomes — tu sauras FAIRE :** décider quand ARIA est nécessaire (et quand le HTML natif suffit), construire une modale accessible (focus trap + Escape + restauration du focus), annoncer des changements dynamiques via `aria-live`, rendre des tabs navigables au clavier.
 > **Difficulté :** :star::star::star:
 
@@ -53,51 +58,18 @@ Ce module te donne les patterns pour corriger chacun de ces points — et le ré
 
 ## 2. Théorie complète, concise
 
-### 2.1 Quand utiliser ARIA — la règle d'or
+### 2.1 Quand utiliser ARIA, et ce que ARIA ne fait pas
 
-ARIA (Accessible Rich Internet Applications) est un ensemble d'attributs (`role`, `aria-*`) qui **décrivent** au lecteur d'écran ce qu'un élément est et fait. C'est une **surcouche sémantique**, jamais un remplacement du HTML.
+> 📐 **Traité dans le cours 25 HTML & CSS**, module 01 § 1.2 pour la règle de fond, et module 17
+> § 2 pour l'ordre à suivre avant d'écrire un pattern.
 
-Les 5 règles d'ARIA (résumé de la spec "Using ARIA") :
+La règle en une phrase, parce qu'elle commande tout ce module : **ARIA n'ajoute aucun
+comportement.** Un `role` ne rend rien focusable, n'ajoute aucune touche, ne déclenche rien. Il
+décrit. En React, cela signifie que chaque état annoncé doit être tenu par du code à toi.
 
-1. **Si un élément HTML natif fait le travail, utilise-le.** `<button>`, `<a href>`, `<input>`, `<select>`, `<nav>`, `<dialog>`… apportent gratuitement rôle, état, clavier et focus.
-2. **Ne change pas la sémantique native.** `<button role="heading">` est une faute.
-3. **Tout widget ARIA doit être utilisable au clavier.**
-4. **N'utilise pas `role="presentation"` ni `aria-hidden="true"` sur un élément focusable.**
-5. **Tout élément interactif doit avoir un nom accessible** (texte, `aria-label`, ou `aria-labelledby`).
+### 2.2 Rôles, états et propriétés
 
-```tsx
-// ❌ Réinventer un bouton — pas de focus, pas de touche Espace/Entrée, pas de rôle
-<div role="button" tabIndex={0} onClick={handle}>Envoyer</div>
-
-// ✅ Le natif fait tout gratuitement
-<button onClick={handle}>Envoyer</button>
-```
-
-On ne sort ARIA que pour les widgets **absents du HTML** : onglets (tabs), combobox/autocomplete, régions live, arbres, menus applicatifs.
-
-### 2.2 Roles, states et properties
-
-ARIA se décompose en trois familles :
-
-| Famille | Rôle | Exemples | Change-t-il ? |
-|---|---|---|---|
-| **Roles** | Ce qu'est l'élément | `role="dialog"`, `role="tablist"`, `role="alert"` | Non (statique) |
-| **States** | État courant, dynamique | `aria-expanded`, `aria-selected`, `aria-checked`, `aria-busy`, `aria-invalid` | Oui (au fil des interactions) |
-| **Properties** | Relations et méta stables | `aria-label`, `aria-labelledby`, `aria-controls`, `aria-describedby`, `aria-modal` | Rarement |
-
-En React, les **states** sont typiquement pilotés par du `useState` : la valeur booléenne de l'état devient la valeur de l'attribut.
-
-```tsx
-// L'état React alimente directement l'attribut ARIA
-const [open, setOpen] = useState(false);
-
-<button aria-expanded={open} aria-controls="menu-panel" onClick={() => setOpen(o => !o)}>
-  Options
-</button>
-{/* aria-expanded passe de "false" à "true" sans effort — React réconcilie l'attribut */}
-```
-
-> Note JSX : les attributs ARIA en React s'écrivent en **kebab-case** (`aria-expanded`, `aria-labelledby`) — contrairement à `className`/`htmlFor`. React accepte les booléens JS et les sérialise en `"true"`/`"false"`.
+> 📐 **Traité dans le cours 25**, module 01 § 1.1.
 
 ### 2.3 `aria-live` : annoncer les changements dynamiques
 
@@ -129,6 +101,14 @@ Deux propriétés associées :
 **Piège fondamental** : la live region doit être **présente dans le DOM au montage** et rester vide, puis se remplir. Si tu montes `<div aria-live>Texte</div>` d'un coup, beaucoup de lecteurs n'annoncent rien. La classe `.sr-only` la garde visuellement cachée mais lisible.
 
 ### 2.4 Modale accessible : le pattern `dialog` complet
+
+> ⚠️ **À lire avec le cours 25, module 09.** Ce pattern reconstruit une modale avec ARIA, et
+> c'est utile à savoir faire. Mais en 2026, `<dialog>` plus `showModal()` fournit gratuitement
+> le top layer, le `::backdrop`, l'inertie du reste de la page, le confinement du focus et la
+> fermeture par `Échap`. **Commence par `<dialog>`**, et ne reconstruis que si un contrainte
+> réelle l'interdit. Ce qui reste à ta charge dans les deux cas, et que ce module montre bien :
+> le nom accessible, le focus initial, et la restitution du focus à la fermeture.
+
 
 Une modale accessible coche **six** cases :
 
@@ -246,6 +226,10 @@ function Modal({ isOpen, onClose, title, children }: ModalProps) {
 
 ### 2.5 Tabs accessibles au clavier
 
+> 📐 **Le contrat clavier complet est dans le cours 25, module 17 § 3.1** : flèches en boucle,
+> `Début`, `Fin`, et le focus géré. Ce qui suit est son implémentation en React.
+
+
 Le pattern Tabs (WAI-ARIA APG) : un `tablist` contient des `tab`, chacun contrôle un `tabpanel`. Règle clavier clé — **un seul onglet est dans l'ordre de tabulation** (`tabIndex={0}`), les flèches naviguent entre onglets.
 
 | Élément | Rôle / attribut | But |
@@ -337,6 +321,11 @@ function Disclosure({ title, children }: { title: string; children: React.ReactN
 ```
 
 ### 2.7 Combobox : le widget qui exige le plus d'ARIA
+
+> 📐 **Le contrat est dans le cours 25, module 17 § 3.3**, et surtout la règle qui le distingue
+> d'un listbox : le focus ne quitte jamais le champ de saisie. Essaie `<datalist>` avant, module
+> 14 § 6.1.
+
 
 Un champ de saisie avec suggestions. Les attributs clés : `role="combobox"`, `aria-expanded`, `aria-controls` (vers la liste), `aria-activedescendant` (l'option "virtuellement" surlignée, sans lui donner le focus DOM), et `role="listbox"`/`role="option"` sur la liste. Version complète en Worked example 2.
 
@@ -625,19 +614,8 @@ Le pattern APG veut que le `tablist` compte pour **un** arrêt de tabulation, pa
 
 ### PIÈGE #5 — `aria-label` qui écrase le texte visible
 
-```tsx
-// ❌ Le lecteur lit "Fermer", l'écran affiche "×" — mais pire :
-//    ici aria-label masque un texte utile
-<button aria-label="Options">Paramètres du compte</button>
-// Résultat : le lecteur annonce "Options", l'utilisateur voyant lit "Paramètres" → incohérence
-
-// ✅ Si un texte visible existe, il SUFFIT comme nom accessible
-<button>Paramètres du compte</button>
-// aria-label ne sert que si l'élément n'a pas de texte (icône seule)
-<button aria-label="Fermer"><IconX /></button>
-```
-
-`aria-label` **remplace** le contenu pour le lecteur. Ne l'utilise que sur les éléments sans texte visible (boutons-icônes).
+> 📐 **Traité dans le cours 25**, module 01 § 1.3 : le nom visible doit être contenu dans le nom
+> accessible, sinon le pilotage à la voix échoue.
 
 ### PIÈGE #6 — `.focus()` pendant le rendu
 

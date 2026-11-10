@@ -12,6 +12,12 @@ last-reviewed: 2026-07
 
 # Fondamentaux WCAG et accessibilité en React
 
+> 📐 **Les fondamentaux d'accessibilité sont désormais dans le cours 25 HTML & CSS**, qui en est
+> la source unique du curriculum. Ce module ne traite que ce que **React change** : les attributs
+> JSX, la gestion du focus par refs, l'annonce des erreurs dans un rendu contrôlé, et les pièges
+> propres au JSX. Tout le reste, à savoir la sémantique, le nom accessible, le contraste, les
+> titres et le clavier, est traité une seule fois, là-bas.
+
 > **Outcomes — tu sauras FAIRE :** choisir l'élément HTML sémantique juste plutôt qu'un `div` cliquable, lier chaque champ de formulaire à son label et annoncer ses erreurs, écrire du JSX conforme WCAG 2.2 AA sur les images, le focus et la navigation clavier.
 > **Difficulté :** :star::star:
 
@@ -46,32 +52,17 @@ Ce module te donne les fondamentaux WCAG pour corriger tout ça en React, sans A
 
 ### 2.1 Pourquoi c'est non négociable
 
-L'accessibilité n'est pas une option de confort. En Europe, l'**European Accessibility Act (EAA)** s'applique depuis juin 2025 aux services numériques du privé. En France, le **RGAA** (Référentiel Général d'Amélioration de l'Accessibilité) est l'application légale des **WCAG** (Web Content Accessibility Guidelines) : c'est le même socle technique, traduit et opposable. La cible légale est le niveau **AA**.
+> 📐 **Traité dans le cours 25 HTML & CSS**, module 00, § 4 bis « Le référentiel en bref ». Ce module ne garde que ce qui change en React.
+> Le cadre légal lui-même est au cours 23 `23-droit-numerique`.
 
-React ne génère **pas** de HTML accessible tout seul : il rend exactement le JSX que tu écris. Un `<div onClick>` reste un `div`. La conformité est donc une responsabilité de développeur, à chaque composant.
+Le seul point qui appartient à React, et il est décisif : **React ne génère pas de HTML
+accessible tout seul.** Il rend exactement le JSX que tu écris. Un `<div onClick>` reste un
+`div`, sans rôle, sans focus, sans clavier. La conformité est donc une responsabilité de
+composant, à chaque composant.
 
-### 2.2 Les 4 principes POUR
+### 2.2 Les 4 principes POUR, et les 2.3 niveaux de conformité
 
-Tout critère WCAG appartient à l'un de ces 4 principes. Le moyen mnémotechnique français est **POUR** :
-
-| Principe | Signifie | En React, concrètement |
-|----------|----------|------------------------|
-| **P**erceptible | L'info est perçue par tous les sens | `alt` sur les images, contraste suffisant, ne pas coder l'info par la couleur seule |
-| **U**tilisable | Tout est actionnable, notamment au clavier | `<button>`/`<a>` natifs, focus visible, ordre de tabulation logique |
-| **C**ompréhensible | Contenu et interface prévisibles | labels liés aux champs, messages d'erreur clairs, `lang` déclaré |
-| **R**obuste | Compatible avec les technologies d'assistance | HTML sémantique, structure valide, ARIA correct seulement si nécessaire |
-
-> En anglais l'acronyme est **POUR** aussi : **P**erceivable, **O**perable, **U**nderstandable, **R**obust.
-
-### 2.3 Les niveaux de conformité
-
-| Niveau | Portée | Requis ? |
-|--------|--------|----------|
-| **A** | Minimum vital | Oui |
-| **AA** | Cible légale (RGAA, EAA) | **Oui — c'est l'objectif** |
-| **AAA** | Excellence, pas toujours atteignable | Non exigé globalement |
-
-WCAG **2.2** (dernière version stable) ajoute au niveau AA des critères comme **2.4.11 Focus non masqué** (l'élément qui a le focus ne doit pas être caché par un header collant) et **2.5.8 Taille de cible minimale** (24×24 px). On vise 2.2 AA.
+> 📐 **Traité dans le cours 25 HTML & CSS**, module 00, § 4 bis. Ce module ne garde que ce qui change en React.
 
 ### 2.4 JSX n'est pas HTML : les attributs qui changent
 
@@ -134,63 +125,18 @@ Trois attributs se combinent pour rendre une erreur perceptible et reliée à so
 {error && <p id="invite-email-error" role="alert">{error}</p>}
 ```
 
-### 2.8 Texte alternatif des images
+### 2.8 Texte alternatif, contraste, focus, titres et landmarks
 
-Le `alt` répond à une question simple : **l'image porte-t-elle de l'information ?**
+> 📐 **Traité dans le cours 25 HTML & CSS**, module 01 pour les alternatives, la hiérarchie de titres et les landmarks, module 10 pour le contraste, module 16 pour le focus visible. Ce module ne garde que ce qui change en React.
 
-```tsx
-// Informative → alt décrit le contenu utile
-<img src={family.cover} alt={`Photo de la famille ${family.name}`} />
+Ce qui change réellement en React, et c'est tout :
 
-// Décorative → alt VIDE (pas d'attribut absent) pour que le lecteur l'ignore
-<img src="/motif-fond.svg" alt="" />
-```
-
-`alt=""` (vide) et « pas de `alt` du tout » ne sont pas équivalents : sans attribut, beaucoup de lecteurs d'écran lisent le nom de fichier. Le `alt` vide dit explicitement « ignore-moi ».
-
-### 2.9 Contraste des couleurs
-
-Critère 1.4.3 (AA) : le texte doit atteindre un ratio de contraste avec son fond d'au moins **4.5:1** (texte normal) ou **3:1** (grand texte ≥ 24 px, ou 18.66 px gras). Se vérifie avec l'onglet Accessibility des DevTools ou un plugin de design. Corollaire (1.4.1) : ne **jamais** coder une information par la seule couleur (ex. un statut « en erreur » uniquement rouge) — ajouter texte ou icône.
-
-### 2.10 Focus visible et navigation clavier
-
-- **Focus visible (2.4.7)** : ne jamais faire `outline: none` sans remplacement. Fournir un anneau de focus net (`:focus-visible { outline: 2px solid … }`).
-- **Ordre de tabulation** : suit l'ordre du DOM. Éviter `tabIndex` positif (`tabIndex={1}`) qui casse l'ordre naturel. `tabIndex={0}` rend focusable un élément normalement non focusable ; `tabIndex={-1}` le rend focusable par script mais pas par `Tab`.
-
-Conventions clavier attendues :
-
-| Touche | Comportement attendu |
-|--------|----------------------|
-| `Tab` / `Shift+Tab` | Élément focusable suivant / précédent |
-| `Enter` | Activer un lien ou un bouton |
-| `Espace` | Activer un bouton, cocher une case |
-| `Échap` | Fermer une modale, un menu |
-| Flèches | Naviguer dans un groupe (listes, onglets) |
-
-Avec des `<button>` et `<a>` natifs, `Tab`/`Enter`/`Espace` marchent **sans code**. Le clavier ne devient du travail que pour les widgets composites (module suivant).
-
-### 2.11 Hiérarchie des titres et landmarks
-
-- **Titres (1.3.1)** : un seul `<h1>` par page, puis `<h2>`, `<h3>`… sans saut de niveau (pas de `<h1>` directement suivi d'un `<h3>`). Les lecteurs d'écran naviguent de titre en titre : la hiérarchie est la table des matières.
-- **Landmarks** : les éléments de région structurent la page et permettent le saut direct. `<header>`, `<nav>`, `<main>` (un seul), `<footer>`, `<aside>`. Un `<div>` n'est pas un landmark.
-
-```tsx
-function AdminLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <header>
-        <nav aria-label="Navigation principale">{/* liens */}</nav>
-      </header>
-      <main id="contenu">{children}</main>
-      <footer>{/* mentions */}</footer>
-    </>
-  );
-}
-```
-
-> Note : `aria-label` sur un `<nav>` sert à **distinguer** deux navigations (« principale » vs « secondaire »). C'est le seul ARIA utile ici — le reste est natif.
-
----
+- **les attributs sont en camelCase** : `tabIndex` et non `tabindex`, `htmlFor` et non `for`.
+  Les attributs `aria-*` et `data-*` gardent en revanche leurs tirets.
+- **`alt` vide se met explicitement** : `alt=""` et non `alt={undefined}`, qui disparaît du
+  rendu et fait lire le nom de fichier par certains lecteurs d'écran.
+- **le focus se gère avec des refs**, pas avec `document.querySelector` : voir le module 36
+  pour les patterns, et `useRef` plus `useEffect` pour le déplacer après un rendu.
 
 ## 3. Worked examples
 
@@ -328,16 +274,7 @@ function InviteForm({ onInvite }: { onInvite: (email: string) => void }) {
 
 ### PIÈGE #2 — `placeholder` pris pour un label
 
-```tsx
-// ❌ Aucun <label> : le champ n'a pas de nom accessible stable
-<input type="email" placeholder="Email" />
-
-// ✅ Label réel (masqué visuellement si le design l'exige)
-<label htmlFor="email" className="sr-only">Adresse email</label>
-<input id="email" type="email" placeholder="nom@exemple.fr" />
-```
-
-Le placeholder disparaît à la saisie, échoue souvent au contraste, et n'est pas un nom accessible fiable.
+> 📐 **Traité dans le cours 25 HTML & CSS**, module 14, § 2. Ce module ne garde que ce qui change en React.
 
 ### PIÈGE #3 — `for` au lieu de `htmlFor` en JSX
 
@@ -349,45 +286,9 @@ Le placeholder disparaît à la saisie, échoue souvent au contraste, et n'est p
 <label htmlFor="email">Email</label>
 ```
 
-### PIÈGE #4 — `outline: none` sans focus de remplacement
+### PIÈGE #4 — `outline: none`, niveaux de titre sautés, listes de `div`
 
-```css
-/* ❌ Supprime tout repère visuel de focus — échec 2.4.7 */
-button:focus { outline: none; }
-
-/* ✅ Remplacer par un focus visible net */
-button:focus-visible { outline: 2px solid #1a73e8; outline-offset: 2px; }
-```
-
-### PIÈGE #5 — Sauter des niveaux de titre pour le style
-
-```tsx
-// ❌ On choisit <h4> parce qu'il est "plus petit" visuellement — trou dans la hiérarchie
-<h2>Familles</h2>
-<h4>Les Dupont</h4>
-
-// ✅ Le niveau reflète la STRUCTURE ; la taille se règle en CSS
-<h2>Familles</h2>
-<h3 className="titre-compact">Les Dupont</h3>
-```
-
-Le niveau de titre est une donnée de structure, pas de style. La taille visuelle se gère en CSS.
-
-### PIÈGE #6 — Liste de `div` au lieu de `ul`/`li`
-
-```tsx
-// ❌ Le lecteur d'écran n'annonce pas "liste de N éléments"
-<div className="list">
-  {families.map((f) => <div key={f.id}>{f.name}</div>)}
-</div>
-
-// ✅ Sémantique de liste
-<ul className="list" aria-label="Familles">
-  {families.map((f) => <li key={f.id}>{f.name}</li>)}
-</ul>
-```
-
----
+> 📐 **Traité dans le cours 25 HTML & CSS**, module 16 pour le focus, module 01 pour les titres et les listes. Ce module ne garde que ce qui change en React.
 
 ## 5. Ancrage TribuZen
 
